@@ -949,7 +949,7 @@ bool C_aplication_txt::m_what_return() {		// metoda ktora pyta co zrobic, wyjsc 
 bool C_aplication_txt::m_what_menu() {
 	return true; //do dokonczenia
 }
-int C_aplication_txt::m_menu_add_human(int where) {
+int C_aplication_txt::m_menu_add_human(int where) { // dodawanie nowej osoby
 	//	m_load_files(true);
 	C_human human;
 	int ptr = 0, i;
@@ -966,9 +966,8 @@ int C_aplication_txt::m_menu_add_human(int where) {
 			while (true)
 			{
 				cls();
-				m_create_logo();
+				m_create_logo();	// atrapa drzewka
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-
 				for (i = 0; i < 6; ++i)
 				{
 					if (i == ptr)       // podswietla dana opcje na niebiesko, dopisuje strzalke
@@ -983,7 +982,6 @@ int C_aplication_txt::m_menu_add_human(int where) {
 					}
 				}
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-
 				cout << "\n\n\n\n Use the arrows to navigate the menu ";
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 				cout << char(24) << " " << char(25);        // kody ASCII strzalek
@@ -991,7 +989,6 @@ int C_aplication_txt::m_menu_add_human(int where) {
 				cout << ". Confirm your choice with ";
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 				cout << "ENTER.";
-
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 				cout << "\n Click ";
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
@@ -1042,67 +1039,67 @@ int C_aplication_txt::m_menu_add_human(int where) {
 						//Sleep(1500);
 						switch (ptr)        // po wybraniu opcji w case'ach beda instrukcje do wykonania
 						{
-						case 0: {
-							Sleep(150);
-							b_whats = true;
-							human.m_get_first_name(m_menu_add_first_name().m_set_first_name());
-							break;
-						}
-						case 1: {
-							Sleep(150);
-							b_whats = true;
-							human.m_get_last_name(m_menu_add_last_name().m_set_last_name());
-							break;
-						}
-						case 2: {
-							Sleep(150);
-							b_whats = true;
-							human.m_get_gender(m_menu_add_gender().m_set_gender());
-							break;
-						}
-						case 3: {
-							Sleep(150);
-							b_what = true;
-							N_vektor<C_date> V_date = m_menu_add_date().m_set_Vdate();
-							int iteral;
-							for (iteral = 0; iteral < V_date.m_size(); iteral++)
-							{
-								human.m_get_date(V_date[iteral]);
+							case 0: {
+								Sleep(150);
+								b_whats = true;
+								human.m_get_first_name(m_menu_add_first_name().m_set_first_name()); 	// doda imie
+								break;
 							}
-							break;
-						}
-						case 4: {
-							Sleep(150);
-							if (!b_what)
-							{
-								C_date date;
-								human.m_get_date(date);
+							case 1: {
+								Sleep(150);
+								b_whats = true;
+								human.m_get_last_name(m_menu_add_last_name().m_set_last_name());		//dodaj nazwisko
+								break;
 							}
-							if (!b_whats)
-							{
-								C_first_name first;
-								C_last_name last;
-								C_gender gender;
-								human.m_get_first_name(first);
-								human.m_get_last_name(last);
-								human.m_get_gender(gender);
+							case 2: {
+								Sleep(150);
+								b_whats = true;
+								human.m_get_gender(m_menu_add_gender().m_set_gender());				//dodaj plec
+								break;
 							}
-							m_new_human(human);
-							Sleep(150);
-							m_save_files(true);
-							//Sleep(150000);
-							//		int x;
-							//		std::cin >> x;
-							//m_what_menu();
-							return where;
-							//czy chcesz kontynulowac??
-							//break;
-						}
-						case 5: {
-							Sleep(150);
-							return M_menu_glowne;
-						}
-								//	break;
+							case 3: {
+								Sleep(150);
+								b_what = true;
+								N_vektor<C_date> V_date = m_menu_add_date().m_set_Vdate();
+								int iteral;
+								for (iteral = 0; iteral < V_date.m_size(); iteral++)
+								{
+									human.m_get_date(V_date[iteral]);				//dodaj daty
+								}
+								break;
+							}
+							case 4: {
+								Sleep(150);
+								if (!b_what)
+								{
+									C_date date;
+									human.m_get_date(date);
+								}
+								if (!b_whats)
+								{
+									C_first_name first;
+									C_last_name last;
+									C_gender gender;
+									human.m_get_first_name(first);		// pobiera imie
+									human.m_get_last_name(last);		// pobiera nazwisko
+									human.m_get_gender(gender);			// pobiera plec
+								}
+								m_new_human(human);
+								Sleep(150);
+								m_save_files(true);				// zapis humana
+								//Sleep(150000);
+								//		int x;
+								//		std::cin >> x;
+								//m_what_menu();
+								return where;
+								//czy chcesz kontynulowac??
+								//break;
+							}
+							case 5: {
+								Sleep(150);
+								return M_menu_glowne;  //wraca do menu
+							}
+									//	break;
 						}
 						break;
 					}
@@ -1123,7 +1120,6 @@ int C_aplication_txt::m_menu_add_human(int where) {
 				cls();
 				m_create_logo();
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-
 				for (i = 0; i < 5; ++i)
 				{
 					if (i == ptr)       // podswietla dana opcje na niebiesko, dopisuje strzalke
@@ -1138,7 +1134,6 @@ int C_aplication_txt::m_menu_add_human(int where) {
 					}
 				}
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-
 				cout << "\n\n\n\n Use the arrows to navigate the menu ";
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 				cout << char(24) << " " << char(25);        // kody ASCII strzalek
@@ -1186,39 +1181,39 @@ int C_aplication_txt::m_menu_add_human(int where) {
 						//Sleep(1500);
 						switch (ptr)        // po wybraniu opcji w case'ach beda instrukcje do wykonania
 						{
-						case 0: {
-							Sleep(150);
-							b_whats = true;
-							human.m_get_first_name(m_menu_add_first_name().m_set_first_name());
-							break;
-						}
-						case 1: {
-							Sleep(150);
-							b_whats = true;
-							human.m_get_last_name(m_menu_add_last_name().m_set_last_name());
-							break;
-						}
-						case 2: {
-							Sleep(150);
-							b_whats = true;
-							human.m_get_gender(m_menu_add_gender().m_set_gender());
-							break;
-						}
-						case 3: {
-							Sleep(150);
-							b_what = true;
-							N_vektor<C_date> V_date = m_menu_add_date().m_set_Vdate();
-							int iteral;
-							for (iteral = 0; iteral < V_date.m_size(); iteral++)
-							{
-								human.m_get_date(V_date[iteral]);
+							case 0: {
+								Sleep(150);
+								b_whats = true;
+								human.m_get_first_name(m_menu_add_first_name().m_set_first_name());  //dodanie imienia
+								break;
 							}
-							break;
-						}
-						case 4: {
-							Sleep(150);
-							return M_menu_glowne;
-						}
+							case 1: {
+								Sleep(150);
+								b_whats = true;
+								human.m_get_last_name(m_menu_add_last_name().m_set_last_name());	//dadanie nazwiska
+								break;
+							}
+							case 2: {
+								Sleep(150);
+								b_whats = true;
+								human.m_get_gender(m_menu_add_gender().m_set_gender());			//dodaj plec
+								break;
+							}
+							case 3: {
+								Sleep(150);
+								b_what = true;
+								N_vektor<C_date> V_date = m_menu_add_date().m_set_Vdate();
+								int iteral;
+								for (iteral = 0; iteral < V_date.m_size(); iteral++)
+								{
+									human.m_get_date(V_date[iteral]);  //dodaj date
+								}
+								break;
+							}
+							case 4: {
+								Sleep(150);
+								return M_menu_glowne;
+							}
 						}
 						break;
 					}
@@ -1236,7 +1231,6 @@ C_human C_aplication_txt::m_menu_add_first_name() {
 	char C;
 	//WH_KEYBOARD_LL;//hak do klawiatury
 	//bool b_what;
-
 	Sleep(1500);    // sleepy musza byc, by uniknac "podwojnego" ENTERA!!!
 					// tutaj powinna byc metoda dolaczenia nowej osoby
 	while (true)
@@ -1247,16 +1241,12 @@ C_human C_aplication_txt::m_menu_add_first_name() {
 		cls();
 		m_create_logo();
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-
-
 		for (i = 0; i < 2; ++i)
 		{
 			if (i == ptr)       // podswietla dana opcje na niebiesko, dopisuje strzalke
 			{
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 				cout << "\t\t\t\t" << "--> " << MenuSub_add_first_name[i] << " \n\t\t " << SubSub_add_first_name[i] << endl;
-
-
 			}
 			else                // niewybrane opcje sa biale
 			{
@@ -1273,7 +1263,6 @@ C_human C_aplication_txt::m_menu_add_first_name() {
 		cout << ". Confirm your choice with ";
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 		cout << "ENTER.";
-
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 		cout << "\n Click ";
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
@@ -1313,10 +1302,10 @@ C_human C_aplication_txt::m_menu_add_first_name() {
 			else if (ptr == 0 && GetAsyncKeyState(VK_RETURN) != 0)
 			{
 				Sleep(150);
-				if (data.m_size() > 0)
+				if (data.m_size() > 0)  // musi byc cos wpisane
 				{
 					C_first_name First(data);
-					human.m_get_first_name(First);
+					human.m_get_first_name(First);		// zapisuje to
 					data.m_clear();
 					return human;
 				}
