@@ -540,13 +540,11 @@ int C_aplication_txt::m_display_tree()
 	N_striing MenuSub1[3] = { "1. Display from the oldest", "2. Search" , "3. Exit" };
 	N_striing SubSub1[3] = { "[You can display trees from the oldest]", "[Search your created trees]", "[Back To Menu]" };
 	int ptr = 0, p = 0;
-
 	while (true)
 	{
 		cls();
-		//m_create_logo();
+		m_create_logo(); //<- roznica w kodach!! tu bylo zakomentowane logo!! 
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-
 		for (int i = 0; i < 3; ++i)
 		{
 			if (i == ptr)       // podswietla dana opcje na niebiesko, dopisuje strzalke
@@ -562,9 +560,7 @@ int C_aplication_txt::m_display_tree()
 				cout << "\t\t\t\t" << MenuSub1[i] << endl;
 			}
 		}
-
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-
 		cout << "\n\n\n\n Use the arrows to navigate the menu ";
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 		cout << char(24) << " " << char(25);        // kody ASCII strzalek
@@ -572,14 +568,12 @@ int C_aplication_txt::m_display_tree()
 		cout << ". Confirm your choice with ";
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 		cout << "ENTER.";
-
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 		cout << "\n Click ";
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 		cout << "SPACEBAR";
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 		cout << " if you want back to main menu.";
-
 		while (true)
 		{
 			if (GetAsyncKeyState(VK_SPACE)) return M_menu_glowne;
@@ -605,22 +599,22 @@ int C_aplication_txt::m_display_tree()
 			{
 				switch (ptr)        // po wybraniu opcji w case'ach beda instrukcje do wykonania
 				{
-				case 0:
-				{
-					Sleep(1500);    // sleepy musza byc, by uniknac "podwojnego" ENTERA!!!
-									//SubMenu3();
-				} break;
-				case 1:
-				{
-					Sleep(1500);
-					//m_search_tree();
-					return M_szukanie;
-				}
-				case 2:
-				{
-					Sleep(1500);
-					return M_exit;
-				}
+					case 0:
+					{
+						Sleep(1500);    // sleepy musza byc, by uniknac "podwojnego" ENTERA!!!
+										//SubMenu3();
+					} break;
+					case 1:
+					{
+						Sleep(1500);
+						//m_search_tree();
+						return M_szukanie;
+					}
+					case 2:
+					{
+						Sleep(1500);
+						return M_exit;
+					}
 				}
 				break;
 			}
@@ -630,27 +624,29 @@ int C_aplication_txt::m_display_tree()
 }
 int C_aplication_txt::m_sub_menu_2()
 {
+	//moim zadniem lista z wczytanymi drzewami do wyboru:P
+	//m_lista(false); //lista drzew
+	//				//std::cout << "Click SpaceBar to return";
+	//				//if (GetAsyncKeyState(VK_SPACE) != 0) m_main_menu();
+	//return;
+	//	m_lista(true);
 	N_striing Menu2[4] = { "1. Display Tree", "2. Edit Tree", "3. Export Tree", "4. Exit" };
-	N_striing SubMenu2[4] = { "[Display Your Created Trees]", "[Edit Your Created Trees]", "[Export Your Created Trees]", "[Back To Menu]" };
+	N_striing SubMenu2[4] = { "[Display Your Created Trees]", "[Edit Your Created Trees]", "[Export Your Created Trees]", "[Exit From Program]" };
 	int pt = 0;
-
 	while (true)
 	{
-
+		//system("cls");
 		cls();
-		m_create_logo();
-		std::cout << "\t\t\tClick Spacebar to return the menu\n\n";
+		//m_create_logo();
+		//std::cout << "\t\t\tClick Spacebar to return the menu\n\n";
 		//std::cout << "\t\t\tTree successfully loaded\n\n";
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
-
 		for (int i = 0; i < 4; ++i)
 		{
 			if (i == pt)       // podswietla dana opcje na niebiesko, dopisuje strzalke
 			{
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 				cout << "\t\t\t\t" << "--> " << Menu2[i] << " \n\t\t\t " << SubMenu2[i] << endl;
-
-
 			}
 			else                // niewybrane opcje sa biale
 			{
@@ -658,18 +654,13 @@ int C_aplication_txt::m_sub_menu_2()
 				cout << "\t\t\t\t" << Menu2[i] << endl;
 			}
 		}
-
-
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-
 		cout << "\n\n\n\n Use the arrows to navigate the menu ";
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 		cout << char(24) << " " << char(25);        // kody ASCII strzalek
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 		cout << ". Confirm your choice with ";
-
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
-
 		cout << "ENTER.";
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 		cout << "\n Click ";
@@ -677,8 +668,6 @@ int C_aplication_txt::m_sub_menu_2()
 		cout << "SPACEBAR";
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 		cout << " if you want back to main menu.";
-
-
 		while (true)
 		{
 			if (GetAsyncKeyState(VK_SPACE)) return M_menu_glowne;
@@ -704,29 +693,30 @@ int C_aplication_txt::m_sub_menu_2()
 			{
 				switch (pt)        // po wybraniu opcji w case'ach beda instrukcje do wykonania
 				{
-				case 0:
-				{
-					Sleep(1500);    // sleepy musza byc, by uniknac "podwojnego" ENTERA!!!
-									//				m_display_tree();
-									//ImportTree();
-									//system("dir /s H:\TREE_INOP");
-									//system("tree /f H:\TREE_INOP\\Drzewo_genealogiczne\\Drzewo_genealogiczne\\Data");	//w CodeBlocks dziala, tu nie...
-									//system("PAUSE");
-					return M_lista + 3; //skok101
-				}// break;
-				case 1:
-				{
-					Sleep(1500);
-					return M_edit_tree;
-				}
-				case 2:
-				{
-					return M_export_tree;
-				}
-				case 3:
-				{
-					return M_exit;
-				}
+					case 0:
+					{
+						Sleep(1500);    // sleepy musza byc, by uniknac "podwojnego" ENTERA!!!
+										// <- nie wiem czy nie powinno byc tu Sleep(150);
+										//				m_display_tree();
+										//ImportTree();
+										//system("dir /s H:\TREE_INOP");
+										//system("tree /f H:\TREE_INOP\\Drzewo_genealogiczne\\Drzewo_genealogiczne\\Data");	//w CodeBlocks dziala, tu nie...
+										//system("PAUSE");
+						return M_lista + 3; //skok101
+					}// break;
+					case 1:
+					{
+						Sleep(1500);
+						return M_edit_tree; // menu edycji drzewa (dodanie nowej osoby, jej edycja itp)
+					}
+					case 2:
+					{
+						return M_export_tree; // export do pliku txt ???? bedzie cos takiego ???
+					}
+					case 3:
+					{
+						return M_exit;
+					}
 				}
 				break;
 			}
@@ -734,26 +724,22 @@ int C_aplication_txt::m_sub_menu_2()
 		Sleep(150);     // szybkosc poruszania sie po menu
 	}
 }
-void C_aplication_txt::m_import_tree()
+void C_aplication_txt::m_import_tree() // nieuzywane???
 {
 	N_striing MenuSub1[2] = { "1. Give your tree name", "2. Exit" };
 	N_striing SubSub1[2] = { "[You can give your created tree name]", "[Exit From Program]" };
 	int ptr = 0, p = 0;
-
 	while (true)
 	{
 		cls();
 		m_create_logo();
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-
 		for (int i = 0; i < 2; ++i)
 		{
 			if (i == ptr)       // podswietla dana opcje na niebiesko, dopisuje strzalke
 			{
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 				cout << "\t\t\t\t" << "--> " << MenuSub1[i] << "  " << SubSub1[i] << endl;
-
-
 			}
 			else                // niewybrane opcje sa biale
 			{
@@ -761,9 +747,7 @@ void C_aplication_txt::m_import_tree()
 				cout << "\t\t\t\t" << MenuSub1[i] << endl;
 			}
 		}
-
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-
 		cout << "\n\n\n\n Use the arrows to navigate the menu ";
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 		cout << char(24) << " " << char(25);        // kody ASCII strzalek
@@ -771,7 +755,6 @@ void C_aplication_txt::m_import_tree()
 		cout << ". Confirm your choice with ";
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 		cout << "ENTER.";
-
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 		cout << "\n Click ";
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
@@ -822,26 +805,26 @@ void C_aplication_txt::m_import_tree()
 		Sleep(150);     // szybkosc poruszania sie po menu
 	}
 }
-char C_aplication_txt::m_get_key() {
+char C_aplication_txt::m_get_key() {		// metoda pobiera znaki z klawiatury, polskie znaki i Backspace
 	char C;
 	int Tab_key[26] = { 0x41,0x42,0x43,0x44,0x45,0x46,0x47,0x48,0x49,0x4A,0x4B,0x4C,0x4D,0x4E,0x4F,
-		0x50,0x51,0x52,0x53,0x54,0x55,0x56,0x57,0x58,0x59,0x5A };
-	int Tab_key_number[2][10];
-	char Tab_letter[2][26];
-	char Tab_number[10] = { '0','1','2','3','4','5','6','7','8','9' };
+		0x50,0x51,0x52,0x53,0x54,0x55,0x56,0x57,0x58,0x59,0x5A };		// kody poszczegolnych 26 znakow
+	int Tab_key_number[2][10];		// tablica na cyfry
+	char Tab_letter[2][26];			// tablica dwuwymiarowa na 26 malych i duzych
+	char Tab_number[10] = { '0','1','2','3','4','5','6','7','8','9' };		// cyfry
 	char Tab_polish[9] = { (char)185,(char)230,(char)234,(char)179,(char)241,(char)243,(char)156,(char)159,(char)191 }; //Polskie litery male
-	char Tab_Polish[9] = { (char)165,(char)198,(char)202,(char)163,(char)209,(char)211,(char)140,(char)143,(char)175 }; //Polskie lityry duze
+	char Tab_Polish[9] = { (char)165,(char)198,(char)202,(char)163,(char)209,(char)211,(char)140,(char)143,(char)175 }; //Polskie litery duze
 	int Tab_npolish[9] = { 0x41,0x43,0x45,0x4C,0x4E,0x4F,0x53,0x58,0x5A };
 	int i;
 	for (i = 0; i < 26; i++)
 	{
-		Tab_letter[0][i] = 'a' + i;
-		Tab_letter[1][i] = 'A' + i;
+		Tab_letter[0][i] = 'a' + i;		// wypelnienie tablic tymi znakami , male
+		Tab_letter[1][i] = 'A' + i;		// tu tez , duze
 	}
 	for (i = 0; i < 10; i++)
 	{
-		Tab_key_number[0][i] = 0x30 + i;
-		Tab_key_number[1][i] = 0x60 + i;
+		Tab_key_number[0][i] = 0x30 + i;		// wypelnienie cyframi
+		Tab_key_number[1][i] = 0x60 + i;		// tu tez
 	}
 	while (true) {
 		for (i = 0; i < 10; i++)
@@ -893,25 +876,21 @@ char C_aplication_txt::m_get_key() {
 		}
 	}
 }
-bool C_aplication_txt::m_what_return() {
+bool C_aplication_txt::m_what_return() {		// metoda ktora pyta co zrobic, wyjsc do menu, pozostac i nic nie zmieniac itp
 	N_striing MenuSub1[4] = { "Do you want back to the menu?","1. Yes","2. No", "3. Cancel" };
 	N_striing SubSub1[4] = { "","[All data will be deleted]","[Continue]" ,"[Cancel and return to adding data]" };
 	int ptr = 1, p = 0;
-
 	while (true)
 	{
 		cls();
 		m_create_logo();
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-
 		for (int i = 0; i < 4; ++i)
 		{
 			if (i == ptr)       // podswietla dana opcje na niebiesko, dopisuje strzalke
 			{
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 				cout << "\t\t\t\t" << "--> " << MenuSub1[i] << "  " << SubSub1[i] << endl;
-
-
 			}
 			else                // niewybrane opcje sa biale
 			{
@@ -939,18 +918,28 @@ bool C_aplication_txt::m_what_return() {
 				}
 				break;
 			}
-			else if (ptr == 1 && GetAsyncKeyState(VK_RETURN) != 0)
+			//else if (ptr ==  && GetAsyncKeyState(VK_RETURN) != 0)
+			else if (GetAsyncKeyState(VK_RETURN) != 0) //<- optymalizacja
 			{
+				switch (ptr)
+				{
+				case 1:
+					return true;
+				case 2:
+					return false;
+				case 3:
+					return false;
+				}
 				return true;
 			}
-			else if (ptr == 2 && GetAsyncKeyState(VK_RETURN) != 0)
+		/*	else if (ptr == 2 && GetAsyncKeyState(VK_RETURN) != 0)
 			{
 				return false;
 			}
 			else if (ptr == 3 && GetAsyncKeyState(VK_RETURN) != 0)
 			{
 				return false;
-			}
+			}*/
 		}
 
 		Sleep(150);     // szybkosc poruszania sie po menu
