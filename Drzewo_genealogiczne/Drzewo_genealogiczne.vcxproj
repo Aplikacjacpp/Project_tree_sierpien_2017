@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{96CA034D-AEE9-46D6-9BC8-FC58DE8FEA25}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>Drzewo_genealogiczne</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Data\Databases\element.cpp" />
+    <ClCompile Include="Data\Databases\goverment.cpp" />
+    <ClCompile Include="Data\Databases\goverment_date.cpp" />
+    <ClCompile Include="Data\Databases\goverment_personaly.cpp" />
+    <ClCompile Include="Data\Databases\goverment_relation.cpp" />
+    <ClCompile Include="Data\Databases\human.cpp" />
+    <ClCompile Include="Data\Databases\tree.cpp" />
+    <ClCompile Include="Data\Date\date.cpp" />
+    <ClCompile Include="Data\Date\day.cpp" />
+    <ClCompile Include="Data\Date\month.cpp" />
+    <ClCompile Include="Data\Date\year.cpp" />
+    <ClCompile Include="Data\Enginer\enginer.cpp" />
+    <ClCompile Include="Data\Enginer\save_load.cpp" />
+    <ClCompile Include="Data\Enginer\sl_date.cpp" />
+    <ClCompile Include="Data\Enginer\sl_personalys.cpp" />
+    <ClCompile Include="Data\Enginer\sl_relations.cpp" />
+    <ClCompile Include="Data\Interface\aplication.cpp" />
+    <ClCompile Include="Data\Interface\aplication_txt.cpp" />
+    <ClCompile Include="Data\narzedzia\Striing.cpp" />
+    <ClCompile Include="Data\Personaly\data.cpp" />
+    <ClCompile Include="Data\Personaly\first_name.cpp" />
+    <ClCompile Include="Data\Personaly\gender.cpp" />
+    <ClCompile Include="Data\Personaly\id.cpp" />
+    <ClCompile Include="Data\Personaly\last_name.cpp" />
+    <ClCompile Include="Data\Relation\children.cpp" />
+    <ClCompile Include="Data\Relation\grandchildren.cpp" />
+    <ClCompile Include="Data\Relation\grandparents.cpp" />
+    <ClCompile Include="Data\Relation\order.cpp" />
+    <ClCompile Include="Data\Relation\partner.cpp" />
+    <ClCompile Include="Data\Relation\parent.cpp" />
+    <ClCompile Include="Data\Relation\relation.cpp" />
+    <ClCompile Include="Data\Relation\sibling.cpp" />
+    <ClCompile Include="Main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Data\Databases\element.h" />
+    <ClInclude Include="Data\Databases\goverment.h" />
+    <ClInclude Include="Data\Databases\goverment_date.h" />
+    <ClInclude Include="Data\Databases\goverment_personaly.h" />
+    <ClInclude Include="Data\Databases\goverment_relation.h" />
+    <ClInclude Include="Data\Databases\human.h" />
+    <ClInclude Include="Data\Databases\tree.h" />
+    <ClInclude Include="Data\Date\date.h" />
+    <ClInclude Include="Data\Date\day.h" />
+    <ClInclude Include="Data\Date\month.h" />
+    <ClInclude Include="Data\Date\year.h" />
+    <ClInclude Include="Data\Enginer\enginer.h" />
+    <ClInclude Include="Data\Enginer\alphabet.h" />
+    <ClInclude Include="Data\Enginer\save_load.h" />
+    <ClInclude Include="Data\Enginer\sl_date.h" />
+    <ClInclude Include="Data\Enginer\sl_personalys.h" />
+    <ClInclude Include="Data\Enginer\sl_relations.h" />
+    <ClInclude Include="Data\Helpful\definition.h" />
+    <ClInclude Include="Data\Interface\aplication.h" />
+    <ClInclude Include="Data\Interface\aplication_txt.h" />
+    <ClInclude Include="Data\narzedzia\striing.h" />
+    <ClInclude Include="Data\narzedzia\Vektor.h" />
+    <ClInclude Include="Data\Personaly\data.h" />
+    <ClInclude Include="Data\Personaly\first_name.h" />
+    <ClInclude Include="Data\Personaly\gender.h" />
+    <ClInclude Include="Data\Personaly\id.h" />
+    <ClInclude Include="Data\Personaly\last_name.h" />
+    <ClInclude Include="Data\Relation\children.h" />
+    <ClInclude Include="Data\Relation\grandchildren.h" />
+    <ClInclude Include="Data\Relation\grandparents.h" />
+    <ClInclude Include="Data\Relation\order.h" />
+    <ClInclude Include="Data\Relation\partner.h" />
+    <ClInclude Include="Data\Relation\parent.h" />
+    <ClInclude Include="Data\Relation\relation.h" />
+    <ClInclude Include="Data\Relation\sibling.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Dokumentacja\Wersja robocza\Nowa_wersja\Dok_Firmy_Programistycznej.doc" />
+    <None Include="..\Dokumentacja\Wersja robocza\Nowa_wersja\Dok_Przedsięwzięcia_Prog.doc" />
+    <None Include="..\Dokumentacja\Wersja robocza\Nowa_wersja\Kom_Dok_Przedsięwzięcia_Prog.doc" />
+    <None Include="..\Dokumentacja\Wersja robocza\Star_wersja\Dokumentacja.doc" />
+    <None Include="ClassDiagram.cd" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram11.cd" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

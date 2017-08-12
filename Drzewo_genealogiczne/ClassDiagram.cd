@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="C_date" Collapsed="true">
+    <Position X="7.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CBCAAACAAABKAAQgIAAAwQAgAQABAIAAQAAiIAAAAAA=</HashCode>
+      <FileName>Data\Date\date.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_day" Collapsed="true">
+    <Position X="3.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ADIAAAIBQAAAAAAAAAAAIQAAACAAAAAAAAggAAQAAAA=</HashCode>
+      <FileName>Data\Date\day.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_month" Collapsed="true">
+    <Position X="7.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACIAAAAAAACCAAAIIAAAAQAAACAAAAAAAAkgAACAAAA=</HashCode>
+      <FileName>Data\Date\month.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_year" Collapsed="true">
+    <Position X="12.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CCIAAAAAAAAAAAEAAAAAAQAAACAABBAAAAgggAAABAA=</HashCode>
+      <FileName>Data\Date\year.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_data" Collapsed="true">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACIAAAAAAAAAAAAAAgAAAQAgACAAAAAAAAwgAAIAAAA=</HashCode>
+      <FileName>Data\Personaly\data.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_first_name" Collapsed="true">
+    <Position X="14.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACIAAAAAAAIAAAAAAAAAAQAAACAAAAAAAAggABAAAAA=</HashCode>
+      <FileName>Data\Personaly\first_name.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_gender" Collapsed="true">
+    <Position X="1" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACIAAAAAABAAAAAAAAAAAQAAACAADAAAAAggAAAAAAA=</HashCode>
+      <FileName>Data\Personaly\gender.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_id" Collapsed="true">
+    <Position X="5.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACIAABAAAAAAAAAAAAAAAQAAADAAAAAAAAggAAAAAAA=</HashCode>
+      <FileName>Data\Personaly\id.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_last_name" Collapsed="true">
+    <Position X="10" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACIAAAAAAAAAAAAAAAAgAQAAACAAAAAAAAggoAAAAAA=</HashCode>
+      <FileName>Data\Personaly\last_name.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_children" Collapsed="true">
+    <Position X="5.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAABAAAAAAgAAAAIAQAAgAAgAAAAAAggAAAAAAA=</HashCode>
+      <FileName>Data\Relation\children.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_grandchildren" Collapsed="true">
+    <Position X="10" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQQAAAABAAAAAAgAgAAIAQAAAAAAAAAAAAggAAAAAAA=</HashCode>
+      <FileName>Data\Relation\grandchildren.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_grandparents" Collapsed="true">
+    <Position X="12.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAABAACAACgAAAAIAQAAAAAAAAAAAAggAAAAAAA=</HashCode>
+      <FileName>Data\Relation\grandparents.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_partner" Collapsed="true">
+    <Position X="1" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAEAAAAAAAAAAAgAEAAAAA=</HashCode>
+      <FileName>Data\Relation\partner.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_parent" Collapsed="true">
+    <Position X="3.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQACAABAAAAAAgAAAAIAQAIAAAAAAAAAAggAAAAAAA=</HashCode>
+      <FileName>Data\Relation\parent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_relation" Collapsed="true">
+    <Position X="6.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAgAAgAQEQAAABAAAAAAAAggAAAAAAA=</HashCode>
+      <FileName>Data\Relation\relation.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_sibling" Collapsed="true">
+    <Position X="7.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQQAAABAAAAAAgAAAAIAQAAAAAAAAAAAAggAAIAAAA=</HashCode>
+      <FileName>Data\Relation\sibling.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_enginer" Collapsed="true">
+    <Position X="3" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAQIAAAAAFAAAAQAAAAAoAAQAAAAkAAAAABA=</HashCode>
+      <FileName>Data\Enginer\enginer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_save_load" Collapsed="true">
+    <Position X="3" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQACAAAAAAIAAAAgAAAgAIA=</HashCode>
+      <FileName>Data\Enginer\save_load.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_sl_date" Collapsed="true">
+    <Position X="0.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CQAACAAAAAAAAAAAAAAAAUACAAAAAAIAAAAgAAAAAAA=</HashCode>
+      <FileName>Data\Enginer\sl_date.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_sl_personalys" Collapsed="true">
+    <Position X="3" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAgAQASAAAAACIAAAAgAAIAAAA=</HashCode>
+      <FileName>Data\Enginer\sl_personalys.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_sl_relations" Collapsed="true">
+    <Position X="5.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAQBCAAAAAAIgAAAgAAAAEAA=</HashCode>
+      <FileName>Data\Enginer\sl_relations.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_element" Collapsed="true">
+    <Position X="0.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAsECkCAQgAEwAkIURAAAAAAAIgAAAgKAQAAIE=</HashCode>
+      <FileName>Data\Databases\element.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_goverment" Collapsed="true">
+    <Position X="11" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BCIgAAAAAAAAAAAAAAAAASAAACAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Data\Databases\goverment.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_goverment_date" Collapsed="true">
+    <Position X="8.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACoAAAIAAAAAIAEQgAEAAQAAACgAAAAAAAEgAAAAAAA=</HashCode>
+      <FileName>Data\Databases\goverment_date.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_goverment_personaly" Collapsed="true">
+    <Position X="11" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>Ai4AAAAAAAAAIAAAgAAAAQAAAGAAAAAAQAAgAAAAEAA=</HashCode>
+      <FileName>Data\Databases\goverment_personaly.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_goverment_relation" Collapsed="true">
+    <Position X="13.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACoAAAAAAAAAIQAAgABACQABICAAIAAAAAAgAAAQEAA=</HashCode>
+      <FileName>Data\Databases\goverment_relation.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_human" Collapsed="true">
+    <Position X="17" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgQCAgCABAAAAQuACAAAIQAAAAAgABAEAQAgAAAAhAk=</HashCode>
+      <FileName>Data\Databases\human.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_tree" Collapsed="true">
+    <Position X="0.5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACCAACAAAAgAAAABAAAAAQAAAAAAAAIAAAAgAABAAAA=</HashCode>
+      <FileName>Data\Databases\tree.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="N_striing" Collapsed="true">
+    <Position X="18.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ECAEAALAAAAAACAIAIAAQWiUCAFAABAIAAAgAAIAAAA=</HashCode>
+      <FileName>Data\narzedzia\striing.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="N_vektor&lt;T&gt;" Collapsed="true">
+    <Position X="17" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAIAQAAggCAIAAAAAWQAAAEAAAEAAAAgAAIAAAA=</HashCode>
+      <FileName>Data\narzedzia\Vektor.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_aplication" Collapsed="true">
+    <Position X="3" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAIAAAAAAAAAAAAAQAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Data\Interface\aplication.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_aplication_txt" Collapsed="true">
+    <Position X="3" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAGAAAAAAABAAAIAAQAQABAAAAAAAAAgAAgACAA=</HashCode>
+      <FileName>Data\Interface\aplication_txt.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="alfabet" Collapsed="true">
+    <Position X="17" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAQAAEEAAAAAAA=</HashCode>
+      <FileName>Data\Enginer\alphabet.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

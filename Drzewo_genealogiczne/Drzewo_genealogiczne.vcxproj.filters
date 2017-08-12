@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Data">
+      <UniqueIdentifier>{a27bad39-dbda-444b-b40f-b51205cf9215}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Data">
+      <UniqueIdentifier>{e7e28d3d-b26f-44af-b00e-392036d7312d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Enginer">
+      <UniqueIdentifier>{72b2f141-c347-4c14-b867-9adffa61fa74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Enginer">
+      <UniqueIdentifier>{62c224ee-022c-4eaa-8244-fa06f0ce913c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Databases">
+      <UniqueIdentifier>{0f6de51f-4976-488f-9054-9540dd83d8a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Databases">
+      <UniqueIdentifier>{5a93ae1e-294a-45a2-bf50-c21d5ae44e06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Project_Tools">
+      <UniqueIdentifier>{483123ba-319c-4338-80a9-0f91d8478535}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Project_Tools">
+      <UniqueIdentifier>{a76aeaef-68fc-4352-a9bc-009334decfbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Data\Date">
+      <UniqueIdentifier>{e0d2930c-7ee6-4a22-b18b-de37081ce11d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Data\Personalys">
+      <UniqueIdentifier>{95ab4b72-d5f2-442e-8bed-af88a7897e9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Data\Personalys">
+      <UniqueIdentifier>{f2983890-04cf-4dbf-829e-e6dc9260d3ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Data\Date">
+      <UniqueIdentifier>{8b99daa0-6d95-4350-8947-396ed1d833f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Data\Relations">
+      <UniqueIdentifier>{0dc0eaff-a593-4451-b474-de51fa13bdc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Data\Relations">
+      <UniqueIdentifier>{0872e20f-4610-4332-b29e-0f98b804f109}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interface">
+      <UniqueIdentifier>{38c5e525-dfd7-48a8-9bb5-2bd5fd795c46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Interface">
+      <UniqueIdentifier>{e743bb0a-16f0-4d94-897f-ed56382deed6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dokumentacja">
+      <UniqueIdentifier>{38b8207f-bfed-4453-9fb8-af6cb3f68c79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Helpful">
+      <UniqueIdentifier>{e7d09872-44bc-479c-a3af-55e59ebe9c4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dokumentacja\Stara">
+      <UniqueIdentifier>{4709db9f-ed99-4817-a814-dd84042ecc0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dokumentacja\Nowa">
+      <UniqueIdentifier>{0032b377-36df-4f85-bde2-18e08d383d38}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\Personaly\data.cpp">
+      <Filter>Resource Files\Data\Personalys</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\Personaly\first_name.cpp">
+      <Filter>Resource Files\Data\Personalys</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\Personaly\gender.cpp">
+      <Filter>Resource Files\Data\Personalys</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\Personaly\id.cpp">
+      <Filter>Resource Files\Data\Personalys</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\Personaly\last_name.cpp">
+      <Filter>Resource Files\Data\Personalys</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\Date\date.cpp">
+      <Filter>Resource Files\Data\Date</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\Date\day.cpp">
+      <Filter>Resource Files\Data\Date</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\Date\month.cpp">
+      <Filter>Resource Files\Data\Date</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\Date\year.cpp">
+      <Filter>Resource Files\Data\Date</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\Relation\children.cpp">
+      <Filter>Resource Files\Data\Relations</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\Relation\relation.cpp">
+      <Filter>Resource Files\Data\Relations</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\Relation\sibling.cpp">
+      <Filter>Resource Files\Data\Relations</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\narzedzia\Striing.cpp">
+      <Filter>Resource Files\Project_Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\Enginer\enginer.cpp">
+      <Filter>Resource Files\Enginer</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\Databases\element.cpp">
+      <Filter>Resource Files\Databases</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\Databases\human.cpp">
+      <Filter>Resource Files\Databases</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\Databases\tree.cpp">
+      <Filter>Resource Files\Databases</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\Enginer\save_load.cpp">
+      <Filter>Resource Files\Enginer</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\Enginer\sl_date.cpp">
+      <Filter>Resource Files\Enginer</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\Enginer\sl_relations.cpp">
+      <Filter>Resource Files\Enginer</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\Interface\aplication.cpp">
+      <Filter>Resource Files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\Interface\aplication_txt.cpp">
+      <Filter>Resource Files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\Relation\grandchildren.cpp">
+      <Filter>Resource Files\Data\Relations</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\Relation\grandparents.cpp">
+      <Filter>Resource Files\Data\Relations</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\Enginer\sl_personalys.cpp">
+      <Filter>Resource Files\Enginer</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\Databases\goverment.cpp">
+      <Filter>Resource Files\Databases</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\Databases\goverment_date.cpp">
+      <Filter>Resource Files\Databases</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\Databases\goverment_personaly.cpp">
+      <Filter>Resource Files\Databases</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\Databases\goverment_relation.cpp">
+      <Filter>Resource Files\Databases</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\Relation\partner.cpp">
+      <Filter>Resource Files\Data\Relations</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\Relation\order.cpp">
+      <Filter>Resource Files\Data\Relations</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\Relation\parent.cpp">
+      <Filter>Resource Files\Data\Relations</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Data\Personaly\data.h">
+      <Filter>Header Files\Data\Personalys</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\Personaly\first_name.h">
+      <Filter>Header Files\Data\Personalys</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\Personaly\gender.h">
+      <Filter>Header Files\Data\Personalys</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\Personaly\id.h">
+      <Filter>Header Files\Data\Personalys</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\Personaly\last_name.h">
+      <Filter>Header Files\Data\Personalys</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\Date\date.h">
+      <Filter>Header Files\Data\Date</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\Date\day.h">
+      <Filter>Header Files\Data\Date</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\Date\month.h">
+      <Filter>Header Files\Data\Date</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\Date\year.h">
+      <Filter>Header Files\Data\Date</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\Relation\children.h">
+      <Filter>Header Files\Data\Relations</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\Relation\parent.h">
+      <Filter>Header Files\Data\Relations</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\Relation\relation.h">
+      <Filter>Header Files\Data\Relations</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\Relation\sibling.h">
+      <Filter>Header Files\Data\Relations</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\narzedzia\striing.h">
+      <Filter>Header Files\Project_Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\narzedzia\Vektor.h">
+      <Filter>Header Files\Project_Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\Enginer\enginer.h">
+      <Filter>Header Files\Enginer</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\Databases\element.h">
+      <Filter>Header Files\Databases</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\Databases\human.h">
+      <Filter>Header Files\Databases</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\Databases\tree.h">
+      <Filter>Header Files\Databases</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\Interface\aplication.h">
+      <Filter>Header Files\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\Relation\grandchildren.h">
+      <Filter>Header Files\Data\Relations</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\Relation\grandparents.h">
+      <Filter>Header Files\Data\Relations</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\Enginer\save_load.h">
+      <Filter>Header Files\Enginer</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\Enginer\sl_date.h">
+      <Filter>Header Files\Enginer</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\Enginer\sl_relations.h">
+      <Filter>Header Files\Enginer</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\Enginer\sl_personalys.h">
+      <Filter>Header Files\Enginer</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\Databases\goverment.h">
+      <Filter>Header Files\Databases</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\Databases\goverment_date.h">
+      <Filter>Header Files\Databases</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\Databases\goverment_personaly.h">
+      <Filter>Header Files\Databases</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\Databases\goverment_relation.h">
+      <Filter>Header Files\Databases</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\Helpful\definition.h">
+      <Filter>Header Files\Helpful</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\Enginer\alphabet.h">
+      <Filter>Header Files\Enginer</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\Relation\partner.h">
+      <Filter>Header Files\Data\Relations</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\Relation\order.h">
+      <Filter>Header Files\Data\Relations</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\Interface\aplication_txt.h">
+      <Filter>Header Files\Interface</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Dokumentacja\Wersja robocza\Nowa_wersja\Dok_Firmy_Programistycznej.doc">
+      <Filter>Dokumentacja\Nowa</Filter>
+    </None>
+    <None Include="..\Dokumentacja\Wersja robocza\Star_wersja\Dokumentacja.doc">
+      <Filter>Dokumentacja\Stara</Filter>
+    </None>
+    <None Include="..\Dokumentacja\Wersja robocza\Nowa_wersja\Kom_Dok_Przedsięwzięcia_Prog.doc">
+      <Filter>Dokumentacja\Nowa</Filter>
+    </None>
+    <None Include="..\Dokumentacja\Wersja robocza\Nowa_wersja\Dok_Przedsięwzięcia_Prog.doc">
+      <Filter>Dokumentacja\Stara</Filter>
+    </None>
+    <None Include="ClassDiagram.cd" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram11.cd" />
+  </ItemGroup>
+</Project>
