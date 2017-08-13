@@ -192,3 +192,111 @@ std::ostream& operator<<(std::ostream &is, const C_date &d) {
 	is <<"data: "<< d.i_data_day << "." << d.i_data_month << "." << d.i_data_year;
 	return is;
 }
+bool C_date::operator<(const C_date &d) //operator mniejsze <
+{
+	if (this->i_data_year > d.i_data_year)
+		return false;
+	else
+	{
+		if (this->i_data_year < d.i_data_year)
+			return true;
+		else if (this->i_data_year == d.i_data_year)
+		{
+			if (this->i_data_month > d.i_data_month)
+				return false;
+			else
+			{
+				if (this->i_data_month < d.i_data_month)
+					return true;
+				else if (this->i_data_month == d.i_data_month)
+				{
+					if (this->i_data_day >= d.i_data_day)
+						return false;
+					else
+						return true;
+				}
+			}
+		}
+	}
+}
+bool C_date::operator>(const C_date &d) //operator wieksze >
+{
+	if (this->i_data_year < d.i_data_year)
+		return false;
+	else
+	{
+		if (this->i_data_year > d.i_data_year)
+			return true;
+		else if (this->i_data_year == d.i_data_year)
+		{
+			if (this->i_data_month < d.i_data_month)
+				return false;
+			else
+			{
+				if (this->i_data_month > d.i_data_month)
+					return true;
+				else if (this->i_data_month == d.i_data_month)
+				{
+					if (this->i_data_day <= d.i_data_day)
+						return false;
+					else
+						return true;
+				}
+			}
+		}
+	}
+}
+bool C_date::operator<=(const C_date &d) //operator mniejsze rowne <=
+{
+	if (this->i_data_year > d.i_data_year)
+		return false;
+	else
+	{
+		if (this->i_data_year < d.i_data_year)
+			return true;
+		else if (this->i_data_year == d.i_data_year)
+		{
+			if (this->i_data_month > d.i_data_month)
+				return false;
+			else
+			{
+				if (this->i_data_month < d.i_data_month)
+					return true;
+				else if (this->i_data_month == d.i_data_month)
+				{
+					if (this->i_data_day > d.i_data_day)
+						return false;
+					else
+						return true;
+				}
+			}
+		}
+	}
+}
+bool C_date::operator>=(const C_date &d) //operator wieksze rowne >=
+{
+	if (this->i_data_year < d.i_data_year)
+		return false;
+	else
+	{
+		if (this->i_data_year > d.i_data_year)
+			return true;
+		else if (this->i_data_year == d.i_data_year)
+		{
+			if (this->i_data_month < d.i_data_month)
+				return false;
+			else
+			{
+				if (this->i_data_month > d.i_data_month)
+					return true;
+				else if (this->i_data_month == d.i_data_month)
+				{
+					if (this->i_data_day < d.i_data_day)
+						return false;
+					else
+						return true;
+				}
+			}
+		}
+	}
+}

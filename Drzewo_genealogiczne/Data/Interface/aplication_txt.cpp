@@ -1349,8 +1349,6 @@ C_human C_aplication_txt::m_menu_add_last_name() {
 		cls();
 		m_create_logo();
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-
-
 		for (i = 0; i < 2; ++i)
 		{
 			if (i == ptr)       // podswietla dana opcje na niebiesko, dopisuje strzalke
@@ -1365,7 +1363,6 @@ C_human C_aplication_txt::m_menu_add_last_name() {
 			}
 		}
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-
 		cout << "\n\n\n\n Use the arrows to navigate the menu ";
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 		cout << char(24) << " " << char(25);        // kody ASCII strzalek
@@ -1373,7 +1370,6 @@ C_human C_aplication_txt::m_menu_add_last_name() {
 		cout << ". Confirm your choice with ";
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 		cout << "ENTER.";
-
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 		cout << "\n Click ";
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
@@ -1385,7 +1381,7 @@ C_human C_aplication_txt::m_menu_add_last_name() {
 			if (GetAsyncKeyState(VK_ESCAPE)) {
 				Sleep(150);
 				if (m_what_menu())
-					m_main_menu();//return M_menu_glowne
+					m_main_menu();//return M_menu_glowne tu moze sie zawieszac
 				break;
 			}
 			if (GetAsyncKeyState(VK_UP) != 0)   // strzalka do gory przesuwa wyzej po menu
@@ -1460,8 +1456,6 @@ C_human C_aplication_txt::m_menu_add_gender() {
 		cls();
 		m_create_logo();
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-
-
 		for (i = 0; i < 4; ++i)
 		{
 			if (i == ptr)       // podswietla dana opcje na niebiesko, dopisuje strzalke
@@ -1476,7 +1470,6 @@ C_human C_aplication_txt::m_menu_add_gender() {
 			}
 		}
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-
 		cout << "\n\n\n\n Use the arrows to navigate the menu ";
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 		cout << char(24) << " " << char(25);        // kody ASCII strzalek
@@ -1484,7 +1477,6 @@ C_human C_aplication_txt::m_menu_add_gender() {
 		cout << ". Confirm your choice with ";
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 		cout << "ENTER.";
-
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 		cout << "\n Click ";
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
@@ -1496,7 +1488,7 @@ C_human C_aplication_txt::m_menu_add_gender() {
 			if (GetAsyncKeyState(VK_ESCAPE)) {
 				Sleep(150);
 				if (m_what_menu())
-					m_main_menu();
+					m_main_menu();//return M_menu_glowne tu moze sie zawieszac
 				break;
 			}
 			if (GetAsyncKeyState(VK_UP) != 0)   // strzalka do gory przesuwa wyzej po me					//naprawione:)
@@ -1558,11 +1550,11 @@ C_human C_aplication_txt::m_menu_add_date() {
 	while (true)
 	{
 		//	b_what = false;
-		data = dd;
+		data = dd;		//dzien
 		data += '-';
-		data += mm;
+		data += mm;		//miesiac
 		data += '-';
-		data += yy;
+		data += yy;		//rok
 		if (!b_what)
 		{
 			typ = "Date of birth: ";
@@ -1571,8 +1563,6 @@ C_human C_aplication_txt::m_menu_add_date() {
 			cls();
 			m_create_logo();
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-
-
 			for (i = 0; i < 3; ++i)
 			{
 				if (i == ptr)       // podswietla dana opcje na niebiesko, dopisuje strzalke
@@ -1587,7 +1577,6 @@ C_human C_aplication_txt::m_menu_add_date() {
 				}
 			}
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-
 			cout << "\n\n\n\n Use the arrows to navigate the menu ";
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 			cout << char(24) << " " << char(25);        // kody ASCII strzalek
@@ -1595,7 +1584,6 @@ C_human C_aplication_txt::m_menu_add_date() {
 			cout << ". Confirm your choice with ";
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 			cout << "ENTER.";
-
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 			cout << "\n Click ";
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
@@ -1606,7 +1594,7 @@ C_human C_aplication_txt::m_menu_add_date() {
 			{
 				if (GetAsyncKeyState(VK_ESCAPE)) {
 					if (m_what_menu())
-						m_main_menu();
+						m_main_menu(); //return M_menu_glowne tu moze sie zawieszac
 					break;
 				}
 				if (GetAsyncKeyState(VK_UP) != 0)   // strzalka do gory przesuwa wyzej po menu
@@ -1634,7 +1622,7 @@ C_human C_aplication_txt::m_menu_add_date() {
 				{
 					if (yy.m_size() > 0)
 					{
-						yy.m_pop_back();
+						yy.m_pop_back();		// usunie koncowe cyfry z roku gdy klikne Backspace
 						Sleep(150);
 						break;
 					}
@@ -1642,7 +1630,7 @@ C_human C_aplication_txt::m_menu_add_date() {
 					{
 						if (mm.m_size() > 0)
 						{
-							mm.m_pop_back();
+							mm.m_pop_back();		// potem z miesiaca
 							Sleep(150);
 							break;
 						}
@@ -1650,7 +1638,7 @@ C_human C_aplication_txt::m_menu_add_date() {
 						{
 							if (dd.m_size() > 0)
 							{
-								dd.m_pop_back();
+								dd.m_pop_back();		// i z dnia
 								Sleep(150);
 								break;
 							}
@@ -1666,7 +1654,7 @@ C_human C_aplication_txt::m_menu_add_date() {
 					if (dd.m_size() < 2) {
 						C = m_get_key();
 						if (C != '\0') {
-							dd.m_push_back(C);
+							dd.m_push_back(C);		// zapamietuje/wstawia dla dnia
 							break;
 						}
 					}
@@ -1675,7 +1663,7 @@ C_human C_aplication_txt::m_menu_add_date() {
 						if (mm.m_size() < 2) {
 							C = m_get_key();
 							if (C != '\0') {
-								mm.m_push_back(C);
+								mm.m_push_back(C);			// dla miesiaca
 								break;
 							}
 						}
@@ -1684,13 +1672,13 @@ C_human C_aplication_txt::m_menu_add_date() {
 							if (yy.m_size() < 4) {
 								C = m_get_key();
 								if (C != '\0') {
-									yy.m_push_back(C);
+									yy.m_push_back(C);		// i 4 cyfry dla roku
 									break;
 								}
 							}
 							C_date date;
 							//	human.m_get_date(date);
-							date.m_get_day(dd);
+							date.m_get_day(dd);				//zapisuje
 							date.m_get_month(mm);
 							date.m_get_year(yy);
 							human.m_get_date(date);
@@ -1704,7 +1692,6 @@ C_human C_aplication_txt::m_menu_add_date() {
 					}
 					break;
 				}
-
 				else if (ptr == 2 && GetAsyncKeyState(VK_RETURN) != 0)
 				{
 					if (m_what_return())
@@ -1720,14 +1707,12 @@ C_human C_aplication_txt::m_menu_add_date() {
 		}
 		else
 		{
-			typ = "Date of death: ";
+			typ = "Date of death: ";			// analogicznie gdy jest data smierci (opcjonalny parametr)
 			N_striing MenuSub_add_last_name[4] = { typ,"Date:","Save", "Return" };
 			N_striing SubSub_add_last_name[4] = { "",data ,"","[Return From Add Person]" };
 			cls();
 			m_create_logo();
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-
-
 			for (i = 0; i < 4; ++i)
 			{
 				if (i == ptr)       // podswietla dana opcje na niebiesko, dopisuje strzalke
@@ -1742,7 +1727,6 @@ C_human C_aplication_txt::m_menu_add_date() {
 				}
 			}
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-
 			cout << "\n\n\n\n Use the arrows to navigate the menu ";
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 			cout << char(24) << " " << char(25);        // kody ASCII strzalek
@@ -1750,7 +1734,6 @@ C_human C_aplication_txt::m_menu_add_date() {
 			cout << ". Confirm your choice with ";
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 			cout << "ENTER.";
-
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 			cout << "\n Click ";
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
@@ -1761,7 +1744,7 @@ C_human C_aplication_txt::m_menu_add_date() {
 			{
 				if (GetAsyncKeyState(VK_ESCAPE)) {
 					if (m_what_menu())
-						m_main_menu();
+						m_main_menu(); //return M_menu_glowne tu moze sie zawieszac
 					break;
 				}
 				if (GetAsyncKeyState(VK_UP) != 0)   // strzalka do gory przesuwa wyzej po menu
@@ -1845,11 +1828,19 @@ C_human C_aplication_txt::m_menu_add_date() {
 							}
 							C_date date;
 							//	human.m_get_date(date);
+							// warunek by data smierci byla pozniejsza od daty urodzenia musi byc!!!
+							// nie mam pomyslu, nie moge ich porownac, w obu te same zmienne, te same nazwy...
+							// moze na cos wpadniesz Lukasz
 							date.m_get_day(dd);
 							date.m_get_month(mm);
 							date.m_get_year(yy);
-							if (human.m_set_Vdate().m_size()<2)
+							if (human.m_set_Vdate().m_size()<2&&human.m_set_Vdate()[0]<=date) //dodalem przeciaenie operatorow
 								human.m_get_date(date);
+							else
+							{
+								ptr = 1;  //nie wiem czy dobrze
+								break;
+							}
 
 							//b_what = true;
 							ptr = 2;
@@ -1882,23 +1873,22 @@ C_human C_aplication_txt::m_menu_add_date() {
 		}
 	}
 }
-
-void C_aplication_txt::m_load_lista() {
+void C_aplication_txt::m_load_lista() {		// lista ludzi
 	Lista.m_close();
-	m_load_files(true);
+	m_load_files(true);						//wczytywanie pliku
 	N_striing s_Data;
 	int i, end = V_goverment_personaly.m_size(); //mam nadzieje ze sluszna poprawa
 	for (i = 1; i <= end; i++)
 	{
 		s_Data.m_clear();
 		C_human human;
-		human = m_create_human(i);
-		s_Data += human.m_set_first_name().m_set_contens();
-		s_Data += '  ';
-		s_Data += human.m_set_last_name().m_set_contens();
+		human = m_create_human(i);					// nr porzadkowy, 1, 2, itp
+		s_Data += human.m_set_first_name().m_set_contens();		//imie
+		s_Data += '  ';											//spacja
+		s_Data += human.m_set_last_name().m_set_contens();		//nazwisko
 		s_Data += "\n\t\t\t\t";
 		if (human.m_set_date(0).m_day_set() == '0' || human.m_set_date(0).m_month_set() == '0') {
-			s_Data += " - - ";
+			s_Data += " - - ";									//data urodzena
 		}
 		else
 		{
@@ -1912,11 +1902,11 @@ void C_aplication_txt::m_load_lista() {
 			//std::cout << s_Data << "\n";
 			//Sleep(2000);
 		}
-		Lista.m_push_back(s_Data);
-		V_ID.m_push_back(human.m_set_id());
+		Lista.m_push_back(s_Data);		// kladzie na liste
+		V_ID.m_push_back(human.m_set_id());		// i zczytyje po kolei
 	}
 }
-int C_aplication_txt::m_lista(int what_this) { //do naprawy bedzie switch!!!
+int C_aplication_txt::m_lista(int what_this) { //do naprawy bedzie switch!!! <- emoda calkowicie sie rozni!!
 	bool b_where = false;
 	int ptr = 0, p = 0, i;
 	int cykl = 0, pentla = 0;

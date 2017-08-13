@@ -27,6 +27,10 @@ public:
 	C_date& operator=(const C_date &d); //operator przypisania
 	bool operator==(const C_date &d); //operator poronania ==
 	bool operator!=(const C_date &d); //operator porownania !=
+	bool operator<(const C_date &d); //operator mniejsze <
+	bool operator>(const C_date &d); //operator wieksze >
+	bool operator<=(const C_date &d); //operator mniejsze rowne <=
+	bool operator>=(const C_date &d); //operator wieksze rowne >=
 	C_day m_set_day();  //staw dzien do daty
 	C_month m_set_month(); //wstaw miesiac do daty
 	C_year m_set_year(); //wstaw rok do daty
