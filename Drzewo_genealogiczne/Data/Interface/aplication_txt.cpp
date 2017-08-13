@@ -637,7 +637,7 @@ int C_aplication_txt::m_sub_menu_2()
 	{
 		//system("cls");
 		cls();
-		//m_create_logo();
+		m_create_logo();
 		//std::cout << "\t\t\tClick Spacebar to return the menu\n\n";
 		//std::cout << "\t\t\tTree successfully loaded\n\n";
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
@@ -951,9 +951,21 @@ bool C_aplication_txt::m_what_menu() {
 }
 int C_aplication_txt::m_menu_add_human(int where) { // dodawanie nowej osoby
 	//	m_load_files(true);
-	C_human human;
-	int ptr = 0, i;
+	int ptr = 0, i,this_value;
 	bool b_what = false, b_whats = false;
+	switch (where)
+	{
+	case M_edit_tree:
+		this_value = M_add_human + 1;
+		break;
+	case M_creating_new_tree:
+		this_value = M_add_human + 2;
+		break;
+	default:
+		this_value = M_add_human + 1;
+		break;
+	}
+	C_human human, Human;
 	while (true) {
 		if (human.m_set_Vdate().m_size()>0)
 		{
@@ -997,6 +1009,7 @@ int C_aplication_txt::m_menu_add_human(int where) { // dodawanie nowej osoby
 				cout << " if you want back to main menu.";
 				cout << " \n\n";
 				cout << human;
+				Human = human;
 				while (true)
 				{
 					if (GetAsyncKeyState(VK_SPACE)) {
@@ -1042,25 +1055,29 @@ int C_aplication_txt::m_menu_add_human(int where) { // dodawanie nowej osoby
 							case 0: {
 								Sleep(150);
 								b_whats = true;
-								human.m_get_first_name(m_menu_add_first_name().m_set_first_name()); 	// doda imie
+								m_menu_add_first_name(this_value, Human);
+								human.m_get_first_name(Human.m_set_first_name()); 	// doda imie
 								break;
 							}
 							case 1: {
 								Sleep(150);
 								b_whats = true;
-								human.m_get_last_name(m_menu_add_last_name().m_set_last_name());		//dodaj nazwisko
+								m_menu_add_last_name(this_value, Human);
+								human.m_get_last_name(Human.m_set_last_name());		//dodaj nazwisko
 								break;
 							}
 							case 2: {
 								Sleep(150);
 								b_whats = true;
-								human.m_get_gender(m_menu_add_gender().m_set_gender());				//dodaj plec
+								m_menu_add_gender(this_value, Human);
+								human.m_get_gender(Human.m_set_gender());				//dodaj plec
 								break;
 							}
 							case 3: {
 								Sleep(150);
 								b_what = true;
-								N_vektor<C_date> V_date = m_menu_add_date().m_set_Vdate();
+								m_menu_add_date(this_value, Human);
+								N_vektor<C_date> V_date = Human.m_set_Vdate();
 								int iteral;
 								for (iteral = 0; iteral < V_date.m_size(); iteral++)
 								{
@@ -1141,7 +1158,6 @@ int C_aplication_txt::m_menu_add_human(int where) { // dodawanie nowej osoby
 				cout << ". Confirm your choice with ";
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 				cout << "ENTER.";
-
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 				cout << "\n Click ";
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
@@ -1184,25 +1200,29 @@ int C_aplication_txt::m_menu_add_human(int where) { // dodawanie nowej osoby
 							case 0: {
 								Sleep(150);
 								b_whats = true;
-								human.m_get_first_name(m_menu_add_first_name().m_set_first_name());  //dodanie imienia
+								m_menu_add_first_name(this_value, Human);
+								human.m_get_first_name(Human.m_set_first_name());  //dodanie imienia
 								break;
 							}
 							case 1: {
 								Sleep(150);
 								b_whats = true;
-								human.m_get_last_name(m_menu_add_last_name().m_set_last_name());	//dadanie nazwiska
+								m_menu_add_last_name(this_value, Human);
+								human.m_get_last_name(Human.m_set_last_name());	//dadanie nazwiska
 								break;
 							}
 							case 2: {
 								Sleep(150);
 								b_whats = true;
-								human.m_get_gender(m_menu_add_gender().m_set_gender());			//dodaj plec
+								m_menu_add_gender(this_value, Human);
+								human.m_get_gender(Human.m_set_gender());			//dodaj plec
 								break;
 							}
 							case 3: {
 								Sleep(150);
 								b_what = true;
-								N_vektor<C_date> V_date = m_menu_add_date().m_set_Vdate();
+								m_menu_add_date(this_value, Human);
+								N_vektor<C_date> V_date = Human.m_set_Vdate();
 								int iteral;
 								for (iteral = 0; iteral < V_date.m_size(); iteral++)
 								{
@@ -1223,10 +1243,10 @@ int C_aplication_txt::m_menu_add_human(int where) { // dodawanie nowej osoby
 		}
 	}
 }
-C_human C_aplication_txt::m_menu_add_first_name() {
+int C_aplication_txt::m_menu_add_first_name(int where,C_human& human) {
 	int ptr = 0;
 	int i;
-	C_human human;
+	//C_human human;
 	N_striing data;
 	char C;
 	//WH_KEYBOARD_LL;//hak do klawiatury
@@ -1271,7 +1291,7 @@ C_human C_aplication_txt::m_menu_add_first_name() {
 		cout << " if you want back to main menu.";
 		while (true)
 		{
-			if (GetAsyncKeyState(VK_ESCAPE)) //return M_menu_glowne;
+			if (GetAsyncKeyState(VK_ESCAPE)) return M_menu_glowne;
 			if (GetAsyncKeyState(VK_UP) != 0)   // strzalka do gory przesuwa wyzej po menu					//naprawione:)
 			{
 				Sleep(150);
@@ -1307,7 +1327,7 @@ C_human C_aplication_txt::m_menu_add_first_name() {
 					C_first_name First(data);
 					human.m_get_first_name(First);		// zapisuje to
 					data.m_clear();
-					return human;
+					return where;
 				}
 			}
 			else if (ptr == 0)
@@ -1323,7 +1343,7 @@ C_human C_aplication_txt::m_menu_add_first_name() {
 				Sleep(150);
 				if (m_what_return()) {
 					data.m_clear();
-					return human;
+					return where;
 				}
 				break;
 			}
@@ -1331,14 +1351,13 @@ C_human C_aplication_txt::m_menu_add_first_name() {
 		}
 	}
 }
-C_human C_aplication_txt::m_menu_add_last_name() {
+int C_aplication_txt::m_menu_add_last_name(int where, C_human &human) {
 	int ptr = 0, i;
-	C_human human;
+	//C_human human;
 	N_striing data;
 	char C;
 	//WH_KEYBOARD_LL;//hak do klawiatury
 	bool b_what;
-
 	Sleep(1500);    // sleepy musza byc, by uniknac "podwojnego" ENTERA!!!
 					//	tutaj powinna byc metoda dolaczenia nowej osoby
 	while (true)
@@ -1380,9 +1399,7 @@ C_human C_aplication_txt::m_menu_add_last_name() {
 		{
 			if (GetAsyncKeyState(VK_ESCAPE)) {
 				Sleep(150);
-				if (m_what_menu())
-					m_main_menu();//return M_menu_glowne tu moze sie zawieszac
-				break;
+				if (m_what_menu()) return M_menu_glowne;
 			}
 			if (GetAsyncKeyState(VK_UP) != 0)   // strzalka do gory przesuwa wyzej po menu
 			{
@@ -1416,7 +1433,7 @@ C_human C_aplication_txt::m_menu_add_last_name() {
 					C_last_name Last(data);
 					human.m_get_last_name(Last);
 					data.m_clear();
-					return human;
+					return where;
 				}
 			}
 			else if (ptr == 0)
@@ -1432,20 +1449,19 @@ C_human C_aplication_txt::m_menu_add_last_name() {
 				//Sleep(150);
 				if (m_what_return()) {
 					data.m_clear();
-					return human;
+					return where;
 				}
 			}
 		}
 		//	Sleep(150);
 	}
-
 	//Sleep(150);
 }
-C_human C_aplication_txt::m_menu_add_gender() {
+int C_aplication_txt::m_menu_add_gender(int where, C_human& human) {
 	int ptr = 1, i;
 	char C;
 	N_striing data;
-	C_human human;
+	//C_human human;
 	Sleep(1500);    // sleepy musza byc, by uniknac "podwojnego" ENTERA!!!
 					// tutaj powinna byc metoda dolaczenia nowej osoby
 	while (true)
@@ -1487,9 +1503,7 @@ C_human C_aplication_txt::m_menu_add_gender() {
 		{
 			if (GetAsyncKeyState(VK_ESCAPE)) {
 				Sleep(150);
-				if (m_what_menu())
-					m_main_menu();//return M_menu_glowne tu moze sie zawieszac
-				break;
+				if (m_what_menu()) { return M_menu_glowne; }
 			}
 			if (GetAsyncKeyState(VK_UP) != 0)   // strzalka do gory przesuwa wyzej po me					//naprawione:)
 			{
@@ -1516,20 +1530,20 @@ C_human C_aplication_txt::m_menu_add_gender() {
 				//	Sleep(150);
 				human.m_get_gender(true);
 				Sleep(150);
-				return human;
+				return where;
 			}
 			else if (ptr == 2 && GetAsyncKeyState(VK_RETURN) != 0)
 			{
 				//Sleep(150);
 				human.m_get_gender(false);
 				Sleep(150);
-				return human;
+				return where;
 			}
 			else if (ptr == 3 && GetAsyncKeyState(VK_RETURN) != 0)
 			{
 				Sleep(150);
 				if (m_what_return()) {
-					return human;
+					return where;
 				}
 				break;
 			}
@@ -1538,11 +1552,11 @@ C_human C_aplication_txt::m_menu_add_gender() {
 		//Sleep(150);
 	}
 }
-C_human C_aplication_txt::m_menu_add_date() {
+int C_aplication_txt::m_menu_add_date(int where, C_human& human) {
 	int ptr = 1, i;
 	char C;
 	N_striing data;
-	C_human human;
+	//C_human human;
 	N_striing dd, mm, yy, save, typ;
 	bool b_what = false;
 	Sleep(1500);    // sleepy musza byc, by uniknac "podwojnego" ENTERA!!!
@@ -1593,9 +1607,7 @@ C_human C_aplication_txt::m_menu_add_date() {
 			while (true)
 			{
 				if (GetAsyncKeyState(VK_ESCAPE)) {
-					if (m_what_menu())
-						m_main_menu(); //return M_menu_glowne tu moze sie zawieszac
-					break;
+					if (m_what_menu()) return M_menu_glowne;
 				}
 				if (GetAsyncKeyState(VK_UP) != 0)   // strzalka do gory przesuwa wyzej po menu
 													//naprawione:)
@@ -1697,7 +1709,7 @@ C_human C_aplication_txt::m_menu_add_date() {
 					if (m_what_return())
 					{
 						data.m_clear();
-						return human;
+						return where;
 					}
 					break;
 				}
@@ -1743,9 +1755,7 @@ C_human C_aplication_txt::m_menu_add_date() {
 			while (true)
 			{
 				if (GetAsyncKeyState(VK_ESCAPE)) {
-					if (m_what_menu())
-						m_main_menu(); //return M_menu_glowne tu moze sie zawieszac
-					break;
+					if (m_what_menu()) return M_menu_glowne;
 				}
 				if (GetAsyncKeyState(VK_UP) != 0)   // strzalka do gory przesuwa wyzej po menu
 													//naprawione:)
@@ -1856,14 +1866,14 @@ C_human C_aplication_txt::m_menu_add_date() {
 					case 2:
 					{
 						Sleep(150);
-						return human;
+						return where;
 					}
 					case 3:
 					{
 						if (m_what_return())
 						{
 							human.m_clear();
-							return human;
+							return where;
 						}
 						break;
 					}
@@ -2152,7 +2162,7 @@ int C_aplication_txt::m_lista(int what_this) { //do naprawy bedzie switch!!! <- 
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 				std::cout << "\t\t\t\t" << "No people!" << "\n";
 				Sleep(1500);
-				return M_edit_tree;
+				return M_load_tree; //poprawione
 			}
 			cls();
 			if (Lista.m_size() < 5)
@@ -2559,7 +2569,7 @@ int C_aplication_txt::m_menu_relation(int where)
 	C_element Element(m_menu_wybor_humana_wskaznikowego());
 	C_element element;
 	if (Element == element)
-		return;
+		return where;
 	N_striing MenuSub1[10] = { "Add Relationship - MENU","1. Add Grandparent","2. Add Parent","3. Add Sibling","4. Add Partner",
 		"5. Add Children", "6. Add Grandchildren", "7. Add Order", "8. Save relations","9. Exit" };
 	N_striing SubSub1[10] = { "", "[Add grandparent to person]", "[Add parent to person]","[Add sibling to person]","[Add partner to person]","[Add child to person]","[Add grandchild to person]", "[Add Order]", "[Save your created relations]","[Exit From Program]" };

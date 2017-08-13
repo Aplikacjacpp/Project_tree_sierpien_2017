@@ -55,12 +55,12 @@ public:
 	void m_menu();				//metoda zawiera w sobie jedno calkowite menu
 	//Poszczegolne menu:
 	int m_menu_name_tree();			// metoda dodaje nazwe drzewa
-	C_human m_menu_add_first_name();	// metoda dodaje imie osoby
+	int m_menu_add_first_name(int where, C_human& human);	// metoda dodaje imie osoby
 	C_element m_menu_wybor_humana_wskaznikowego();		// potrzebna do tworzenia relacji
 	int m_menu_add_human(int where);			// menu dodawania osoby
-	C_human m_menu_add_last_name();		// metoda dodaje nazwisko osoby
-	C_human m_menu_add_gender();		// metoda dodaje plec osoby
-	C_human m_menu_add_date();			// metoda dodaje daty ur i smierci
+	int m_menu_add_last_name(int where, C_human& human);		// metoda dodaje nazwisko osoby
+	int m_menu_add_gender(int where, C_human& human);		// metoda dodaje plec osoby
+	int m_menu_add_date(int where, C_human& human);			// metoda dodaje daty ur i smierci
 	int m_menu_relation(int where);				// wyswietla menu z relacjami
 	C_element m_menu_add_relations(int data, C_element Element);	// metoda dodaje relacje do osoby
 	int m_menu_edit_human(N_striing Data, int X, C_human& human);		// edycja humana
