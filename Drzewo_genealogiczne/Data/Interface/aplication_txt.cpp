@@ -2253,16 +2253,13 @@ int C_aplication_txt::m_lista(int what_this) { //do naprawy bedzie switch!!! <- 
 }
 int C_aplication_txt::m_menu_name_tree() {
 	//Lista.m_close();
-	//Lista = m_add_to_operation(true, Lista);
-
+	//Lista = m_add_to_operation(true, Lista)
 	int ptr = 0, p = 0;
 	char c;
 	N_striing data;
 	bool b_pointer = true;
-
 	while (true)
 	{
-
 		if (b_pointer)
 		{
 			N_striing MenuSub1[1] = { "Give your tree name:" };
@@ -2272,10 +2269,8 @@ int C_aplication_txt::m_menu_name_tree() {
 			cls();
 			m_create_logo();
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-
 			std::cout << "\t\t\tClick Spacebar to return the menu\n\n";
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
-
 			for (int i = 0; i < 1; ++i)
 			{
 				if (i == ptr)       // podswietla dana opcje na niebiesko, dopisuje strzalke
@@ -2290,9 +2285,7 @@ int C_aplication_txt::m_menu_name_tree() {
 				}
 			}
 			while (true) {
-
-				if (GetAsyncKeyState(VK_SPACE) != 0) m_main_menu();
-
+				if (GetAsyncKeyState(VK_SPACE) != 0) return M_menu_glowne;
 				// sleepy musza byc, by uniknac "podwojnego" ENTERA!!!
 				if (GetAsyncKeyState(VK_UP) != 0)   // strzalka do gory przesuwa wyzej po menu
 				{
@@ -2317,20 +2310,21 @@ int C_aplication_txt::m_menu_name_tree() {
 				else if (ptr == 0 && GetAsyncKeyState(VK_BACK) != 0)
 				{
 					Sleep(1000);
-					data.m_pop_back();
+					data.m_pop_back();			// usuwa nazwe od konca gdy klikam Backspace
 					break;
 				}
 				else
 				{
 					c = m_get_key();
 					if (c != '\0') {
-						data.m_push_back(c);
+						data.m_push_back(c);			// wpisuje kolejne literki
 						break;
 					}
 					if (GetAsyncKeyState(VK_RETURN) != 0 && data.m_size() > 0)
 					{
 						Sleep(1500);
 						//stworzyc zabezpieczenie przed ponownym stworzeniem tego samego dystryktu
+						// potrzebny warunek by nie moc tworzyc tych samych drzew(o tej samej nazwie)
 						N_striing s_data = name_user_profile;
 						s_data += "\\";
 						s_data += op_name_catalog;
@@ -2376,9 +2370,8 @@ int C_aplication_txt::m_menu_name_tree() {
 			N_striing SubSub1[2] = { data, "[Click Spacebar To Back The Menu]" };
 			cls();
 			m_create_logo();
-			std::cout << "\t\t\t   This name already exists!\n";
+			//std::cout << "\t\t\t   This name already exists!\n";
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-
 			for (int i = 0; i < 2; ++i)
 			{
 				if (i == ptr)       // podswietla dana opcje na niebiesko, dopisuje strzalke
@@ -2414,26 +2407,19 @@ int C_aplication_txt::m_menu_name_tree() {
 					}
 					break;
 				}
-
 				else if (ptr == 0 && GetAsyncKeyState(VK_BACK) != 0)
 				{
 					Sleep(500);
-					data.m_pop_back();
+					data.m_pop_back();			// usuwa nazwe
 					break;
 				}
-
-
 				else if (ptr == 1 && GetAsyncKeyState(VK_SPACE) != 0)
-				{
-					return M_menu_glowne;
-				}
-
-
+					return M_menu_glowne;		// wraca do menu
 				else
 				{
-					c = m_get_key();
+					c = m_get_key();		// bedzie pobieral znaki
 					if (c != '\0') {
-						data.m_push_back(c);
+						data.m_push_back(c);		// doklada kolejne litery
 						break;
 					}
 					if (GetAsyncKeyState(VK_RETURN) != 0 && data.m_size() > 0)
@@ -2474,27 +2460,23 @@ int C_aplication_txt::m_menu_name_tree() {
 //void C_aplication_txt::m_menu_edit_human() {
 
 //}
-int C_aplication_txt::m_menu_tree() {
-
-	N_striing Menu[4] = { "1. Display", "2. Edit Tree","3. Export", "4. Exit" };
+int C_aplication_txt::m_menu_tree() {// menu drzewa
+	N_striing Menu[4] = { "1. Display", "2. Edit Tree","3. Export", "4. Back" };
 	N_striing SubMenu[4] = { "[Display Tree]", "[Edit your tree content]","[Export your tree]", "[Back To Menu]" };
 	int ptr = 0, p = 0;
-
 	while (true)
 	{
 		m_load_files(true);
 		cls();
 		m_create_logo();
+		std::cout << "\t\t\t      Tree successfully loaded!\n\n";
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-
 		for (int i = 0; i < 4; ++i)
 		{
 			if (i == ptr)       // podswietla dana opcje na niebiesko, dopisuje strzalke
 			{
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 				cout << "\t\t\t\t" << "--> " << Menu[i] << "   " << SubMenu[i] << endl;
-
-
 			}
 			else                // niewybrane opcje sa biale
 			{
@@ -2502,19 +2484,14 @@ int C_aplication_txt::m_menu_tree() {
 				cout << "\t\t\t\t" << Menu[i] << "	 " << endl;
 			}
 		}
-
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-
 		cout << "\n\n\n\n Use the arrows to navigate the menu ";
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 		cout << char(24) << " " << char(25);        // kody ASCII strzalek
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 		cout << ". Confirm your choice with ";
-
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
-
 		cout << "ENTER.";
-
 		while (true)
 		{
 			if (GetAsyncKeyState(VK_UP) != 0)   // strzalka do gory przesuwa wyzej po menu
@@ -2542,17 +2519,17 @@ int C_aplication_txt::m_menu_tree() {
 				case 0:
 				{
 					Sleep(1500);
-					return M_lista + 3;
+					return M_lista + 3		// wyswietla ludzi
 				} break;
 				case 1:
 				{
 					Sleep(1500);
-					return M_edit_tree;
+					return M_edit_tree;		// edycja drzewa
 				}
 				case 2:
 				{
 					Sleep(1500);
-					return M_export_tree;
+					return M_export_tree;		//eksportuj
 				}
 				case 3:
 				{
