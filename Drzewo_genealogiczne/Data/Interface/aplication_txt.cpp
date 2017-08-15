@@ -3,32 +3,6 @@
 #include <cstdlib>
 //#include <fstream>
 #include <Windows.h>
-void C_aplication_txt::cls()
-{
-	HANDLE hStdout;
-	hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
-	COORD coordScreen = { 0, 0 };
-	DWORD cCharsWritten;
-	CONSOLE_SCREEN_BUFFER_INFO csbi;
-	DWORD dwConSize;
-
-	if (!GetConsoleScreenBufferInfo(hStdout, &csbi))
-		return;
-
-	dwConSize = csbi.dwSize.X * csbi.dwSize.Y;
-	if (!FillConsoleOutputCharacter(hStdout, (TCHAR) ' ',
-		dwConSize, coordScreen, &cCharsWritten))
-		return;
-
-	if (!GetConsoleScreenBufferInfo(hStdout, &csbi))
-		return;
-
-	if (!FillConsoleOutputAttribute(hStdout, csbi.wAttributes,
-		dwConSize, coordScreen, &cCharsWritten))
-		return;
-
-	SetConsoleCursorPosition(hStdout, coordScreen);
-}
 
 C_aplication_txt::C_aplication_txt() {
 	system("del operation.ope&&cls");	// na poczatku usuwa plik operation.ope + czysci ekran
@@ -236,7 +210,8 @@ int C_aplication_txt::m_main_menu() // menu glowne aplikacji
 					}
 					case 2:
 					{
-						Sleep(1500);
+						Sleep(300);
+						cout << '\n';
 						return M_exit; //dziala!!
 					}
 				}
@@ -244,7 +219,7 @@ int C_aplication_txt::m_main_menu() // menu glowne aplikacji
 			}
 		}
 
-		Sleep(130);     // szybkosc poruszania sie po menu
+		Sleep(120);     // szybkosc poruszania sie po menu
 	}
 }
 
@@ -324,23 +299,24 @@ int C_aplication_txt::m_sub_1()
 					Sleep(1500);    // sleepy musza byc, by uniknac "podwojnego" ENTERA!!!
 					//Sleep(1500);    // sleepy musza byc, by uniknac "podwojnego" ENTERA!!!
 					//m_sub_menu_2();		// opcje poprawnie wczytanego drzewa
-					return M_import_tree;
+					//return M_import_tree;
 				}
 				case 2:
 				{
 					//	std::cout << '\n';
 					//	exit(0);
 					//	break;
-					Sleep(1500);
-					return M_exit; //Jak chcesz Mateusz moze byc (powrot) czyli "M_menu_glowne;"
+					Sleep(300);
+					std::cout << '\n';
+					return M_exit; //SPACJA sie wraca czyli "M_menu_glowne;" nie potrzebne 
 				}
 				}
 			}
 
-			Sleep(150);
+			Sleep(120);
 		}
 
-		Sleep(150);
+		Sleep(120);
 	}
 
 	//Sleep(150);     // szybkosc poruszania sie po menu
@@ -440,8 +416,10 @@ int C_aplication_txt::m_edit_tree()
 					return M_edit_relation; 	// edycja relacji
 				}
 				case 4: {
-					Sleep(150);
-					return M_menu_glowne; //exit <-tu sie ruzni kod Lukasza od Kodu Mateusza Mateusz wstawil tu Exit
+					Sleep(120);
+					std::cout << '\n';
+					return M_exit;
+					//return M_menu_glowne; //exit <-tu sie ruzni kod Lukasza od Kodu Mateusza Mateusz wstawil tu Exit
 				}
 				}
 				Sleep(150);	// szybkosc poruszania sie po menu
@@ -639,7 +617,8 @@ int C_aplication_txt::m_sub_menu_2()
 		cls();
 		m_create_logo();
 		//std::cout << "\t\t\tClick Spacebar to return the menu\n\n";
-		//std::cout << "\t\t\tTree successfully loaded\n\n";
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 13);
+		std::cout << "\t\t\t     Tree successfully loaded!\n\n";
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 		for (int i = 0; i < 4; ++i)
 		{
@@ -715,6 +694,7 @@ int C_aplication_txt::m_sub_menu_2()
 					}
 					case 3:
 					{
+						std::cout << '\n';
 						return M_exit;
 					}
 				}
@@ -1951,8 +1931,8 @@ int C_aplication_txt::m_lista(int what_this) { //do naprawy bedzie switch!!! <- 
 			{
 				cls();
 				m_create_logo();
-				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-				std::cout << "\t\t\tClick Spacebar to return the menu\n\n";
+				//SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+				//std::cout << "\t\t\t Click Spacebar to return the menu\n\n";
 
 				if (ptr > 2) {
 					if (cykl + 1 <= Lista.m_size())
@@ -1976,6 +1956,17 @@ int C_aplication_txt::m_lista(int what_this) { //do naprawy bedzie switch!!! <- 
 						cout << "\t\t\t\t" << i + 1 << "\t" << Lista[i] << endl;
 					}
 				}
+
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+				std::cout << "\n\n\n Use the arrows to navigate the list ";
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
+				std::cout << char(24) << " " << char(25);        // kody ASCII strzalek
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+				std::cout << ". Load your tree with ";
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
+				std::cout << "ENTER.";
+
+
 				while (true)
 				{
 					Sleep(150);
@@ -2061,6 +2052,16 @@ int C_aplication_txt::m_lista(int what_this) { //do naprawy bedzie switch!!! <- 
 			{
 				cls();
 				m_create_logo();
+
+				/*SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+				std::cout << "\n\n\n Use the arrows to navigate the list ";
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
+				std::cout << char(24) << " " << char(25);        // kody ASCII strzalek
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+				std::cout << ". For more options click ";
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
+				std::cout << "ENTER.";
+				*/
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 				std::cout << "\t\t\tClick Spacebar to return the menu\n\n";
 				if (ptr > 2) {
@@ -2084,6 +2085,8 @@ int C_aplication_txt::m_lista(int what_this) { //do naprawy bedzie switch!!! <- 
 						cout << "\t\t\t\t" << i + 1 << "\t" << Lista[i] << endl;
 					}
 				}
+
+
 				while (true)
 				{
 					Sleep(150);
@@ -2177,8 +2180,18 @@ int C_aplication_txt::m_lista(int what_this) { //do naprawy bedzie switch!!! <- 
 			{
 				cls();
 				m_create_logo();
+
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-				std::cout << "\t\t\tClick Spacebar to return the menu\n\n";
+				std::cout << "\t\t\tClick Spacebar to return the menu.";
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+				std::cout << "\n\t Use the arrows to navigate the list ";
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
+				std::cout << char(24) << " " << char(25);        // kody ASCII strzalek
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+				std::cout << ". For more options click ";
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
+				std::cout << "ENTER.\n\n";
+
 				if (ptr > 2) {
 					if (cykl + 1 <= Lista.m_size())
 						cykl += 1;
@@ -2199,6 +2212,7 @@ int C_aplication_txt::m_lista(int what_this) { //do naprawy bedzie switch!!! <- 
 						SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 						cout << "\t\t\t\t" << i + 1 << "\t" << Lista[i] << endl;
 					}
+
 				}
 				while (true)
 				{
@@ -2254,10 +2268,11 @@ int C_aplication_txt::m_lista(int what_this) { //do naprawy bedzie switch!!! <- 
 
 				}
 				break;
+
 			}
 		}
 		}
-		Sleep(150);     // szybkosc poruszania sie po menu
+		Sleep(130);     // szybkosc poruszania sie po menu
 	}
 	//	return false;
 }
@@ -2376,13 +2391,16 @@ int C_aplication_txt::m_menu_name_tree() {
 		}
 		else
 		{
-			N_striing MenuSub1[2] = { "Give your tree name:", "Back: " };
-			N_striing SubSub1[2] = { data, "[Click Spacebar To Back The Menu]" };
+			N_striing MenuSub1[1] = { "Give your tree name:"};
+			N_striing SubSub1[1] = { data };
 			cls();
 			m_create_logo();
-			//std::cout << "\t\t\t   This name already exists!\n";
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 13);
+			std::cout << "\t\t\t     This name already exists!\n";
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-			for (int i = 0; i < 2; ++i)
+			std::cout << "\tClick Spacebar to return the menu or Backspace to delete a tree name\n\n";
+			//SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+			for (int i = 0; i < 1; ++i)
 			{
 				if (i == ptr)       // podswietla dana opcje na niebiesko, dopisuje strzalke
 				{
@@ -2395,27 +2413,32 @@ int C_aplication_txt::m_menu_name_tree() {
 					cout << "\t\t\t\t" << MenuSub1[i] << endl;
 				}
 			}
+
 			while (true) {
+
+				if (GetAsyncKeyState(VK_SPACE) != 0) return M_menu_glowne;
 				// sleepy musza byc, by uniknac "podwojnego" ENTERA!!!
 				if (GetAsyncKeyState(VK_UP) != 0)   // strzalka do gory przesuwa wyzej po menu
 				{
-					Sleep(500);
+					/*Sleep(500);
 					ptr -= 1;
-					if (ptr < 0)      // gdy wykracza wraca na koniec
+					if (ptr == 0)      // gdy wykracza wraca na koniec
 					{
 						ptr = 1;
 					}
 					break;
+					*/
 				}
 				else if (GetAsyncKeyState(VK_DOWN) != 0)    // strzalka na dol przesuwa nizej po menu
 				{
-					Sleep(500);
+					/*Sleep(500);
 					ptr += 1;
-					if (ptr >= 2)       // gdy wykracza poza menu, znow wraca na poczatek
+					if (ptr == 1)       // gdy wykracza poza menu, znow wraca na poczatek
 					{
 						ptr = 0;
 					}
 					break;
+					*/
 				}
 				else if (ptr == 0 && GetAsyncKeyState(VK_BACK) != 0)
 				{
@@ -3967,4 +3990,32 @@ void C_aplication_txt::m_menu() {
 		}
 	}
 	//delete Value;
+}
+
+
+void C_aplication_txt::cls()
+{
+	HANDLE hStdout;
+	hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
+	COORD coordScreen = { 0, 0 };
+	DWORD cCharsWritten;
+	CONSOLE_SCREEN_BUFFER_INFO csbi;
+	DWORD dwConSize;
+
+	if (!GetConsoleScreenBufferInfo(hStdout, &csbi))
+		return;
+
+	dwConSize = csbi.dwSize.X * csbi.dwSize.Y;
+	if (!FillConsoleOutputCharacter(hStdout, (TCHAR) ' ',
+		dwConSize, coordScreen, &cCharsWritten))
+		return;
+
+	if (!GetConsoleScreenBufferInfo(hStdout, &csbi))
+		return;
+
+	if (!FillConsoleOutputAttribute(hStdout, csbi.wAttributes,
+		dwConSize, coordScreen, &cCharsWritten))
+		return;
+
+	SetConsoleCursorPosition(hStdout, coordScreen);
 }
