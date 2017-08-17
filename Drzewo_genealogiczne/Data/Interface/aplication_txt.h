@@ -51,7 +51,7 @@ public:
 	char m_get_key();			// obsluga polskich znakow, alfabetu
 	bool m_what_return();		// menu z opcjami "Tak", "Nie", "Powrot"
 	bool m_what_menu();			// do dokonczenia!
-	void m_look_at(C_id id);			//metoda wyswietlajaca drzewo
+	int m_look_at(C_id id);			//metoda wyswietlajaca drzewo
 	void m_menu();				//metoda zawiera w sobie jedno calkowite menu
 	//Poszczegolne menu:
 	int m_menu_name_tree();			// metoda dodaje nazwe drzewa

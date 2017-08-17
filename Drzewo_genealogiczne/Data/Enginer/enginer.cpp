@@ -163,8 +163,10 @@ C_element C_enginer::m_create_element(C_id id_finter) {
 	if (i > V_goverment_personaly.m_size() && i > V_goverment_date.m_size() && i > V_goverment_relation.m_size())
 		return element;
 	C_human human = m_create_human(i + 1);
-	//std::cout << human << "\n";
+	std::cout << human << "\n";
+	int zzz;
 	element.m_update_human(human);
+	//tu sie gdzies kraszuje 
 	C_goverment_relation gover(this->V_goverment_relation[i]);
 	N_vektor<C_children> children(gover.m_set_value_children());
 	N_vektor<C_parent> parent(gover.m_set_value_parent());
@@ -173,6 +175,8 @@ C_element C_enginer::m_create_element(C_id id_finter) {
 	N_vektor<C_grandparents> grandp(gover.m_set_value_grandparents());
 	N_vektor<C_sibling> sibling(gover.m_set_value_sibling());
 	N_vektor<C_order> order(gover.m_set_value_order());
+	//to sie niby wlacza ale nie zupelnie
+	std::cin >> zzz;
 	for (j = 0; j < children.m_size(); j++) {
 		element.m_get_children(children[j]);
 	}
@@ -199,6 +203,9 @@ C_element C_enginer::m_create_element(C_id id_finter) {
 	return element;
 }
 C_tree C_enginer::m_create_tree(C_id id_pointer) {
+	m_create_element(id_pointer);
+	int i;
+		std::cin >> i;
 	C_tree Tree(m_create_element(id_pointer));
 	Tree.m_add_id(id_pointer);
 	N_vektor <C_grandparents> V_grandparents = Tree.m_set_v_grandparents();
@@ -208,7 +215,7 @@ C_tree C_enginer::m_create_tree(C_id id_pointer) {
 	N_vektor<C_children> V_children = Tree.m_set_v_children();
 	N_vektor<C_grandchildren> V_grandchildren = Tree.m_set_v_grandchildren();
 	N_vektor <C_order> V_order = Tree.m_set_v_order();
-	int i;
+	//int i;
 	for (i = 0; i < V_grandparents.m_size(); i++)
 	{
 		if(i<=3)

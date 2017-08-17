@@ -585,8 +585,7 @@ int C_aplication_txt::m_display_tree()
 					case 1:
 					{
 						Sleep(1500);
-						//m_search_tree();
-						return M_szukanie;
+						return M_szukanie; //na razie zle dziala trzeba podlaczyc pod baze danych z id person
 					}
 					case 2:
 					{
@@ -2263,9 +2262,8 @@ int C_aplication_txt::m_lista(int what_this) { //do naprawy bedzie switch!!! <- 
 					}
 					else if (GetAsyncKeyState(VK_RETURN) != 0)
 					{
-						return M_dysplay_tree;
+						return   m_look_at(ptr); //skok222
 					}
-
 				}
 				break;
 
@@ -3891,8 +3889,144 @@ C_element C_aplication_txt::m_menu_edit_relations() {
 	C_element A;
 	return A;
 }
-void C_aplication_txt::m_look_at(C_id id) {
-	C_tree Tree(m_create_tree(id));
+int C_aplication_txt::m_look_at(C_id id) {
+	int i;
+	m_create_tree(id);
+	std::cin >> i;
+	C_tree Tree(m_create_tree(id)); //kraszuje sie trzeba wydobyc poprawnie id!!!
+	N_vektor<N_striing> Vektor;
+	N_vektor<int> Vektor_i;
+	N_vektor<C_id> Vektor_id;
+	//ladowanie wektorow do stworzenia interfejsu drzewa
+	if (Tree.m_set_v_grandparents().m_size() > 0)
+	{
+		Vektor_i.m_push_back(Tree.m_set_v_grandparents().m_size());
+		for (i = 0; i > Tree.m_set_v_grandparents().m_size(); i++)
+		{
+			Vektor.m_push_back(Tree.m_set_v_grandparents()[i].m_get_content());
+			Vektor_id.m_push_back(Tree.m_set_v_grandparents()[i].m_set_id());
+		}
+	}
+	if (Tree.m_set_v_parent().m_size() > 0)
+	{
+		Vektor_i.m_push_back(Tree.m_set_v_parent().m_size());
+		for (i = 0; i > Tree.m_set_v_parent().m_size(); i++)
+		{
+			Vektor.m_push_back(Tree.m_set_v_parent()[i].m_get_content());
+			Vektor_id.m_push_back(Tree.m_set_v_parent()[i].m_set_id());
+		}
+	}
+	Vektor_i.m_push_back(1);
+		Vektor.m_push_back(Tree.m_set_Human().m_short_interface_personaly()); //nie wiem czy dobrze
+		Vektor_id.m_push_back(Tree.m_set_Human().m_set_id());
+	//std::cout<<Tree.m_set_Human(); //wyswietlenie humana wskaznikowego
+	if (Tree.m_set_v_partner().m_size() > 0)
+	{
+		Vektor_i.m_push_back(Tree.m_set_v_partner().m_size());
+		for (i = 0; i > Tree.m_set_v_partner().m_size(); i++)
+		{
+			Vektor.m_push_back(Tree.m_set_v_partner()[i].m_get_content());
+			Vektor_id.m_push_back(Tree.m_set_v_partner()[i].m_set_id());
+		}
+	}
+	if (Tree.m_set_v_sibling().m_size() > 0)
+	{
+		Vektor_i.m_push_back(Tree.m_set_v_sibling().m_size());
+		for (i = 0; i > Tree.m_set_v_sibling().m_size(); i++)
+		{
+			Vektor.m_push_back(Tree.m_set_v_sibling()[i].m_get_content());
+			Vektor_id.m_push_back(Tree.m_set_v_sibling()[i].m_set_id());
+		}
+	}
+	if (Tree.m_set_v_children().m_size() > 0)
+	{
+		Vektor_i.m_push_back(Tree.m_set_v_children().m_size());
+		for (i = 0; i > Tree.m_set_v_children().m_size(); i++)
+		{
+			Vektor.m_push_back(Tree.m_set_v_children()[i].m_get_content());
+			Vektor_id.m_push_back(Tree.m_set_v_children()[i].m_set_id());
+		}
+	}
+	if (Tree.m_set_v_grandchildren().m_size() > 0)
+	{
+		Vektor_i.m_push_back(Tree.m_set_v_grandchildren().m_size());
+		for (i = 0; i > Tree.m_set_v_grandchildren().m_size(); i++)
+		{
+			Vektor.m_push_back(Tree.m_set_v_grandchildren()[i].m_get_content());
+			Vektor_id.m_push_back(Tree.m_set_v_grandchildren()[i].m_set_id());
+		}
+	}
+	//koniec ladowania
+	//interfejs drzewa:
+
+//zamiast striingow jest zaladowany vektor stringow
+	int ptr = 1, p;
+	char c;
+	int t;
+	C_id ID;
+	bool b_pointer;
+	p = 0;
+	//ladowanie elementow
+	while (true)
+	{
+		cls();
+		m_create_logo();
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+		for (int i = 0; i < Vektor.m_size(); ++i)
+		{
+			if (i == ptr)       // podswietla dana opcje na niebiesko, dopisuje strzalke
+			{
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
+				cout << "\t\t\t\t" << "--> " << Vektor[i] << "  " << Vektor[i] << endl;
+			}
+			else                // niewybrane opcje sa biale
+			{
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+				cout << "\t\t\t\t" << Vektor[i] << endl;
+			}
+		}
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+		cout << "\n\n\n\n Use the arrows to navigate the menu ";
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
+		cout << char(24) << " " << char(25);        // kody ASCII strzalek
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+		cout << ". Confirm your choice with ";
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
+		cout << "ENTER.";
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+		cout << "\n Click ";
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
+		cout << "SPACEBAR";
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+		cout << " if you want back to main menu.";
+		//	cout << "\n\n" << Element << "\n";
+		while (true)
+		{
+			if (GetAsyncKeyState(VK_SPACE) != 0) return M_menu_glowne;
+			if (GetAsyncKeyState(VK_UP) != 0)   // strzalka do gory przesuwa wyzej po menu
+			{
+				ptr -= 1;
+				if (ptr <= 0)      // gdy wykracza wraca na koniec
+				{
+					ptr = 9; //bylo 8
+				}
+				break;
+			}
+			else if (GetAsyncKeyState(VK_DOWN) != 0)    // strzalka na dol przesuwa nizej po menu
+			{
+				ptr += 1;
+				if (ptr >= 10) //bylo 9       // gdy wykracza poza menu, znow wraca na poczatek
+				{
+					ptr = 1;
+				}
+				break;
+			}
+			else if (GetAsyncKeyState(VK_RETURN) != 0)
+			{
+
+			}
+		}
+	}
 
 }
 void C_aplication_txt::m_menu() {
