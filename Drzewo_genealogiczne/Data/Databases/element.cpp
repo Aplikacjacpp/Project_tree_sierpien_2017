@@ -22,10 +22,14 @@ bool C_element::operator==(const C_element &element) {
 	return false;
 }
 bool C_element::operator!=(const C_element &element) {
-	if (V_children != element.V_children&&V_parent != element.V_parent&&
-		V_sibling != element.V_sibling&&V_grandchildren != element.V_grandchildren&&
-		V_grandparents != element.V_grandparents&&V_partner != element.V_partner&&
-		V_order != element.V_order&&Human!=element.Human) return true;
+	if (V_children != element.V_children||
+		V_parent != element.V_parent||
+		V_sibling != element.V_sibling||
+		V_grandchildren != element.V_grandchildren||
+		V_grandparents != element.V_grandparents||
+		V_partner != element.V_partner||
+		V_order != element.V_order||
+		Human!=element.Human) return true;
 	return false;
 }
 C_element::~C_element() {}

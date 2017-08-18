@@ -70,7 +70,9 @@ bool C_aplication_txt::operator==(const C_aplication_txt& aplication_txt) { // p
 	return false;
 }
 bool C_aplication_txt::operator!=(const C_aplication_txt& aplication_txt) { 
-	if (Lista != aplication_txt.Lista&&V_ID != aplication_txt.V_ID&&name_user_profile != aplication_txt.name_user_profile) return true;
+	if (Lista != aplication_txt.Lista||
+		V_ID != aplication_txt.V_ID||
+		name_user_profile != aplication_txt.name_user_profile) return true;
 	return false;
 }
 C_aplication_txt::~C_aplication_txt() {}

@@ -77,12 +77,12 @@ bool C_tree::operator==(const C_tree &tree) {
 	return false;
 }
 bool C_tree::operator!=(const C_tree &tree) {
-	if (V_human_grandchildren != tree.V_human_grandchildren&&
-		V_human_grandparent != tree.V_human_grandparent&&
-		V_human_children != tree.V_human_children&&
-		V_human_parent != tree.V_human_parent&&
-		V_human_partner != tree.V_human_partner&&
-		V_human_sibling != tree.V_human_sibling&&
+	if (V_human_grandchildren != tree.V_human_grandchildren||
+		V_human_grandparent != tree.V_human_grandparent||
+		V_human_children != tree.V_human_children||
+		V_human_parent != tree.V_human_parent||
+		V_human_partner != tree.V_human_partner||
+		V_human_sibling != tree.V_human_sibling||
 		V_human_order != tree.V_human_order) return true;
 	return false;
 }

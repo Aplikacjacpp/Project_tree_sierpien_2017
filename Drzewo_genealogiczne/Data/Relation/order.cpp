@@ -20,8 +20,8 @@ bool C_order::operator==(const C_order &sib) {
 	return false;
 }
 bool C_order::operator!=(const C_order &sib) {
-	if (ID_index != sib.ID_index && ID_value != sib.ID_value&&
-		bSib != sib.bSib&&satribut != sib.satribut) return true;
+	if (ID_index != sib.ID_index || ID_value != sib.ID_value||
+		bSib != sib.bSib||satribut != sib.satribut) return true;
 	return false;
 }
 C_order::~C_order() {}

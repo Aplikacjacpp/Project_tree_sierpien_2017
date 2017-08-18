@@ -24,8 +24,8 @@ public:
 	C_save_load();
 	C_save_load(const C_save_load & save_load);
 	C_save_load& operator=(const C_save_load& save_load);
-	bool operator==(const C_save_load& save_load);
-	bool operator!=(const C_save_load& save_load);
+	//bool operator==(const C_save_load& save_load);
+	//bool operator!=(const C_save_load& save_load);
 	virtual ~C_save_load();
 	virtual N_striing m_cypher_on(N_striing data)=0; //odszyfrowywanie
 	virtual N_striing m_cypher_off(N_striing data)=0; //zaszyfrowywanie

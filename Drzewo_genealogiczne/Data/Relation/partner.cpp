@@ -18,7 +18,7 @@ bool C_partner::operator==(const C_partner &partner) {
 	return false;
 }
 bool C_partner::operator!=(const C_partner &partner) {
-	if (ID_index != partner.ID_index && ID_value != partner.ID_value && bPart != partner.bPart) return true;
+	if (ID_index != partner.ID_index || ID_value != partner.ID_value || bPart != partner.bPart) return true;
 	return false;
 }
 C_partner::~C_partner() {}

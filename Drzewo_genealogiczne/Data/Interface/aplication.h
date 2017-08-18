@@ -23,7 +23,7 @@ public:
 	C_aplication(const C_aplication & aplication);		// konstruktor kopiujacy
 	C_aplication& operator=(const C_aplication& aplication);		// przeciazone operatory
 	bool operator==(const C_aplication& aplication);
-	bool operator!=(const C_aplication& aplication);
+	//bool operator!=(const C_aplication& aplication);
 	//void m_add_human(C_human human);				// nie uzywane
 	virtual ~C_aplication();		// destruktor wirtualny
 protected:

@@ -14,7 +14,9 @@ bool C_enginer::operator==(const C_enginer &enginer) {
 	return false;
 }
 bool C_enginer::operator!=(const C_enginer &enginer) {
-	if (V_tree != enginer.V_tree&&i_index!=enginer.i_index&&index_value_tree!=enginer.index_value_tree) return true;
+	if (V_tree != enginer.V_tree||
+		i_index!=enginer.i_index||
+		index_value_tree!=enginer.index_value_tree) return true;
 	return false;
 }
 int C_enginer::m_set_index() { return i_index; }

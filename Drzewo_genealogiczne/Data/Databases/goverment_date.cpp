@@ -16,7 +16,7 @@ bool C_goverment_date::operator==(const C_goverment_date& goverment_date) {
 	return false;
 }
 bool C_goverment_date::operator!=(const C_goverment_date& goverment_date) {
-	if (s_goverment_data != goverment_date.s_goverment_data&&
+	if (s_goverment_data != goverment_date.s_goverment_data||
 		i_value_id != goverment_date.i_value_id) return true;
 	return false;
 }

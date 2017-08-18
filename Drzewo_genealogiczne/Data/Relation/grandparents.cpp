@@ -18,7 +18,7 @@ bool C_grandparents::operator==(const C_grandparents& grandparents) {
 	return false;
 }
 bool C_grandparents::operator!=(const C_grandparents& grandparents) {
-	if (ID_index != grandparents.ID_index&&ID_value != grandparents.ID_value&&bGrandP != grandparents.bGrandP) return true;
+	if (ID_index != grandparents.ID_index||ID_value != grandparents.ID_value||bGrandP != grandparents.bGrandP) return true;
 	return false;
 }
 C_grandparents::~C_grandparents() {}

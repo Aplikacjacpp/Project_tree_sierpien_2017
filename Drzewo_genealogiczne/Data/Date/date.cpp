@@ -19,8 +19,8 @@ bool C_date::operator==(const C_date &d) {
 	return false;
 }
 bool C_date::operator!=(const C_date &d) {
-	if (c_value != d.c_value&&s_value != d.s_value&&
-		i_data_day != d.i_data_day&& i_data_month != d.i_data_month&&
+	if (c_value != d.c_value||s_value != d.s_value||
+		i_data_day != d.i_data_day|| i_data_month != d.i_data_month&&
 		i_data_year != d.i_data_year) return true;
 	return false;
 }

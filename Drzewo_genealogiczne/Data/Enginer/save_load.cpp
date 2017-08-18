@@ -5,18 +5,17 @@ C_save_load::C_save_load(const C_save_load & save_load) {
 }
 C_save_load& C_save_load::operator=(const C_save_load& save_load) {
 	if (this == &save_load) return *this;
-	if (*this == save_load) return *this;
-
+	//if (*this == save_load) return *this;
 	return *this;
 }
-bool C_save_load::operator==(const C_save_load& save_load) {
+/*bool C_save_load::operator==(const C_save_load& save_load) {
 	if (true) return true;
 	return false;
 }
 bool C_save_load::operator!=(const C_save_load& save_load) {
 	if (true) return true;
 	return false;
-}
+}*/
 C_save_load::~C_save_load() {}
 /*N_string C_save_load::m_decryption(N_striing a, N_striing tablica, int X)
 {

@@ -18,7 +18,7 @@ bool C_parent::operator==(const C_parent &parent) {
 	return false;
 }
 bool C_parent::operator!=(const C_parent &parent) {
-	if (ID_index != parent.ID_index && ID_value != parent.ID_value && bParent != parent.bParent) return true;
+	if (ID_index != parent.ID_index || ID_value != parent.ID_value || bParent != parent.bParent) return true;
 	return false;
 }
 C_parent::~C_parent(){}

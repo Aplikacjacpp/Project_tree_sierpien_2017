@@ -17,7 +17,11 @@ bool C_human::operator==(const C_human &human) {
 	return false;
 }
 bool C_human::operator!=(const C_human &human) {
-	if (V_date != human.V_date && Id != human.Id && First != human.First && V_last != human.V_last&&Gender!=human.Gender) return true;
+	if (V_date != human.V_date ||
+		Id != human.Id ||
+		First != human.First ||
+		V_last != human.V_last||
+		Gender!=human.Gender) return true;
 	return false;
 }
 C_human::~C_human() {}

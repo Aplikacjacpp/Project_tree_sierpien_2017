@@ -18,7 +18,7 @@ bool C_children::operator==(const C_children &children) {
 	return false;
 }
 bool C_children::operator!=(const C_children &children) {
-	if (ID_index != children.ID_index && ID_value != children.ID_value&&bChild == children.bChild) return true;
+	if (ID_index != children.ID_index || ID_value != children.ID_value||bChild != children.bChild) return true;
 	return false;
 }
 C_children::~C_children() {}

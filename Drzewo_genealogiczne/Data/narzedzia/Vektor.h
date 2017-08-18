@@ -80,17 +80,17 @@ bool operator==(const N_vektor &V) {
 		}
 		return false;
 	}
-bool operator!=(const N_vektor &V) {
+bool operator!=(const N_vektor &V) { //poprawione mam nadzieje ze na lepsze
 	if (this->Size != V.Size)
 	{
 		int i;
 		for (i = 0; i < Size; i++)
 		{
-			if (Tab[i] == V.Tab[i]) return true; 
+			if (Tab[i] != V.Tab[i]) return true; 
 		}
 		return false;
 	}
-	return true;
+	return false;
 }
 	T operator[](int values)
 	{

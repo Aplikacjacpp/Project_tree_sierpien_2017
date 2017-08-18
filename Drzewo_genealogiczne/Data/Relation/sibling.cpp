@@ -18,7 +18,7 @@ bool C_sibling::operator==(const C_sibling &sib) {
 	return false;
 }
 bool C_sibling::operator!=(const C_sibling &sib) {
-	if (ID_index != sib.ID_index && ID_value != sib.ID_value&&bSib != sib.bSib) return true;
+	if (ID_index != sib.ID_index || ID_value != sib.ID_value||bSib != sib.bSib) return true;
 	return false;
 }
 C_sibling::~C_sibling() {}

@@ -78,7 +78,7 @@ bool N_striing::operator!=(const N_striing &C)
 		}
 		return false;
 	}
-	return true;;
+	return true;
 }
 char N_striing::operator[](int values)
 {
