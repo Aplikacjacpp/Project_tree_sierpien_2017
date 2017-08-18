@@ -123,10 +123,11 @@ C_human C_enginer::m_create_human(C_id id_finter) {
 	int i,j;
 	i = id_finter.m_set_contens().m_atoi(0, id_finter.m_set_contens().m_size() - 1);
 	if (i > 0) i--;
+//	std::cout << i << "creative_human\n"; //debagowanie!!
+//	Sleep(350);
 	C_human human(id_finter);
-//	if (i > V_goverment_personaly.m_size() || i > V_goverment_date.m_size() || i > V_goverment_relation.m_size()) {
-//		return human;
-//	}
+	if (i > V_goverment_personaly.m_size() || i > V_goverment_date.m_size() || i > V_goverment_relation.m_size()) {
+		return human;	} //musi byc bo sie kraszuje tylko iewm z kad tak duza wartosc i??
 	human.m_get_first_name(V_goverment_personaly[i].m_set_value_first_name());
 	human.m_get_gender(V_goverment_personaly[i].m_set_value_gender());
 		N_vektor<C_last_name> V_last = V_goverment_personaly[i].m_set_value_last_name();
@@ -221,6 +222,7 @@ C_tree C_enginer::m_create_tree(C_id id_pointer) {
 	//int i;
 	for (i = 0; i < V_grandparents.m_size(); i++)
 	{
+		//std::cout << i << "grandparents\n";
 		if(i<=3)
 			Tree.m_add_human(m_create_human(V_grandparents[i].m_set_id()),t_grandparent,true,i);
 		else
@@ -228,6 +230,7 @@ C_tree C_enginer::m_create_tree(C_id id_pointer) {
 	}
 	for (i = 0; i < V_parent.m_size(); i++)
 	{
+	//	std::cout << i << "parent\n";
 		if(i<=1)
 			Tree.m_add_human(m_create_human(V_parent[i].m_set_id()), t_parent, true, i);
 		else
@@ -235,6 +238,7 @@ C_tree C_enginer::m_create_tree(C_id id_pointer) {
 	}
 	for (i = 0; i < V_sibling.m_size(); i++)
 	{
+		//std::cout << i << "sibling\n";
 		if (i <= 1)
 			Tree.m_add_human(m_create_human(V_sibling[i].m_set_id()), t_sibling, true, i);
 		else
@@ -242,6 +246,7 @@ C_tree C_enginer::m_create_tree(C_id id_pointer) {
 	}
 	for (i = 0; i < V_partner.m_size(); i++)
 	{
+		//std::cout << i <<"\t"<< V_partner[i].m_set_id().m_set_contens()<< "partner\n";
 		if (i <= 1)
 			Tree.m_add_human(m_create_human(V_partner[i].m_set_id()), t_partner, true, i);
 		else
@@ -249,6 +254,7 @@ C_tree C_enginer::m_create_tree(C_id id_pointer) {
 	}
 	for (i = 0; i < V_children.m_size(); i++)
 	{
+		//std::cout << i << "children\n";
 		if (i <= 3)
 			Tree.m_add_human(m_create_human(V_children[i].m_set_id()), t_children, true, i);
 		else
@@ -256,6 +262,7 @@ C_tree C_enginer::m_create_tree(C_id id_pointer) {
 	}
 	for (i = 0; i < V_grandchildren.m_size(); i++)
 	{
+		//std::cout << i << "grandchildren\n";
 		if (i <= 3)
 			Tree.m_add_human(m_create_human(V_children[i].m_set_id()), t_grandchildren, true, i);
 		else
@@ -263,6 +270,7 @@ C_tree C_enginer::m_create_tree(C_id id_pointer) {
 	}
 	for (i = 0; i < V_order.m_size(); i++)
 	{
+		//std::cout << i << "order\n";
 			Tree.m_add_human(m_create_human(V_order[i].m_set_id()), t_order, false, 0);
 	}
 	return Tree;

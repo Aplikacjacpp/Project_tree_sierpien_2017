@@ -3893,6 +3893,7 @@ C_element C_aplication_txt::m_menu_edit_relations() {
 }
 int C_aplication_txt::m_look_at(C_id id) {
 	int i;
+	//std::cout << id.m_set_contens() << "\n";
 	m_create_tree(id);
 	//std::cin >> i;
 	C_tree Tree(m_create_tree(id)); //kraszuje sie trzeba wydobyc poprawnie id!!!
@@ -3927,6 +3928,7 @@ int C_aplication_txt::m_look_at(C_id id) {
 		Vektor_i.m_push_back(Tree.m_set_v_partner().m_size());
 		for (i = 0; i > Tree.m_set_v_partner().m_size(); i++)
 		{
+			std::cout << "partner\n";
 			Vektor.m_push_back(Tree.m_set_v_partner()[i].m_get_content());
 			Vektor_id.m_push_back(Tree.m_set_v_partner()[i].m_set_id());
 		}

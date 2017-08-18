@@ -26,6 +26,7 @@ N_striing::N_striing(const char &gover)
 N_striing::N_striing(const N_striing &C) { if (this != &C) *this = C; }
 N_striing& N_striing::operator=(const N_striing &C)
 {
+	if (this == &C) return *this;
 	if (*this == C) return *this;
 	if (C.Table == NULL)
 	{

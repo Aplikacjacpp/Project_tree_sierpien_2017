@@ -238,6 +238,7 @@ N_vektor<C_partner> C_goverment_relation::m_set_value_patner() {
 	int i, j;
 	N_striing str,relation;
 	for (i = 1; i < s_goverment_relation.m_size(); i++) {
+		str.m_clear(); //czy na pewno??
 		relation.m_clear();
 		relation.m_push_back(s_goverment_relation[i - 1]);
 		relation.m_push_back(s_goverment_relation[i]);
@@ -247,6 +248,7 @@ N_vektor<C_partner> C_goverment_relation::m_set_value_patner() {
 			{
 				if (s_goverment_relation[j] >= '0' && s_goverment_relation[j] <= '9') {
 					str.m_push_back(s_goverment_relation[j]);
+					//std::cout << str << "  - string\n";
 					continue;
 				}
 					C_id Id, Id_value;
