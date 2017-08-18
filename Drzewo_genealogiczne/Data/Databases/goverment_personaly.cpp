@@ -16,9 +16,9 @@ bool C_goverment_personaly::operator==(const C_goverment_personaly& goverment_pe
 	return false;
 }
 bool C_goverment_personaly::operator!=(const C_goverment_personaly& goverment_personaly) {
-	if (s_goverment_personaly != goverment_personaly.s_goverment_personaly&&
-		i_value_id != goverment_personaly.i_value_id) return true;
-	return false;
+	if (s_goverment_personaly == goverment_personaly.s_goverment_personaly&&
+		i_value_id == goverment_personaly.i_value_id) return false;
+	return true;
 }
 C_goverment_personaly::~C_goverment_personaly() {}
 bool C_goverment_personaly::m_wchat_is() { 

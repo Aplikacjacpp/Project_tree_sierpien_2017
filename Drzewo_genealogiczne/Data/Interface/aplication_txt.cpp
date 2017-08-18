@@ -929,7 +929,7 @@ bool C_aplication_txt::m_what_menu() {
 	return true; //do dokonczenia
 }
 int C_aplication_txt::m_menu_add_human(int where) { // dodawanie nowej osoby
-	//	m_load_files(true);
+		m_load_files(true);
 	int ptr = 0, i,this_value;
 	bool b_what = false, b_whats = false;
 	switch (where)
@@ -2850,7 +2850,7 @@ int C_aplication_txt::m_menu_relation(int where)
 						m_new_element(Element_sprzezony, true);
 						V_element.m_push_back(Element_sprzezony);
 					}
-					return where;
+					break;
 				}
 				case 8:
 				{
@@ -2876,55 +2876,55 @@ C_element C_aplication_txt::m_menu_add_relations(int data, C_element Element) {
 
 	switch (data)
 	{
-	case t_grandparent:
-	{
-		C_grandparents Grandparent(Element.m_set_Human().m_set_id());
-		Grandparent.m_get_id(m_menu_wybor_humana_wskaznikowego().m_set_Human().m_set_id());
-		Element.m_get_grandparents(Grandparent);
-		break;
-	}
-	case t_parent:
-	{
-		C_parent Parent(Element.m_set_Human().m_set_id());
-		Parent.m_get_id(m_menu_wybor_humana_wskaznikowego().m_set_Human().m_set_id());
-		Element.m_get_parent(Parent);
-		break;
-	}
-	case t_sibling:
-	{
-		C_sibling Sibling(Element.m_set_Human().m_set_id());
-		Sibling.m_get_id(m_menu_wybor_humana_wskaznikowego().m_set_Human().m_set_id());
-		Element.m_get_sibling(Sibling);
-		break;
-	}
-	case t_partner:
-	{
-		C_partner Partner(Element.m_set_Human().m_set_id());
-		Partner.m_get_id(m_menu_wybor_humana_wskaznikowego().m_set_Human().m_set_id());
-		Element.m_get_partner(Partner);
-		break;
-	}
-	case t_children:
-	{
-		C_children Children(Element.m_set_Human().m_set_id());
-		Children.m_get_id(m_menu_wybor_humana_wskaznikowego().m_set_Human().m_set_id());
-		Element.m_get_children(Children);
-		break;
-	}
-	case t_grandchildren:
-	{
-		C_grandchildren Grandchildren(Element.m_set_Human().m_set_id());
-		Grandchildren.m_get_id(m_menu_wybor_humana_wskaznikowego().m_set_Human().m_set_id());
-		Element.m_get_grandchildren(Grandchildren);
-		break;
-	}
-	case t_order:
-	{
-		C_order Order(Element.m_set_Human().m_set_id());
-		Order.m_get_id(m_menu_wybor_humana_wskaznikowego().m_set_Human().m_set_id());
-		Element.m_get_order(Order);
-		break;
-	}
+		case t_grandparent:
+		{
+			C_grandparents Grandparent(Element.m_set_Human().m_set_id());
+			Grandparent.m_get_id(m_menu_wybor_humana_wskaznikowego().m_set_Human().m_set_id());
+			Element.m_get_grandparents(Grandparent);
+			break;
+		}
+		case t_parent:
+		{
+			C_parent Parent(Element.m_set_Human().m_set_id());
+			Parent.m_get_id(m_menu_wybor_humana_wskaznikowego().m_set_Human().m_set_id());
+			Element.m_get_parent(Parent);
+			break;
+		}
+		case t_sibling:
+		{
+			C_sibling Sibling(Element.m_set_Human().m_set_id());
+			Sibling.m_get_id(m_menu_wybor_humana_wskaznikowego().m_set_Human().m_set_id());
+			Element.m_get_sibling(Sibling);
+			break;
+		}
+		case t_partner:
+		{
+			C_partner Partner(Element.m_set_Human().m_set_id());
+			Partner.m_get_id(m_menu_wybor_humana_wskaznikowego().m_set_Human().m_set_id());
+			Element.m_get_partner(Partner);
+			break;
+		}
+		case t_children:
+		{
+			C_children Children(Element.m_set_Human().m_set_id());
+			Children.m_get_id(m_menu_wybor_humana_wskaznikowego().m_set_Human().m_set_id());
+			Element.m_get_children(Children);
+			break;
+		}
+		case t_grandchildren:
+		{
+			C_grandchildren Grandchildren(Element.m_set_Human().m_set_id());
+			Grandchildren.m_get_id(m_menu_wybor_humana_wskaznikowego().m_set_Human().m_set_id());
+			Element.m_get_grandchildren(Grandchildren);
+			break;
+		}
+		case t_order:
+		{
+			C_order Order(Element.m_set_Human().m_set_id());
+			Order.m_get_id(m_menu_wybor_humana_wskaznikowego().m_set_Human().m_set_id());
+			Element.m_get_order(Order);
+			break;
+		}
 	}
 	return Element;
 }
@@ -3970,7 +3970,7 @@ int C_aplication_txt::m_look_at(C_id id) {
 	while (true)
 	{
 		cls();
-		m_create_logo();
+		//m_create_logo();
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 		for (int i = 0; i < Vektor.m_size(); ++i)
 		{
