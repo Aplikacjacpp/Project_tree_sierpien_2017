@@ -1,5 +1,5 @@
 #include "goverment.h"
-C_goverment::C_goverment() {}
+C_goverment::C_goverment() { s_goverment_text = ""; }
 C_goverment::C_goverment(const C_goverment & goverment) {
 	if (this != &goverment) *this = goverment;
 }

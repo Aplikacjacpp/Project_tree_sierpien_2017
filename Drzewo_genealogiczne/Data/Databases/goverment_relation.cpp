@@ -1,5 +1,8 @@
 #include "goverment_relation.h"
-C_goverment_relation::C_goverment_relation() {}
+C_goverment_relation::C_goverment_relation() {
+	s_goverment_relation = "";
+	i_value_id = NULL;
+}
 C_goverment_relation::C_goverment_relation(const C_goverment_relation & goverment_relation) {
 	if (this != &goverment_relation) *this = goverment_relation;
 }
@@ -16,9 +19,9 @@ bool C_goverment_relation::operator==(const C_goverment_relation& goverment_rela
 	return false;
 }
 bool C_goverment_relation::operator!=(const C_goverment_relation& goverment_relation) {
-	if (s_goverment_relation != goverment_relation.s_goverment_relation&&
-		i_value_id != goverment_relation.i_value_id) return true;
-	return false;
+	if (s_goverment_relation == goverment_relation.s_goverment_relation&&
+		i_value_id == goverment_relation.i_value_id) return false;
+	return true;
 }
 C_goverment_relation::~C_goverment_relation() {}
 bool C_goverment_relation::m_wchat_is() { if (this->s_goverment_relation.m_size() >= 1 || this->s_goverment_relation != '\0') return true; return false; }

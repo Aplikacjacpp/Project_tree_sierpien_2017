@@ -167,36 +167,39 @@ C_element C_enginer::m_create_element(C_id id_finter) {
 	int zzz;
 	element.m_update_human(human);
 	//tu sie gdzies kraszuje 
-	C_goverment_relation gover(this->V_goverment_relation[i]);
-	N_vektor<C_children> children(gover.m_set_value_children());
-	N_vektor<C_parent> parent(gover.m_set_value_parent());
-	N_vektor<C_partner> partner(gover.m_set_value_patner());
-	N_vektor<C_grandchildren> grandc(gover.m_set_value_grandchildren());
-	N_vektor<C_grandparents> grandp(gover.m_set_value_grandparents());
-	N_vektor<C_sibling> sibling(gover.m_set_value_sibling());
-	N_vektor<C_order> order(gover.m_set_value_order());
-	//to sie niby wlacza ale nie zupelnie
-	std::cin >> zzz;
-	for (j = 0; j < children.m_size(); j++) {
-		element.m_get_children(children[j]);
-	}
-	for (j = 0; j < grandc.m_size(); j++) {
-		element.m_get_grandchildren(grandc[j]);
-	}
-	for (j = 0; j < grandp.m_size(); j++) {
-		element.m_get_grandparents(grandp[j]);
-	}
-	for (j = 0; j < parent.m_size(); j++) {
-		element.m_get_parent(parent[j]);
-	}
-	for (j = 0; j < partner.m_size(); j++) {
-		element.m_get_partner(partner[j]);
-	}
-	for (j = 0; j < sibling.m_size(); j++) {
-		element.m_get_sibling(sibling[j]);
-	}
-	for (j = 0; j < order.m_size(); j++) {
-		element.m_get_order(order[j]);
+	if (V_goverment_relation.m_size() > 0) //dziala :)
+	{
+		C_goverment_relation gover(this->V_goverment_relation[i]); //tu wychodzi poza vektor!!
+		std::cin >> zzz;
+		N_vektor<C_children> children(gover.m_set_value_children());
+		N_vektor<C_parent> parent(gover.m_set_value_parent());
+		N_vektor<C_partner> partner(gover.m_set_value_patner());
+		N_vektor<C_grandchildren> grandc(gover.m_set_value_grandchildren());
+		N_vektor<C_grandparents> grandp(gover.m_set_value_grandparents());
+		N_vektor<C_sibling> sibling(gover.m_set_value_sibling());
+		N_vektor<C_order> order(gover.m_set_value_order());
+		//to sie niby wlacza ale nie zupelnie
+		for (j = 0; j < children.m_size(); j++) {
+			element.m_get_children(children[j]);
+		}
+		for (j = 0; j < grandc.m_size(); j++) {
+			element.m_get_grandchildren(grandc[j]);
+		}
+		for (j = 0; j < grandp.m_size(); j++) {
+			element.m_get_grandparents(grandp[j]);
+		}
+		for (j = 0; j < parent.m_size(); j++) {
+			element.m_get_parent(parent[j]);
+		}
+		for (j = 0; j < partner.m_size(); j++) {
+			element.m_get_partner(partner[j]);
+		}
+		for (j = 0; j < sibling.m_size(); j++) {
+			element.m_get_sibling(sibling[j]);
+		}
+		for (j = 0; j < order.m_size(); j++) {
+			element.m_get_order(order[j]);
+		}
 	}
 	//dzis bede pisac!
 	//std::cout << element.m_set_Human() << "test\n";
