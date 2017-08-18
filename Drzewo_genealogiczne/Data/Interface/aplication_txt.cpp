@@ -3892,7 +3892,7 @@ C_element C_aplication_txt::m_menu_edit_relations() {
 int C_aplication_txt::m_look_at(C_id id) {
 	int i;
 	m_create_tree(id);
-	std::cin >> i;
+	//std::cin >> i;
 	C_tree Tree(m_create_tree(id)); //kraszuje sie trzeba wydobyc poprawnie id!!!
 	N_vektor<N_striing> Vektor;
 	N_vektor<int> Vektor_i;

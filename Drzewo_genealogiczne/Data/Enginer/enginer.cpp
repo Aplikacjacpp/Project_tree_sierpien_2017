@@ -163,14 +163,12 @@ C_element C_enginer::m_create_element(C_id id_finter) {
 	if (i > V_goverment_personaly.m_size() && i > V_goverment_date.m_size() && i > V_goverment_relation.m_size())
 		return element;
 	C_human human = m_create_human(i + 1);
-	std::cout << human << "\n";
-	int zzz;
+	//std::cout << human << "\n";
 	element.m_update_human(human);
 	//tu sie gdzies kraszuje 
 	if (V_goverment_relation.m_size() > 0) //dziala :)
 	{
 		C_goverment_relation gover(this->V_goverment_relation[i]); //tu wychodzi poza vektor!!
-		std::cin >> zzz;
 		N_vektor<C_children> children(gover.m_set_value_children());
 		N_vektor<C_parent> parent(gover.m_set_value_parent());
 		N_vektor<C_partner> partner(gover.m_set_value_patner());
@@ -208,7 +206,7 @@ C_element C_enginer::m_create_element(C_id id_finter) {
 C_tree C_enginer::m_create_tree(C_id id_pointer) {
 	m_create_element(id_pointer);
 	int i;
-		std::cin >> i;
+	//	std::cin >> i;
 	C_tree Tree(m_create_element(id_pointer));
 	Tree.m_add_id(id_pointer);
 	N_vektor <C_grandparents> V_grandparents = Tree.m_set_v_grandparents();
