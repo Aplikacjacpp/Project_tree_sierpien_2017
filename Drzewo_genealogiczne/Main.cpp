@@ -22,7 +22,7 @@ int main()
 	for (int i = 0; i<256; i++)
 		std::cout << i << " - " << (char)i << "\t";
 	return 0;*/
-	C_sl_personalys personal;
+/*	C_sl_personalys personal;
 	
 	C_enginer Engin;
 	//C_data Data;
@@ -56,7 +56,7 @@ int main()
 
 	/*ponizsza metoda ucina stringi do podanej liczby bedacej suma imienia i nazwiska - tutaj podobnie musialem zastosowac stigni (2 pierwsze arg) bo by nie dzialaly meody
 	size cut i erase - znowu human pobiera siebie w argumencie - byc moze nie tak sie robi ale jeszcze nie opanowalem dobrze programowania - pewnie beda poprawki:P*/
-	human.interf_cut(datak, data, human, 13);
+	/*human.interf_cut(datak, data, human, 13);
 	human.m_shift_id(1);
 	human.m_get_first_name(First);
 	human.m_get_last_name(Last);
@@ -68,18 +68,18 @@ int main()
 	/*ponizsza metoda wyswietlajaca dane humana- niestety musialem date zrobic drugim argumentem gdyz operator ostream nie toleruje intow i mimo ze kombinowalem
 	z przeciazeniami operatora to nie udalo mi sie zroibc tak zeby je tolerowal - argument daty smierci jest domniemany wiec mozna go usunac jesli ktos zyje
 	- i nie wiem czy dodanie obiektu humana do wlasnej metody jest zgodne ze sztuka programowania ale dziala :P - pewnie beda jeszcze poprawki bo zamotalem :P */
-	human.interf_m(human, date, date_s);
+	/*human.interf_m(human, date, date_s);
 
 	std::cout << std::endl;
 
 	/*tutaj z data podobnie bo ostream nie toleruje intow - niestety musialem zmienic poki co na recznie wstawianego striinga bo z danych humana nie mozna
 	uzywac metody stringowej m_size() jak rowniez m_erase_ray() wiec tez pewno beda jeszcze poprawki*/
-	human.interf_mb("Rick", "Grimes", date, date_s);
+	/*human.interf_mb("Rick", "Grimes", date, date_s);
 	
 	std::cout << std::endl;
 
 	/*ponizej to samo co wyzej ale jakby obramowanie dynamiczne poszerzajace sie wraz z imieniem i naziwksiem, ale pewnie nie bedzie uzywane */
-	human.interf_mbd("Tywin", "Lannisterrrr", date, date_s);
+	/*human.interf_mbd("Tywin", "Lannisterrrr", date, date_s);
 
 	std::cout << std::endl << std::endl;
 
@@ -152,14 +152,13 @@ C_last_name L1, L2;
 	L2.m_get_contens(data);
 	if (L1 > L2) std::cout << "dobrze\n";else std::cout << "zle\n";    */
 
-
 	C_aplication_txt AP;		// test menu w aplikacji - dzia³a!!!
 	//AP.SetWindow(100, 45);
 	//AP.CreateLogo();
 	//AP.MainMenu();//*/
 
 					//test na dzialanie C_date
-	C_date date13('/');
+/*	C_date date13('/');
 	//date13.m_shift_day(12); 
 	//date13.m_shift_month(10);
 	//date13.m_shift_year(1991);
