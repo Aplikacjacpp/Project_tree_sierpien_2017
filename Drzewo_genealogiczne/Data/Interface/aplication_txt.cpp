@@ -330,9 +330,9 @@ int C_aplication_txt::m_edit_tree()
 	char C;
 	C_human human, HHuman; //id dodaje sie dopiero w silniku
 	N_striing data;
-	N_striing MenuSub1[5] = { "1. Add a person", "2. Edit a person", "3. Add a relation", "4. Edit a relation", "5. Exit" }; //do rozbudowy
+	N_striing MenuSub1[5] = { "1. Add a person", "2. Edit a person", "3. Add a relation", "4. Edit a relation", "5. Back" }; //do rozbudowy
 	N_striing SubSub1[5] = { "[You can add a person to your tree]", "[You can edit a person]", "[You can add a relation to a person]",
-		"[You can edit a relation to a person]", "[Exit From Program]" };
+		"[You can edit a relation to a person]", "[Back To The Previous Menu]" };
 	int ptr = 0, p = 0;
 	int i;
 	while (true)
@@ -418,9 +418,11 @@ int C_aplication_txt::m_edit_tree()
 					return M_edit_relation; 	// edycja relacji
 				}
 				case 4: {
-					Sleep(120);
-					std::cout << '\n';
-					return M_exit;
+					Sleep(90);
+					return M_import_tree;
+					//m_sub_menu_2();
+					//std::cout << '\n';
+					//return M_exit;
 					//return M_menu_glowne; //exit <-tu sie ruzni kod Lukasza od Kodu Mateusza Mateusz wstawil tu Exit
 				}
 				}
@@ -1095,7 +1097,8 @@ int C_aplication_txt::m_menu_add_human(int where) { // dodawanie nowej osoby
 							}
 							case 5: {
 								Sleep(150);
-								return M_menu_glowne;  //wraca do menu
+								return M_edit_tree;
+								//return M_menu_glowne;  //wraca do menu
 							}
 									//	break;
 						}
@@ -1213,7 +1216,8 @@ int C_aplication_txt::m_menu_add_human(int where) { // dodawanie nowej osoby
 							}
 							case 4: {
 								Sleep(150);
-								return M_menu_glowne;
+								//return M_menu_glowne;
+								return M_edit_tree;
 							}
 						}
 						break;
@@ -1932,8 +1936,8 @@ int C_aplication_txt::m_lista(int what_this) { //do naprawy bedzie switch!!! <- 
 			{
 				cls();
 				m_create_logo();
-				//SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-				//std::cout << "\t\t\t Click Spacebar to return the menu\n\n";
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+				std::cout << "\t\t   Click Spacebar to back to the previous menu\n\n";
 
 				if (ptr > 2) {
 					if (cykl + 1 <= Lista.m_size())
@@ -1971,7 +1975,7 @@ int C_aplication_txt::m_lista(int what_this) { //do naprawy bedzie switch!!! <- 
 				while (true)
 				{
 					Sleep(150);
-					if (GetAsyncKeyState(VK_SPACE) != 0) return M_menu_glowne;
+					if (GetAsyncKeyState(VK_SPACE) != 0) return M_import_tree;
 					if (GetAsyncKeyState(VK_UP) != 0)   // strzalka do gory przesuwa wyzej po menu
 					{
 						ptr -= 1;
@@ -2064,7 +2068,7 @@ int C_aplication_txt::m_lista(int what_this) { //do naprawy bedzie switch!!! <- 
 				std::cout << "ENTER.";
 				*/
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-				std::cout << "\t\t\tClick Spacebar to return the menu\n\n";
+				std::cout << "\t\t  Click Spacebar to back to the previous menu\n\n";
 				if (ptr > 2) {
 					if (cykl + 1 <= Lista.m_size())
 						cykl += 1;
@@ -2091,7 +2095,7 @@ int C_aplication_txt::m_lista(int what_this) { //do naprawy bedzie switch!!! <- 
 				while (true)
 				{
 					Sleep(150);
-					if (GetAsyncKeyState(VK_SPACE) != 0) return M_menu_glowne;
+					if (GetAsyncKeyState(VK_SPACE) != 0) return M_import_tree;
 					if (GetAsyncKeyState(VK_UP) != 0)   // strzalka do gory przesuwa wyzej po menu
 					{
 						ptr -= 1;
@@ -2183,7 +2187,7 @@ int C_aplication_txt::m_lista(int what_this) { //do naprawy bedzie switch!!! <- 
 				m_create_logo();
 
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-				std::cout << "\t\t\tClick Spacebar to return the menu.";
+				std::cout << "\t\t\tClick Spacebar to return to the previous menu.";
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 				std::cout << "\n\t Use the arrows to navigate the list ";
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
@@ -2218,7 +2222,7 @@ int C_aplication_txt::m_lista(int what_this) { //do naprawy bedzie switch!!! <- 
 				while (true)
 				{
 					Sleep(150);
-					if (GetAsyncKeyState(VK_SPACE) != 0) return M_menu_glowne;
+					if (GetAsyncKeyState(VK_SPACE) != 0) return M_import_tree;
 					if (GetAsyncKeyState(VK_UP) != 0)   // strzalka do gory przesuwa wyzej po menu
 					{
 						ptr -= 1;
@@ -2594,8 +2598,8 @@ int C_aplication_txt::m_menu_relation(int where)
 	if (Element == element)
 		return where;
 	N_striing MenuSub1[10] = { "Add Relationship - MENU","1. Add Grandparent","2. Add Parent","3. Add Sibling","4. Add Partner",
-		"5. Add Children", "6. Add Grandchildren", "7. Add Order", "8. Save relations","9. Exit" };
-	N_striing SubSub1[10] = { "", "[Add grandparent to person]", "[Add parent to person]","[Add sibling to person]","[Add partner to person]","[Add child to person]","[Add grandchild to person]", "[Add Order]", "[Save your created relations]","[Exit From Program]" };
+		"5. Add Children", "6. Add Grandchildren", "7. Add Order", "8. Save relations","9. Back" };
+	N_striing SubSub1[10] = { "", "[Add grandparent to person]", "[Add parent to person]","[Add sibling to person]","[Add partner to person]","[Add child to person]","[Add grandchild to person]", "[Add Order]", "[Save your created relations]","[Back To The Previous Menu]" };
 	int ptr = 1, p;
 	char c;
 	N_striing data;
@@ -2615,7 +2619,7 @@ int C_aplication_txt::m_menu_relation(int where)
 		cls();
 		m_create_logo();
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-		for (int i = 0; i < 9; ++i)
+		for (int i = 0; i < 10; ++i)
 		{
 			if (i == ptr)       // podswietla dana opcje na niebiesko, dopisuje strzalke
 			{
@@ -2862,7 +2866,7 @@ int C_aplication_txt::m_menu_relation(int where)
 				}
 				case 9: //exit
 				{
-					return M_menu_glowne;
+					return M_edit_tree;
 				}
 				}
 			}
@@ -3366,8 +3370,9 @@ int C_aplication_txt::m_menu_edit_human(N_striing Data, int X, C_human &human)  
 					}
 					case 5:
 					{
+						//return M_edit_tree;
 						if (GetAsyncKeyState(VK_RETURN) != 0) {
-							return M_edit_tree + 1;	// cofa sie do menu
+							return M_edit_tree;	// cofa sie do menu
 						}
 					}
 					}//koniec switcha
