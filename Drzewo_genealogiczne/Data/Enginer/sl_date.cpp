@@ -172,9 +172,14 @@ void C_sl_date::m_update_date(C_id id, N_vektor<C_date> V_date) {
 	}
 	Gover.m_get_contens(data);
 	for (i = 0; i < V_goverment_date.m_size(); i++) {
-		if (i == id.m_set_contens().m_atoi(0, id.m_set_contens().m_size()))
+		if (i == (id.m_set_contens().m_atoi(0, id.m_set_contens().m_size()-1)-1))
 		{
 			V_goverment_date.m_erase(i);
+			if (i >= V_goverment_date.m_size())
+			{
+				V_goverment_date.m_push_back(Gover);
+				break;
+			}
 			V_goverment_date.m_insert(i, Gover);
 			break;
 		}

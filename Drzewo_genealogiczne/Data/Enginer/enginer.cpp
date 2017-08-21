@@ -126,7 +126,7 @@ C_human C_enginer::m_create_human(C_id id_finter) {
 //	std::cout << i << "creative_human\n"; //debagowanie!!
 //	Sleep(350);
 	C_human human(id_finter);
-	if (i > V_goverment_personaly.m_size() || i > V_goverment_date.m_size() || i > V_goverment_relation.m_size()) {
+	if (i > V_goverment_personaly.m_size() || i > V_goverment_date.m_size()){// || i > V_goverment_relation.m_size()) {
 		return human;	} //musi byc bo sie kraszuje tylko iewm z kad tak duza wartosc i??
 	human.m_get_first_name(V_goverment_personaly[i].m_set_value_first_name());
 	human.m_get_gender(V_goverment_personaly[i].m_set_value_gender());
@@ -357,6 +357,10 @@ N_striing C_enginer::m_return_value_tree() {
 }
 void C_enginer::m_update_human(C_human &human) {
 	int i;
+	//nia laduje danych z plikow i je poprostu hamsko nadpisuje
+	m_load_files(true); //mam nadzieje ze dobrze :)
+	//C_goverment_personaly Goverment(human);
+	//V_goverment_personaly.m_push_back(); //dodac do konca vektora humana!!
 	C_id id = human.m_set_id();
 	C_first_name first = human.m_set_first_name();
 	N_vektor<C_last_name> Last = human.m_set_V_last_name();

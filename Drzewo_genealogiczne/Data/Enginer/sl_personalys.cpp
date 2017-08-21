@@ -166,13 +166,25 @@ void C_sl_personalys::m_update_personaly(C_id id, C_first_name first, N_vektor<C
 	data += ">";
 	C_goverment_personaly Gover_person;
 	Gover_person.m_get_contens(data);
+	int p = id.m_set_contens().m_atoi(0, id.m_set_contens().m_size()-1)-1;
 	for (i = 0; i < V_goverment_personaly.m_size(); i++)
 	{
-		if (i == id.m_set_contens().m_atoi(0, id.m_set_contens().m_size()))
+		if (i == p)
 		{
 			V_goverment_personaly.m_erase(i);
+			if (i >= V_goverment_personaly.m_size())
+			{
+				V_goverment_personaly.m_push_back(Gover_person);
+				break;
+			}
 			V_goverment_personaly.m_insert(i, Gover_person);
+			//czy sie tutaj zle dodaje??
 			break;
 		}
 	}
+	for (i = 0; i < V_goverment_personaly.m_size(); i++)
+	{
+		std::cout << V_goverment_personaly[i].m_set_contens();
+	}
+	std::cin >> i;
 }

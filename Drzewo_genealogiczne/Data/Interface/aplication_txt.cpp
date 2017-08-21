@@ -1961,7 +1961,6 @@ int C_aplication_txt::m_lista(int what_this) { //do naprawy bedzie switch!!! <- 
 						cout << "\t\t\t\t" << i + 1 << "\t" << Lista[i] << endl;
 					}
 				}
-
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 				std::cout << "\n\n\n Use the arrows to navigate the list ";
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
@@ -1970,8 +1969,6 @@ int C_aplication_txt::m_lista(int what_this) { //do naprawy bedzie switch!!! <- 
 				std::cout << ". Load your tree with ";
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 				std::cout << "ENTER.";
-
-
 				while (true)
 				{
 					Sleep(150);
@@ -2090,8 +2087,6 @@ int C_aplication_txt::m_lista(int what_this) { //do naprawy bedzie switch!!! <- 
 						cout << "\t\t\t\t" << i + 1 << "\t" << Lista[i] << endl;
 					}
 				}
-
-
 				while (true)
 				{
 					Sleep(150);
@@ -2141,7 +2136,9 @@ int C_aplication_txt::m_lista(int what_this) { //do naprawy bedzie switch!!! <- 
 					}
 					else if (GetAsyncKeyState(VK_RETURN) != 0)
 					{
-						C_human human, Human;
+						//C_id id(ptr);
+						C_human human;
+						Sleep(1000);
 						int result;
 						result = m_menu_edit_human(V_goverment_personaly[ptr].m_set_contens(), ptr, human);
 						if (result == M_edit_tree)
@@ -2155,9 +2152,8 @@ int C_aplication_txt::m_lista(int what_this) { //do naprawy bedzie switch!!! <- 
 							return M_menu_glowne;
 						}
 					}
-
 				}
-				break;
+			//	break;
 			}
 		}
 		case L_dysplay:
@@ -2271,7 +2267,7 @@ int C_aplication_txt::m_lista(int what_this) { //do naprawy bedzie switch!!! <- 
 						return   m_look_at(ptr); //skok222
 					}
 				}
-				break;
+		//		break;
 
 			}
 		}
@@ -3099,6 +3095,7 @@ int C_aplication_txt::m_menu_edit_human(N_striing Data, int X, C_human &human)  
 {
 	X++;
 	int i;
+	//nie przekazuje do metody zadnych danych o humanie!!
 	//tworzenie danych
 	char C;
 	N_striing first_name, sure_name, gender, data, dd, mm, yy;	// bedzie mozna edytowac tylko to
