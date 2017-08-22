@@ -794,7 +794,7 @@ void C_aplication_txt::m_import_tree() // nieuzywane???
 		Sleep(150);     // szybkosc poruszania sie po menu
 	}
 }
-char C_aplication_txt::m_get_key() {		// metoda pobiera znaki z klawiatury, polskie znaki i Backspace
+char C_aplication_txt::m_get_key(bool point) {		// metoda pobiera znaki z klawiatury, polskie znaki i Backspace
 	char C;
 	int Tab_key[26] = { 0x41,0x42,0x43,0x44,0x45,0x46,0x47,0x48,0x49,0x4A,0x4B,0x4C,0x4D,0x4E,0x4F,
 		0x50,0x51,0x52,0x53,0x54,0x55,0x56,0x57,0x58,0x59,0x5A };		// kody poszczegolnych 26 znakow
@@ -825,19 +825,22 @@ char C_aplication_txt::m_get_key() {		// metoda pobiera znaki z klawiatury, pols
 				return C;
 			}
 		}
-		for (i = 0; i < 9; i++)
+		if (point)
 		{
-			if ((GetAsyncKeyState(Tab_npolish[i]) != 0) && (GetAsyncKeyState(VK_SHIFT) == 0) &&
-				(GetAsyncKeyState(VK_CAPITAL) == 0) && (GetAsyncKeyState(VK_MENU) != 0)) {
-				C = Tab_polish[i];
-				Sleep(100);
-				return C;
-			}
-			if ((GetAsyncKeyState(Tab_npolish[i]) != 0) && (GetAsyncKeyState(VK_SHIFT) != 0) && (GetAsyncKeyState(VK_MENU) != 0) ||
-				(GetAsyncKeyState(VK_CAPITAL) != 0) && (GetAsyncKeyState(Tab_npolish[i]) != 0) && (GetAsyncKeyState(VK_MENU) != 0)) {
-				C = Tab_Polish[i];
-				Sleep(100);
-				return C;
+			for (i = 0; i < 9; i++)
+			{
+				if ((GetAsyncKeyState(Tab_npolish[i]) != 0) && (GetAsyncKeyState(VK_SHIFT) == 0) &&
+					(GetAsyncKeyState(VK_CAPITAL) == 0) && (GetAsyncKeyState(VK_MENU) != 0)) {
+					C = Tab_polish[i];
+					Sleep(100);
+					return C;
+				}
+				if ((GetAsyncKeyState(Tab_npolish[i]) != 0) && (GetAsyncKeyState(VK_SHIFT) != 0) && (GetAsyncKeyState(VK_MENU) != 0) ||
+					(GetAsyncKeyState(VK_CAPITAL) != 0) && (GetAsyncKeyState(Tab_npolish[i]) != 0) && (GetAsyncKeyState(VK_MENU) != 0)) {
+					C = Tab_Polish[i];
+					Sleep(100);
+					return C;
+				}
 			}
 		}
 		for (i = 0; i < 26; i++)
@@ -1325,7 +1328,7 @@ int C_aplication_txt::m_menu_add_first_name(int where,C_human& human) {
 			}
 			else if (ptr == 0)
 			{
-				C = m_get_key();
+				C = m_get_key(true);
 				if (C != '\0') {
 					data.m_push_back(C);
 				}
@@ -1431,7 +1434,7 @@ int C_aplication_txt::m_menu_add_last_name(int where, C_human &human) {
 			}
 			else if (ptr == 0)
 			{
-				C = m_get_key();
+				C = m_get_key(true);
 				if (C != '\0') {
 					data.m_push_back(C);
 				}
@@ -1657,7 +1660,7 @@ int C_aplication_txt::m_menu_add_date(int where, C_human& human) {
 				else if (ptr == 1)
 				{
 					if (dd.m_size() < 2) {
-						C = m_get_key();
+						C = m_get_key(true);
 						if (C != '\0') {
 							dd.m_push_back(C);		// zapamietuje/wstawia dla dnia
 							break;
@@ -1666,7 +1669,7 @@ int C_aplication_txt::m_menu_add_date(int where, C_human& human) {
 					else
 					{
 						if (mm.m_size() < 2) {
-							C = m_get_key();
+							C = m_get_key(true);
 							if (C != '\0') {
 								mm.m_push_back(C);			// dla miesiaca
 								break;
@@ -1675,7 +1678,7 @@ int C_aplication_txt::m_menu_add_date(int where, C_human& human) {
 						else
 						{
 							if (yy.m_size() < 4) {
-								C = m_get_key();
+								C = m_get_key(true);
 								if (C != '\0') {
 									yy.m_push_back(C);		// i 4 cyfry dla roku
 									break;
@@ -1805,7 +1808,7 @@ int C_aplication_txt::m_menu_add_date(int where, C_human& human) {
 				else if (ptr == 1)
 				{
 					if (dd.m_size() < 2) {
-						C = m_get_key();
+						C = m_get_key(true);
 						if (C != '\0') {
 							dd.m_push_back(C);
 							break;
@@ -1814,7 +1817,7 @@ int C_aplication_txt::m_menu_add_date(int where, C_human& human) {
 					else
 					{
 						if (mm.m_size() < 2) {
-							C = m_get_key();
+							C = m_get_key(true);
 							if (C != '\0') {
 								mm.m_push_back(C);
 								break;
@@ -1823,7 +1826,7 @@ int C_aplication_txt::m_menu_add_date(int where, C_human& human) {
 						else
 						{
 							if (yy.m_size() < 4) {
-								C = m_get_key();
+								C = m_get_key(true);
 								if (C != '\0') {
 									yy.m_push_back(C);
 									break;
@@ -2467,7 +2470,7 @@ int C_aplication_txt::m_menu_name_tree() {
 				}
 				else
 				{
-					c = m_get_key();
+					c = m_get_key(false); //tu nie moze byc polskich liter!!
 					if (c != '\0') {
 						data.m_push_back(c);			// wpisuje kolejne literki
 						break;
@@ -2577,7 +2580,7 @@ int C_aplication_txt::m_menu_name_tree() {
 					return M_menu_glowne;		// wraca do menu
 				else
 				{
-					c = m_get_key();		// bedzie pobieral znaki
+					c = m_get_key(true);		// bedzie pobieral znaki
 					if (c != '\0') {
 						data.m_push_back(c);		// doklada kolejne litery
 						break;
@@ -3360,7 +3363,7 @@ int C_aplication_txt::m_menu_edit_human(N_striing Data, int X, C_human &human)  
 							first_name.m_pop_back();		// mozna usuwac "od tylu" imie
 							break;
 						}
-						C = m_get_key();
+						C = m_get_key(true);
 						if (C != '\0') {
 							first_name.m_push_back(C);		// tu wpisac nowe
 							human.m_set_first_name();
@@ -3376,7 +3379,7 @@ int C_aplication_txt::m_menu_edit_human(N_striing Data, int X, C_human &human)  
 							sure_name.m_pop_back();		// analogicznie jak z imieniem
 							break;
 						}
-						C = m_get_key();
+						C = m_get_key(true);
 						if (C != '\0') {
 							sure_name.m_push_back(C);
 						}
@@ -3438,7 +3441,7 @@ int C_aplication_txt::m_menu_edit_human(N_striing Data, int X, C_human &human)  
 						else
 						{
 							if (dd.m_size() < 2) {
-								C = m_get_key();
+								C = m_get_key(true);
 								if (C != '\0') {
 									dd.m_push_back(C);
 									break;
@@ -3447,7 +3450,7 @@ int C_aplication_txt::m_menu_edit_human(N_striing Data, int X, C_human &human)  
 							else
 							{
 								if (mm.m_size() < 2) {
-									C = m_get_key();
+									C = m_get_key(true);
 									if (C != '\0') {
 										mm.m_push_back(C);
 										break;
@@ -3456,7 +3459,7 @@ int C_aplication_txt::m_menu_edit_human(N_striing Data, int X, C_human &human)  
 								else
 								{
 									if (yy.m_size() < 4) {
-										C = m_get_key();
+										C = m_get_key(true);
 										if (C != '\0') {
 											yy.m_push_back(C);
 											break;
@@ -3612,7 +3615,7 @@ int C_aplication_txt::m_menu_edit_human(N_striing Data, int X, C_human &human)  
 										first_name.m_pop_back();
 										break;
 									}
-									C = m_get_key();
+									C = m_get_key(true);
 									if (C != '\0') {
 										first_name.m_push_back(C);
 										human.m_set_first_name();
@@ -3628,7 +3631,7 @@ int C_aplication_txt::m_menu_edit_human(N_striing Data, int X, C_human &human)  
 										sure_name.m_pop_back();
 										break;
 									}
-									C = m_get_key();
+									C = m_get_key(true);
 									if (C != '\0') {
 										sure_name.m_push_back(C);
 									}
@@ -3690,7 +3693,7 @@ int C_aplication_txt::m_menu_edit_human(N_striing Data, int X, C_human &human)  
 									else
 									{
 										if (dd.m_size() < 2) {
-											C = m_get_key();
+											C = m_get_key(true);
 											if (C != '\0') {
 												dd.m_push_back(C);
 												break;
@@ -3699,7 +3702,7 @@ int C_aplication_txt::m_menu_edit_human(N_striing Data, int X, C_human &human)  
 										else
 										{
 											if (mm.m_size() < 2) {
-												C = m_get_key();
+												C = m_get_key(true);
 												if (C != '\0') {
 													mm.m_push_back(C);
 													break;
@@ -3708,7 +3711,7 @@ int C_aplication_txt::m_menu_edit_human(N_striing Data, int X, C_human &human)  
 											else
 											{
 												if (yy.m_size() < 4) {
-													C = m_get_key();
+													C = m_get_key(true);
 													if (C != '\0') {
 														yy.m_push_back(C);
 														break;
@@ -3862,7 +3865,7 @@ int C_aplication_txt::m_menu_edit_human(N_striing Data, int X, C_human &human)  
 										first_name.m_pop_back();
 										break;
 									}
-									C = m_get_key();
+									C = m_get_key(true);
 									if (C != '\0') {
 										first_name.m_push_back(C);
 										human.m_set_first_name();
@@ -3878,7 +3881,7 @@ int C_aplication_txt::m_menu_edit_human(N_striing Data, int X, C_human &human)  
 										sure_name.m_pop_back();
 										break;
 									}
-									C = m_get_key();
+									C = m_get_key(true);
 									if (C != '\0') {
 										sure_name.m_push_back(C);
 									}
@@ -3940,7 +3943,7 @@ int C_aplication_txt::m_menu_edit_human(N_striing Data, int X, C_human &human)  
 									else
 									{
 										if (dd.m_size() < 2) {
-											C = m_get_key();
+											C = m_get_key(true);
 											if (C != '\0') {
 												dd.m_push_back(C);
 												break;
@@ -3949,7 +3952,7 @@ int C_aplication_txt::m_menu_edit_human(N_striing Data, int X, C_human &human)  
 										else
 										{
 											if (mm.m_size() < 2) {
-												C = m_get_key();
+												C = m_get_key(true);
 												if (C != '\0') {
 													mm.m_push_back(C);
 													break;
@@ -3958,7 +3961,7 @@ int C_aplication_txt::m_menu_edit_human(N_striing Data, int X, C_human &human)  
 											else
 											{
 												if (yy.m_size() < 4) {
-													C = m_get_key();
+													C = m_get_key(true);
 													if (C != '\0') {
 														yy.m_push_back(C);
 														break;

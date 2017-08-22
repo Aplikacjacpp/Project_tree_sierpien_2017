@@ -48,7 +48,7 @@ public:
 	int m_display_tree();		// wyswietla drzewo
 	int m_search_tree();		// metoda do wyszukiwania ludzi po danych
 	void m_create_logo();		// tworzy "atrape" drzewa
-	char m_get_key();			// obsluga polskich znakow, alfabetu
+	char m_get_key(bool point);			// obsluga polskich znakow, alfabetu jezeli true to polskie litery
 	bool m_what_return();		// menu z opcjami "Tak", "Nie", "Powrot"
 	bool m_what_menu();			// do dokonczenia!
 	int m_look_at(C_id id);			//metoda wyswietlajaca drzewo
