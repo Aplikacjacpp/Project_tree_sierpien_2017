@@ -178,7 +178,7 @@ int C_aplication_txt::m_main_menu() // menu glowne aplikacji
 		std::cout << "ENTER.";
 		while (true)
 		{
-			Sleep(150);
+			//Sleep(150);
 			if (GetAsyncKeyState(VK_UP) != 0)   // strzalka do gory przesuwa wyzej po menu
 			{
 				ptr -= 1;
@@ -205,12 +205,14 @@ int C_aplication_txt::m_main_menu() // menu glowne aplikacji
 					{
 					//	Sleep(1500);    // sleepy musza byc, by uniknac "podwojnego" ENTERA!!!
 										//				m_sub_1();
+						Sleep(1000);
 						return M_new_tree;
 					}// break;
 					case 1:
 					{
 					//	Sleep(1500);
 						//m_sub_menu_2();
+						Sleep(500);		// musi byc, za bardzo przeskakiwalo, sorry
 						return M_lista + 1;
 					}
 					case 2:
@@ -224,7 +226,7 @@ int C_aplication_txt::m_main_menu() // menu glowne aplikacji
 			}
 		}
 
-		Sleep(120);     // szybkosc poruszania sie po menu
+		Sleep(130);     // szybkosc poruszania sie po menu
 	}
 }
 
@@ -696,10 +698,11 @@ int C_aplication_txt::m_sub_menu_2()
 					}
 					case 2:
 					{
-						return M_export_tree; // export do pliku txt ???? bedzie cos takiego ???
+						return M_export_tree; // export do pliku txt 
 					}
 					case 3:
 					{
+						Sleep(50);
 						std::cout << '\n';
 						return M_exit;
 					}
@@ -744,13 +747,13 @@ void C_aplication_txt::m_import_tree() // nieuzywane???
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 		cout << "\n Click ";
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
-		cout << "SPACEBAR";
+		cout << "ESCAPE";
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 		cout << " if you want back to main menu.";
 
 		while (true)
 		{
-			if (GetAsyncKeyState(VK_SPACE)) m_main_menu();
+			if (GetAsyncKeyState(VK_ESCAPE)) m_main_menu();
 			if (GetAsyncKeyState(VK_UP) != 0)   // strzalka do gory przesuwa wyzej po menu
 			{
 				ptr -= 1;
@@ -1916,6 +1919,7 @@ int C_aplication_txt::m_lista(int what_this) { //do naprawy bedzie switch!!! <- 
 		{
 		case L_tree:
 		{
+			Sleep(200);
 			Lista.m_close();
 			Lista = m_add_to_operation(true, Lista);
 			b_where = true; //po co to??
@@ -2417,7 +2421,7 @@ int C_aplication_txt::m_menu_name_tree() {
 			cls();
 			m_create_logo();
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-			std::cout << "\t\t\tClick Spacebar to return the menu\n\n";
+			std::cout << "\t\t\tClick Escape to return the menu\n\n";
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 			for (int i = 0; i < 1; ++i)
 			{
@@ -2433,7 +2437,7 @@ int C_aplication_txt::m_menu_name_tree() {
 				}
 			}
 			while (true) {
-				if (GetAsyncKeyState(VK_SPACE) != 0) return M_menu_glowne;
+				if (GetAsyncKeyState(VK_ESCAPE) != 0) return M_menu_glowne;
 				// sleepy musza byc, by uniknac "podwojnego" ENTERA!!!
 				if (GetAsyncKeyState(VK_UP) != 0)   // strzalka do gory przesuwa wyzej po menu
 				{
@@ -3317,13 +3321,13 @@ int C_aplication_txt::m_menu_edit_human(N_striing Data, int X, C_human &human)  
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 			cout << "\n Click ";
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
-			cout << "SPACEBAR";
+			cout << "ESCAPE";
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 			cout << " if you want back to main menu.";
 			while (true)
 			{
 				Sleep(150); 
-				if (GetAsyncKeyState(VK_SPACE)) return M_menu_glowne;
+				if (GetAsyncKeyState(VK_ESCAPE)) return M_menu_glowne;
 				if (GetAsyncKeyState(VK_UP) != 0)   // strzalka do gory przesuwa wyzej po menu
 				{
 					pt -= 1;
@@ -3569,13 +3573,13 @@ int C_aplication_txt::m_menu_edit_human(N_striing Data, int X, C_human &human)  
 						SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 						cout << "\n Click ";
 						SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
-						cout << "SPACEBAR";
+						cout << "ESCAPE";
 						SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 						cout << " if you want back to main menu.";
 						while (true)
 						{
 							Sleep(150);
-							if (GetAsyncKeyState(VK_SPACE)) return M_menu_glowne;
+							if (GetAsyncKeyState(VK_ESCAPE)) return M_menu_glowne;
 							if (GetAsyncKeyState(VK_UP) != 0)   // strzalka do gory przesuwa wyzej po menu
 							{
 								pt -= 1;
@@ -3819,13 +3823,13 @@ int C_aplication_txt::m_menu_edit_human(N_striing Data, int X, C_human &human)  
 						SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 						cout << "\n Click ";
 						SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
-						cout << "SPACEBAR";
+						cout << "ESCAPE";
 						SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 						cout << " if you want back to main menu.";
 						while (true)
 						{
 							Sleep(150);
-							if (GetAsyncKeyState(VK_SPACE)) return M_menu_glowne;
+							if (GetAsyncKeyState(VK_ESCAPE)) return M_menu_glowne;
 							if (GetAsyncKeyState(VK_UP) != 0)   // strzalka do gory przesuwa wyzej po menu
 							{
 								pt -= 1;
@@ -4054,6 +4058,8 @@ int C_aplication_txt::m_export_tree(N_striing &data) {
 			file << f_end_file;
 			file.close(); //powrot do menu przed lista!!
 		}
+
+		return M_menu_glowne;
 	}
 	else
 	{
