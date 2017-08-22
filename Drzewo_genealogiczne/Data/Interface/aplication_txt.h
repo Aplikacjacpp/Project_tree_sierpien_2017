@@ -66,7 +66,7 @@ public:
 	int m_menu_edit_human(N_striing Data, int X, C_human& human);		// edycja humana
 	C_element m_menu_edit_relations();		// edycja relacji humana
 	int m_menu_tree();					// menu w utworzonym drzewie, wyswietlania go, edycja
-	void m_export_tree();					// export drzewa do pliku, by go potem moc zaladowac na innym PC
+	int m_export_tree(N_striing &data);					// export drzewa do pliku, by go potem moc zaladowac na innym PC
 	void cls();						// metoda "czysci" ekran, lepiej nie uzywac system('cls')
 
 

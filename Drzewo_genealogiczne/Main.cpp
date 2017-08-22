@@ -5,9 +5,12 @@
 #include "Data\Date\date.h"
 #include "Data\Relation\relation.h"
 #include "Data\Enginer\enginer.h"
+#include <Locale.h>
+
 
 int main()
 {
+	setlocale(LC_ALL, "polish");
  /*char TCh[18] = { 'π'+54, 'Ê'+54, 'Í'-54, '≥'-54, 'Ò', 'Û', 'ú', 'ü', 'ø', '•', '∆', ' ', '£', '—', '”', 'å', 'è', 'Ø' };
  char TCh2[18] = { (char)185-54,(char)230-54,(char)234-54,(char)179-54,(char)241+54,(char)243+54,(char)156+54,(char)159+54,(char)191+54,(char)165+54,(char)198+54,(char)202+54,(char)163+54,(char)209+54,(char)211+54,(char)140+54,(char)143+54,(char)175+54 };
  for(int j=0;j<18;j++)
