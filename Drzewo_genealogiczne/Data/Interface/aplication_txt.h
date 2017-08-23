@@ -43,7 +43,7 @@ public:
 	int m_main_menu();			// menu glowne
 	int m_sub_1();				// podmenu
 	int m_sub_menu_2();		// podmenu, edycja, wyswietlanie drzewa
-	void m_import_tree();		// import drzewa
+	// void m_import_tree();		// import drzewa
 	int m_edit_tree();			// edycja drzewa
 	int m_display_tree();		// wyswietla drzewo
 	int m_search_tree();		// metoda do wyszukiwania ludzi po danych
@@ -62,11 +62,12 @@ public:
 	int m_menu_add_gender(int where, C_human& human);		// metoda dodaje plec osoby
 	int m_menu_add_date(int where, C_human& human);			// metoda dodaje daty ur i smierci
 	int m_menu_relation(int where);				// wyswietla menu z relacjami
+	int m_menu_delete_human(int where);				// usuwanie osoby z drzewa
 	C_element m_menu_add_relations(int data, C_element Element);	// metoda dodaje relacje do osoby
 	int m_menu_edit_human(N_striing Data, int X, C_human& human);		// edycja humana
 	C_element m_menu_edit_relations();		// edycja relacji humana
 	int m_menu_tree();					// menu w utworzonym drzewie, wyswietlania go, edycja
-	int m_export_tree(N_striing &data);					// export drzewa do pliku, by go potem moc zaladowac na innym PC
+	// int m_export_tree(N_striing &data);					// export drzewa do pliku, by go potem moc zaladowac na innym PC
 	void cls();						// metoda "czysci" ekran, lepiej nie uzywac system('cls')
 
 
