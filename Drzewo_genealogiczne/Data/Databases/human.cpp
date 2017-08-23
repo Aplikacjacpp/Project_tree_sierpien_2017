@@ -78,7 +78,13 @@ void C_human::m_delete_last_name() { V_last.m_pop_front(); }
 void C_human::m_delete_gender() { N_striing data = ""; Gender.m_get_contens(data);}
 void C_human::m_delete_date(int value) { V_date.m_erase(value); }
 void C_human::m_delete_date() { V_date.m_pop_front(); }
-void C_human::m_update_date(int value, C_date& date) { V_date.m_erase(value); V_date.m_insert(value, date); }
+void C_human::m_update_date(int value, C_date& date) { V_date.m_erase(value);
+if (value >= V_date.m_size())
+{
+	V_date.m_push_back(date);
+	return;
+}
+V_date.m_insert(value, date); }
 void C_human::m_update_last_name(int value, C_last_name& l_name) { 
 	V_last.m_erase(value);
 	if (V_last.m_size() == 0)

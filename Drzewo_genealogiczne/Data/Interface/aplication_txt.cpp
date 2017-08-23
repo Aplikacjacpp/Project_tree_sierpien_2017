@@ -26,7 +26,7 @@ C_aplication_txt::C_aplication_txt() {
 	{
 		system("attrib -a +h +r +s operation.ope");
 		system("md %USERPROFILE%\\.tree&&%USERPROFILE%>>echo  >>%USERPROFILE%\\.tree\\init.&&cd %USERPROFILE%\\.tree\\&&ATTRIB -A +H init."); //dziala
-	//	system("md %USERPROFILE%\\.tree\\import-export");
+		system("md %USERPROFILE%\\.tree\\import-export");
 	}
 	m_set_window(150, 70); // wyswietlenie okna z parametrami (wymiarami)
 	m_menu();	// wyswietlenie menu
@@ -54,7 +54,7 @@ C_aplication_txt::C_aplication_txt(const C_aplication_txt & aplication_txt) { //
 	{
 		system("attrib -a +h +r +s operation.ope");
 		system("md %USERPROFILE%\\.tree&&%USERPROFILE%>>echo  >>%USERPROFILE%\\.tree\\init.&&cd %USERPROFILE%\\.tree\\&&ATTRIB -A +H init."); //dziala
-	//	system("md %USERPROFILE%\\.tree\\import-export");
+		system("md %USERPROFILE%\\.tree\\import-export");
 	}
 	m_set_window(150, 70); // wyswietlenie okna z parametrami (wymiarami)
 	m_menu();			// Wyswietlenie menu
@@ -2686,17 +2686,17 @@ int C_aplication_txt::m_menu_tree() {// menu drzewa
 				} break;
 				case 1:
 				{
-					//Sleep(1500);
+					Sleep(1500);
 					return M_edit_tree;		// edycja drzewa
 				}
 				case 2:
 				{
-					//Sleep(1500);
+					Sleep(1500);
 					return M_export_tree;		//eksportuj
 				}
 				case 3:
 				{
-					//Sleep(1500);
+					Sleep(1500);
 					return M_menu_glowne;
 				}
 				}
@@ -2878,7 +2878,7 @@ int C_aplication_txt::m_menu_relation(int where)
 					//return; ??
 					break;
 				}
-				case 4: // partner
+				case 4: // partner skok4
 				{
 					b_pointer = true;
 					Element = m_menu_add_relations(t_partner, Element);
@@ -3033,7 +3033,117 @@ C_element C_aplication_txt::m_menu_add_relations(int data, C_element Element) {
 		{
 			C_partner Partner(Element.m_set_Human().m_set_id());
 			Partner.m_get_id(m_menu_wybor_humana_wskaznikowego().m_set_Human().m_set_id());
-			Element.m_get_partner(Partner);
+			N_striing date, yy, dd, mm;
+			char C;
+			while (true)
+			{
+				date = dd;
+				date += "-";
+				date += mm;
+				date += "-";
+				date += yy;
+				N_striing Menu2[1] = { "Data zawarta slubu: " };
+				N_striing SubMenu2[1] = { date };
+				cls();
+				m_create_logo();
+				std::cout << "\tYou can change your personal data. Don't forget to save your changes!\n\n";
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
+				std::cout << "\t\t\t\t" << Menu2[0] << " \n\t\t\t " << SubMenu2[0] << std::endl;
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+				cout << "\n\n\n\n Use the arrows to navigate the menu ";
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
+				cout << char(24) << " " << char(25);        // kody ASCII strzalek
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+				cout << ". Confirm your choice with ";
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
+				cout << "ENTER.";
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+				cout << "\n Click ";
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
+				cout << "ESCAPE";
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+				cout << " if you want back to main menu.";
+				while (true)
+				{
+					Sleep(150);
+					if (GetAsyncKeyState(VK_BACK) != 0 && date.m_size() > 1)
+					{
+						if (yy.m_size() > 0) 		// edycja daty
+						{
+							yy.m_pop_back();
+							break;
+						}
+						else
+						{
+							if (mm.m_size() > 0)
+							{
+								mm.m_pop_back();
+								break;
+							}
+							else
+							{
+								if (dd.m_size() > 0)
+								{
+									dd.m_pop_back();
+									break;
+								}
+								break;
+							}
+						}
+						Sleep(150);
+						break;
+					}
+					else
+					{
+						if (dd.m_size() < 2) {
+							C = m_get_key(true);
+							if (C != '\0') {
+								dd.m_push_back(C);
+								break;
+							}
+						}
+						else
+						{
+							if (mm.m_size() < 2) {
+								C = m_get_key(true);
+								if (C != '\0') {
+									mm.m_push_back(C);
+									break;
+								}
+							}
+							else
+							{
+								if (yy.m_size() < 4) {
+									C = m_get_key(true);
+									if (C != '\0') {
+										yy.m_push_back(C);
+										break;
+									}
+
+								}
+								else {
+									Sleep(150);
+									C_human human(Element.m_set_Human());
+									C_date Date;
+									Date.m_get_day(dd);
+									Date.m_get_month(mm);
+									Date.m_get_year(yy);
+									int i = yy.m_atoi(0, yy.m_size()-1), j = human.m_set_Vdate()[0].m_year_set().m_atoi(0,3);
+									if (i-13 > j) {
+										human.m_update_date(3, Date);
+										Element.m_update_human(human);
+										Element.m_get_partner(Partner); //skok5
+										return Element;
+									}
+								}
+								break;
+							}
+						}
+						break;
+					}
+				}
+			}
 			break;
 		}
 		case t_children:
