@@ -121,6 +121,7 @@
 #define M_import_tree 8
 #define M_szukanie 9
 #define M_menu_tree 10
+#define M_delete_human 11
 #define M_add_human 90 //dla kilku wywolan
 #define M_menu_relation 12
 #define M_edit_relation 13
