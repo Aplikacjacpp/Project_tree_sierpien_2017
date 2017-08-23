@@ -62,7 +62,7 @@ public:
 	int m_menu_add_gender(int where, C_human& human);		// metoda dodaje plec osoby
 	int m_menu_add_date(int where, C_human& human);			// metoda dodaje daty ur i smierci
 	int m_menu_relation(int where);				// wyswietla menu z relacjami
-	int m_delete_human(int where);
+	int m_menu_delete_human(int where);				// usuwanie osoby z drzewa
 	C_element m_menu_add_relations(int data, C_element Element);	// metoda dodaje relacje do osoby
 	int m_menu_edit_human(N_striing Data, int X, C_human& human);		// edycja humana
 	C_element m_menu_edit_relations();		// edycja relacji humana

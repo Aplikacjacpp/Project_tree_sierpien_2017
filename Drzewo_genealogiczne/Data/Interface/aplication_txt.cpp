@@ -1841,6 +1841,10 @@ int C_aplication_txt::m_menu_add_date(int where, C_human& human) {
 								human.m_get_date(date);
 							else
 							{
+								//SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 12);
+								//std::cout << "\n\nERROR!!! Wrong dates";
+								//Sleep(1000);
+								//return M_menu_tree;
 								ptr = 1;  //nie wiem czy dobrze
 								break;
 							}
@@ -4111,7 +4115,7 @@ int C_aplication_txt::m_export_tree(N_striing &data) {
 
 */
 
-int C_aplication_txt::m_delete_human(int where)
+int C_aplication_txt::m_menu_delete_human(int where)
 {
 	bool b_where = false;
 	int ptr = 0, p = 0, i;
@@ -4451,7 +4455,7 @@ void C_aplication_txt::m_menu() {
 		}
 		case M_delete_human:
 		{
-			Value = m_delete_human(L_human);
+			Value = m_menu_delete_human(L_human);
 			break;
 		}
 		case (M_add_human + 1):
