@@ -3149,6 +3149,7 @@ C_element C_aplication_txt::m_menu_add_relations(int data, C_element Element) {
 										Element.m_get_partner(Partner); //skok5
 										return Element;
 									}
+
 								}
 								break;
 							}

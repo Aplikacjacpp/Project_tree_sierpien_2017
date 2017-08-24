@@ -1,7 +1,7 @@
 #include "order.h"
-C_order::C_order() :C_relation(n_order) {}
-C_order::C_order(C_id &id) : C_relation(n_order) { ID_index = id; }
-C_order::C_order(const C_id &id) : C_relation(n_order) { ID_index = id; }
+C_order::C_order() :C_relation(n_order) { ID_value = 0; ID_index = 0; }
+C_order::C_order(C_id &id) : C_relation(n_order) { ID_index = id; ID_value = 0; }
+C_order::C_order(const C_id &id) : C_relation(n_order) { ID_index = id; ID_value = 0; }
 C_order::C_order(const C_order &sib) : C_relation(sib) {
 	if (this != &sib) *this = sib;
 }

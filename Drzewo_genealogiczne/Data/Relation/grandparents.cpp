@@ -1,7 +1,7 @@
 #include "grandparents.h"
-C_grandparents::C_grandparents():C_relation(n_grandparent) {}
-C_grandparents::C_grandparents(C_id &id) : C_relation(n_grandparent) { ID_index = id; }
-C_grandparents::C_grandparents(const C_id &id) : C_relation(n_grandparent) { ID_index = id; }
+C_grandparents::C_grandparents() :C_relation(n_grandparent) { ID_index = 0; ID_value = 0; }
+C_grandparents::C_grandparents(C_id &id) : C_relation(n_grandparent) { ID_index = id; ID_value = 0; }
+C_grandparents::C_grandparents(const C_id &id) : C_relation(n_grandparent) { ID_index = id; ID_value = 0; }
 C_grandparents::C_grandparents(const C_grandparents & grandparents):C_relation() {
 	if (this != &grandparents) *this = grandparents;
 }

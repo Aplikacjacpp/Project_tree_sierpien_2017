@@ -1,7 +1,7 @@
 #include "children.h"
-C_children::C_children():C_relation(n_children) {}
-C_children::C_children(C_id &id) : C_relation(n_children) { ID_index = id; }
-C_children::C_children(const C_id &id) : C_relation(n_children) { ID_index = id; }
+C_children::C_children():C_relation(n_children) { ID_index = 0; ID_value = 0; }
+C_children::C_children(C_id &id) : C_relation(n_children) { ID_index = id; ID_value = 0; }
+C_children::C_children(const C_id &id) : C_relation(n_children) { ID_index = id; ID_value = 0; }
 C_children::C_children(const C_children &children):C_relation(children) {
 	if (this != &children) *this = children;
 }

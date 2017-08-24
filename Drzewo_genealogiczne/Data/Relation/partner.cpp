@@ -1,7 +1,7 @@
 #include "partner.h"
-C_partner::C_partner() :C_relation(n_partner) {}
-C_partner::C_partner(C_id &id) : C_relation(n_partner) { ID_index = id; }
-C_partner::C_partner(const C_id &id) : C_relation(n_partner) { ID_index = id; }
+C_partner::C_partner() :C_relation(n_partner) { ID_value = 0; ID_index = 0; }
+C_partner::C_partner(C_id &id) : C_relation(n_partner) { ID_index = id; ID_value = 0;}
+C_partner::C_partner(const C_id &id) : C_relation(n_partner) { ID_index = id; ID_value = 0;}
 C_partner::C_partner(const C_partner &partner) : C_relation(partner) {
 	if (this != &partner) *this = partner;
 }

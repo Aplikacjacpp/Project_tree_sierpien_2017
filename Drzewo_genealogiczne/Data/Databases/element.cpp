@@ -1,5 +1,23 @@
 #include "element.h"
-C_element::C_element() {}
+C_element::C_element() {
+	C_grandparents grandparent;
+	C_parent parent;
+	C_partner partner;
+	C_children children;
+	C_sibling sibling;
+	C_grandchildren grandchildren;
+	C_order order;
+	int i;
+	for (i = 0; i < 2; i++)
+		V_parent.m_push_back(parent);
+	for (i = 0; i < 4; i++)
+		V_grandparents.m_push_back(grandparent);
+	V_partner.m_push_back(partner);
+	V_sibling.m_push_back(sibling);
+	V_children.m_push_back(children);
+	V_grandchildren.m_push_back(grandchildren);
+	V_order.m_push_back(order);
+}
 C_element::C_element(const C_element &element) { if (this != &element) *this = element; }
 C_element& C_element::operator=(const C_element &element) {
 	if (this == &element) return *this;
