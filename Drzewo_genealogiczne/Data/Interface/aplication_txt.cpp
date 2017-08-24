@@ -3346,6 +3346,7 @@ C_element C_aplication_txt::m_menu_wybor_humana_wskaznikowego() { //do doglebneg
 //w momecie tworzenia jednego elementu nie musza byc aktualizowane
 int C_aplication_txt::m_menu_edit_human(N_striing Data, int X, C_human &human)  //metoda do przerobienia
 {
+	bool pointer = false;
 	X++;
 	int i;
 	//nie przekazuje do metody zadnych danych o humanie!!
@@ -3422,6 +3423,10 @@ int C_aplication_txt::m_menu_edit_human(N_striing Data, int X, C_human &human)  
 			cls();
 			//m_create_logo();
 			std::cout << "\tYou can change your personal data. Don't forget to save your changes!\n\n";
+			if (pointer)
+			{
+				std::cout << "Wprowadzona data smierci jest nieprawidlowa!\n";
+			}
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 			for (int i = 0; i < 6; ++i)
 			{
@@ -3609,8 +3614,19 @@ int C_aplication_txt::m_menu_edit_human(N_striing Data, int X, C_human &human)  
 							date.m_get_day(dd);
 							date.m_get_month(mm);
 							date.m_get_year(yy);
-							if (v_date.m_size() > 1)
-								human.m_update_date(1, date);
+							if (v_date.m_size() > 1) {
+								if (v_date[0] <= date)
+									human.m_update_date(1, date);
+								else
+								{
+									dd.m_clear();
+									mm.m_clear();
+									yy.m_clear();
+									pointer = true;
+									pt = 3;
+									break;
+								}
+							}
 							else
 								human.m_get_date(date);
 							human.m_get_first_name(First);
