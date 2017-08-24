@@ -1075,7 +1075,7 @@ int C_aplication_txt::m_menu_add_human(int where) { // dodawanie nowej osoby
 								int iteral;
 								for (iteral = 0; iteral < V_date.m_size(); iteral++)
 								{
-									human.m_get_date(V_date[iteral]);				//dodaj daty
+									human.m_update_date(iteral,V_date[iteral]);				//dodaj daty
 								}
 								break;
 							}
@@ -1083,8 +1083,8 @@ int C_aplication_txt::m_menu_add_human(int where) { // dodawanie nowej osoby
 								//Sleep(150);
 								if (!b_what)
 								{
-									C_date date;
-									human.m_get_date(date);
+				//					C_date date;
+				//					human.m_get_date(date); //co to jest?? ktos wie??
 								}
 								if (!b_whats)
 								{
@@ -1552,6 +1552,7 @@ int C_aplication_txt::m_menu_add_gender(int where, C_human& human) {
 int C_aplication_txt::m_menu_add_date(int where, C_human& human) {
 	int ptr = 1, i;
 	char C;
+	bool pointer = false;
 	N_striing data;
 	//C_human human;
 	N_striing dd, mm, yy, save, typ;
@@ -1690,7 +1691,8 @@ int C_aplication_txt::m_menu_add_date(int where, C_human& human) {
 							date.m_get_day(dd);				//zapisuje
 							date.m_get_month(mm);
 							date.m_get_year(yy);
-							human.m_get_date(date);
+							date.m_get_type(d_date_bristday);
+							human.m_update_date(0,date);
 							b_what = true;
 							data.m_clear();
 							dd.m_clear();
@@ -1734,6 +1736,10 @@ int C_aplication_txt::m_menu_add_date(int where, C_human& human) {
 					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 					cout << "\t\t\t\t" << MenuSub_add_last_name[i] << endl;
 				}
+			}
+			if (pointer)
+			{
+				std::cout << "Niepoprawna data smierci!!\n\n";
 			}
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 			cout << "\n\n\n\n Use the arrows to navigate the menu ";
@@ -1837,15 +1843,20 @@ int C_aplication_txt::m_menu_add_date(int where, C_human& human) {
 							date.m_get_day(dd);
 							date.m_get_month(mm);
 							date.m_get_year(yy);
-							if (human.m_set_Vdate().m_size()<2&&human.m_set_Vdate()[0]<=date) //dodalem przeciaenie operatorow
-								human.m_get_date(date);
+							date.m_get_type(d_date_dead);
+							if (human.m_set_Vdate()[0]<=date) //dodalem przeciaenie operatorow
+								human.m_update_date(1,date); //dziala:)
 							else
 							{
 								//SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 12);
 								//std::cout << "\n\nERROR!!! Wrong dates";
 								//Sleep(1000);
 								//return M_menu_tree;
-								ptr = 1;  //nie wiem czy dobrze
+								//ptr = 1;  //nie wiem czy dobrze
+								pointer = true;
+								dd.m_clear();
+								mm.m_clear();
+								yy.m_clear();
 								break;
 							}
 
@@ -1894,7 +1905,7 @@ void C_aplication_txt::m_load_lista() {		// lista ludzi
 		s_Data += '  ';											//spacja
 		s_Data += human.m_set_last_name().m_set_contens();		//nazwisko
 		s_Data += "\n\t\t\t\t";
-		if (human.m_set_date(0).m_day_set() == '0' || human.m_set_date(0).m_month_set() == '0') {
+		if (human.m_set_date(0).m_day_set() == '/' || human.m_set_date(0).m_month_set() == '/'||human.m_set_date(0).m_year_set()=='/') {
 			s_Data += " - - ";									//data urodzena
 		}
 		else
@@ -3130,9 +3141,10 @@ C_element C_aplication_txt::m_menu_add_relations(int data, C_element Element) {
 									Date.m_get_day(dd);
 									Date.m_get_month(mm);
 									Date.m_get_year(yy);
+									Date.m_get_type(d_date_slubu);
 									int i = yy.m_atoi(0, yy.m_size()-1), j = human.m_set_Vdate()[0].m_year_set().m_atoi(0,3);
 									if (i-13 > j) {
-										human.m_update_date(3, Date);
+										human.m_update_date(2, Date);
 										Element.m_update_human(human);
 										Element.m_get_partner(Partner); //skok5
 										return Element;

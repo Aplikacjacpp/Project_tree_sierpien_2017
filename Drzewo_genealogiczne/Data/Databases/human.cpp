@@ -1,6 +1,16 @@
 #include "human.h"
-C_human::C_human() {}
-C_human::C_human(C_id &id) { Id = id; }
+C_human::C_human() { 
+	C_date date; 
+	date.m_get_type(d_date_bristday); V_date.m_push_back(date);
+	date.m_get_type(d_date_dead); V_date.m_push_back(date);
+	date.m_get_type(d_date_slubu); V_date.m_push_back(date);
+}
+C_human::C_human(C_id &id) { Id = id; 
+C_date date;
+date.m_get_type(d_date_bristday); V_date.m_push_back(date);
+date.m_get_type(d_date_dead); V_date.m_push_back(date);
+date.m_get_type(d_date_slubu); V_date.m_push_back(date);
+}
 C_human::C_human(const C_human &human) { if (this != &human) *this = human; }
 C_human& C_human::operator=(const C_human &human) {
 	if (this == &human) return *this;
@@ -78,13 +88,27 @@ void C_human::m_delete_last_name() { V_last.m_pop_front(); }
 void C_human::m_delete_gender() { N_striing data = ""; Gender.m_get_contens(data);}
 void C_human::m_delete_date(int value) { V_date.m_erase(value); }
 void C_human::m_delete_date() { V_date.m_pop_front(); }
-void C_human::m_update_date(int value, C_date& date) { V_date.m_erase(value);
-if (value >= V_date.m_size())
-{
-	V_date.m_push_back(date);
-	return;
+void C_human::m_update_date(int value, C_date& date) {
+	switch (value)
+	{
+	case 0:
+	case 1:
+	case 2:
+	{
+		V_date.m_erase(value);
+		if (value >= V_date.m_size())
+		{
+			V_date.m_push_back(date);
+			return;
+		}
+		V_date.m_insert(value, date);
+		break;
+	}
+	default:
+		std::cout << "Error wykroczenie poza vektor dat!!\n";
+		break;
+	}
 }
-V_date.m_insert(value, date); }
 void C_human::m_update_last_name(int value, C_last_name& l_name) { 
 	V_last.m_erase(value);
 	if (V_last.m_size() == 0)
@@ -544,7 +568,7 @@ std::ostream& operator<<(std::ostream &is,const C_human &h) {
 	N_vektor<C_last_name> Last = h.V_last;
 	N_vektor<C_date> date = h.V_date;
 	for (i = 0; i < Last.m_size(); i++) {
-		is<< Last[i];
+		is<<"Surname:"<< Last[i];
 	}
 	is << "\n\t"<<h.Gender << "\n\t";
 	for (i = 0; i < date.m_size(); i++) {
@@ -552,17 +576,17 @@ std::ostream& operator<<(std::ostream &is,const C_human &h) {
 		{
 		case 0:
 		{
-			is <<"Date of birth: "<< date[i] << "\t";
+			is <<"Date of birth: "<< date[i];
 			break;
 		}
 		case 1:
 		{
-			is << "Date of death: " << date[i] << "\t"; //polskie litery
+			is << "Date of death: " << date[i]; //polskie litery
 			break;
 		}
 		case 2:
 		{
-			is << "Date of wedding: " << date[i] << "\t"; //polskie litery
+			is << "Date of wedding: " << date[i]; //polskie litery
 			break;
 		}
 		default:

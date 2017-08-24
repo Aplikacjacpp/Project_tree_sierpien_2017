@@ -107,8 +107,8 @@
 #define op_name_catalog ".tree"
 //Dane daty
 #define d_date_bristday "z1"
-#define d_date_slubu "z2"
-#define d_date_dead  "z3"
+#define d_date_slubu "z3"
+#define d_date_dead  "z2"
 //Dane menu:
 #define M_menu_glowne 0
 #define M_new_tree 1

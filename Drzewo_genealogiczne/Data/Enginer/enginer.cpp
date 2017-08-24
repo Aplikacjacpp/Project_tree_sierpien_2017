@@ -136,7 +136,7 @@ C_human C_enginer::m_create_human(C_id id_finter) {
 		if (i >= 0 && i < V_goverment_date.m_size()) {
 			N_vektor<C_date> V_date = V_goverment_date[i].m_set_value_V_date();
 			for (j = 0; j < V_date.m_size(); j++)
-				human.m_get_date(V_date[j]);
+				human.m_update_date(j,V_date[j]);
 			//std::cout << V_date[0];
 			//std::cout<< V_date.m_size()<<" = "<<V_goverment_date[i].m_set_value_V_date()[0]<<"\n";
 		//	Sleep(2000);

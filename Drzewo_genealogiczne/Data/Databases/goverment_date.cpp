@@ -30,6 +30,7 @@ void C_goverment_date::m_get_contens(N_striing &contens) {
 	if (contens.m_size() == 0)
 		return;
 	this->s_goverment_data = m_is_there_contens(contens);
+	//std::cout << s_goverment_data << "\n";
 	i_value_id = m_id_value();
 }
 N_striing C_goverment_date::m_set_contens() { return this->s_goverment_data; }
@@ -83,73 +84,92 @@ int C_goverment_date::m_id_value() {
 int C_goverment_date::m_set_value_id() {
 	return i_value_id;
 }
-C_day C_goverment_date::m_set_value_day() {
+C_day C_goverment_date::m_set_value_day(const char* value) {
 	C_day day;
-	int i, j;
-	N_striing str, data;
-	for (i = 1; i < s_goverment_data.m_size(); i++) {
-		data.m_clear();
-		data.m_push_back(s_goverment_data[i - 1]);
-		data.m_push_back(s_goverment_data[i]);
-		if (data == n_day)
-		{
-			for (j = i+1; j < s_goverment_data.m_size(); j++)
-			{
-				if (s_goverment_data[j] >= '0' && s_goverment_data[j] <= '9')
+	if (value == d_date_bristday || value == d_date_dead || value == d_date_slubu)
+	{
+		bool yes = false;
+		int i, j;
+		N_striing str, data;
+		for (i = 1; i < s_goverment_data.m_size(); i++) {
+			data.m_clear();
+			data.m_push_back(s_goverment_data[i - 1]);
+			data.m_push_back(s_goverment_data[i]);
+			if (data == value)
+				yes = true;
+				if (data == n_day&&yes)
 				{
-					str.m_push_back(s_goverment_data[j]);
-					continue;
+					for (j = i + 1; j < s_goverment_data.m_size(); j++)
+					{
+						if (s_goverment_data[j] >= '0' && s_goverment_data[j] <= '9')
+						{
+							str.m_push_back(s_goverment_data[j]);
+							continue;
+						}
+						day.m_get_contens(str);
+						return day;
+					}
 				}
-					day.m_get_contens(str);
-					return day;
-			}
 		}
 	}
-	return day;
+		return day;
+
 }; //przetestowac czy dziala
-C_month C_goverment_date::m_set_value_month() {
+C_month C_goverment_date::m_set_value_month(const char* value) {
 	C_month month;
-	int i, j;
-	N_striing str, data;
-	for (i = 1; i < s_goverment_data.m_size(); i++) {
-		data.m_clear();
-		data.m_push_back(s_goverment_data[i - 1]);
-		data.m_push_back(s_goverment_data[i]);
-		if (data == n_month)
-		{
-			for (j = i+1; j < s_goverment_data.m_size(); j++)
-			{
-				if (s_goverment_data[j] >= '0' && s_goverment_data[j] <= '9')
+	if (value == d_date_bristday || value == d_date_dead || value == d_date_slubu)
+	{
+		bool yes=false;
+		int i, j;
+		N_striing str, data;
+		for (i = 1; i < s_goverment_data.m_size(); i++) {
+			data.m_clear();
+			data.m_push_back(s_goverment_data[i - 1]);
+			data.m_push_back(s_goverment_data[i]);
+			if (data == value)
+				yes = true;
+				if (data == n_month&&yes)
 				{
-					str.m_push_back(s_goverment_data[j]);
-					continue;
+					for (j = i + 1; j < s_goverment_data.m_size(); j++)
+					{
+						if (s_goverment_data[j] >= '0' && s_goverment_data[j] <= '9')
+						{
+							str.m_push_back(s_goverment_data[j]);
+							continue;
+						}
+						month.m_get_contens(str);
+						return month;
+					}
 				}
-					month.m_get_contens(str);
-					return month;
 			}
-		}
 	}
 	return month;
 }; //przetestowac czy dziala
-C_year C_goverment_date::m_set_value_year() {
+C_year C_goverment_date::m_set_value_year(const char* value) {
 	C_year year;
-	int i, j;
-	N_striing str, data;
-	for (i = 1; i < s_goverment_data.m_size(); i++) {
-		data.m_clear();
-		data.m_push_back(s_goverment_data[i - 1]);
-		data.m_push_back(s_goverment_data[i]);
-		if (data == n_year)
-		{
-			for (j = i+1; j < s_goverment_data.m_size(); j++)
+	if (value == d_date_bristday || value == d_date_dead || value == d_date_slubu)
+	{
+		bool yes = false;
+		int i, j;
+		N_striing str, data;
+		for (i = 1; i < s_goverment_data.m_size(); i++) {
+			data.m_clear();
+			data.m_push_back(s_goverment_data[i - 1]);
+			data.m_push_back(s_goverment_data[i]);
+			if (data == value)
+				yes = true;
+			if (data == n_year&&yes)
 			{
-				if (s_goverment_data[j] >= '0' && s_goverment_data[j] <= '9')
+				for (j = i + 1; j < s_goverment_data.m_size(); j++)
 				{
-					str.m_push_back(s_goverment_data[j]);
-					continue;
-				}
+					if (s_goverment_data[j] >= '0' && s_goverment_data[j] <= '9')
+					{
+						str.m_push_back(s_goverment_data[j]);
+						continue;
+					}
 					year.m_get_contens(str);
 					return year;
+				}
 			}
 		}
 	}

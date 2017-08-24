@@ -106,10 +106,13 @@ void C_sl_date::m_get_new_date(C_id id,N_vektor<C_date> V_date) {
 			date = V_date[i];
 			data += date.m_what_type_date();
 			data += date.m_set_day().m_what_type();
+			if(date.m_day_set()!="/")
 			data += date.m_day_set();
 			data += date.m_set_month().m_what_type();
+			if (date.m_month_set() != "/")
 			data += date.m_month_set();
 			data += date.m_set_year().m_what_type();
+			if (date.m_year_set() != "/")
 			data += date.m_year_set();
 			if (i == V_date.m_size() - 1)
 				data += ">";

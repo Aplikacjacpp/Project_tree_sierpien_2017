@@ -1,6 +1,6 @@
 #include "date.h"
-C_date::C_date():C_day(0),C_month(0),C_year(0) {}
-C_date::C_date(char value):C_day(0),C_month(0),C_year(0) { c_value = value; }
+C_date::C_date():C_day(-1),C_month(-1),C_year(-1) {}
+C_date::C_date(char value):C_day(-1),C_month(-1),C_year(-1) { c_value = value; }
 C_date::C_date(const C_date &d) : C_day(d.i_data_day), C_month(d.i_data_month), C_year(d.i_data_year) { if (this != &d) *this = d; }
 C_date& C_date::operator=(const C_date &d) {
 	if (this == &d) return *this;
@@ -189,6 +189,7 @@ void C_date::m_get_type(N_striing value) {
 	s_value = value;
 }
 std::ostream& operator<<(std::ostream &is, const C_date &d) {
+	if(d.i_data_day!=-1&&d.i_data_month!=-1&&d.i_data_year!=-1)
 	is <<"data: "<< d.i_data_day << "." << d.i_data_month << "." << d.i_data_year;
 	return is;
 }

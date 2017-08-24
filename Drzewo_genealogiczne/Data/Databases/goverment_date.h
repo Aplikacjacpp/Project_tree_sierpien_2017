@@ -33,9 +33,9 @@ public:
 	virtual void m_get_contens(N_striing &contens); //wprowadza striing do klasy
 	virtual N_striing m_set_contens(); //zwraca caly striing
 	int m_set_value_id(); //zwraca wyszukana wczesniej wartosc id
-	C_day m_set_value_day(); //wyszukuje i zwraca wartosc day
-	C_month m_set_value_month(); //wyszukuje i zwraca wartosc month
-	C_year m_set_value_year(); //wyszukuje i zwraca wartosc year
+	C_day m_set_value_day(const char* value); //wyszukuje i zwraca wartosc day
+	C_month m_set_value_month(const char* value); //wyszukuje i zwraca wartosc month
+	C_year m_set_value_year(const char* value); //wyszukuje i zwraca wartosc year
 	N_vektor<C_date> m_set_value_V_date(); // zwraca wektor obiektow C_date
 	N_vektor<C_day> m_set_value_V_day(); //wyszukuje i zwraca wartosc day
 	N_vektor<C_month> m_set_value_V_month(); //wyszukuje i zwraca wartosc month
