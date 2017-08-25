@@ -966,7 +966,7 @@ int C_aplication_txt::m_menu_add_human(int where) { // dodawanie nowej osoby
 			N_striing MenuSub_add_person[6] = { "1. Add a first name", "2. Add a surname", "3. Add a gender", "4. Add a date","5. Save Person" ,"6. Return" };
 			N_striing SubSub_add_person[6] = { "[You can add a first name to your person]", "[You can add a surname to your person]","[You can choose your gender]", "[You can add a date of birth]",
 				"[Save your person]", "[Return From Add Person]" };
-			Sleep(1500);    // sleepy musza byc, by uniknac "podwojnego" ENTERA!!!
+			Sleep(100);    // sleepy musza byc, by uniknac "podwojnego" ENTERA!!!
 							// tutaj powinna byc metoda dolaczenia nowej osoby
 			while (true)
 			{
@@ -1001,11 +1001,11 @@ int C_aplication_txt::m_menu_add_human(int where) { // dodawanie nowej osoby
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 				cout << " if you want back to main menu.";
 				cout << " \n\n";
-				cout << human;
+				//cout << human;
 				Human = human;
 				while (true)
 				{
-					Sleep(150);
+					//Sleep(150);
 					if (GetAsyncKeyState(VK_SPACE)) {
 						//	Sleep(150);
 						if (m_what_menu())
@@ -1161,7 +1161,7 @@ int C_aplication_txt::m_menu_add_human(int where) { // dodawanie nowej osoby
 				cout << " if you want back to main menu.";
 				while (true)
 				{
-					Sleep(150);
+					//Sleep(150);
 					if (GetAsyncKeyState(VK_SPACE)) {
 						//Sleep(150);
 						if (m_what_menu())
@@ -1739,7 +1739,8 @@ int C_aplication_txt::m_menu_add_date(int where, C_human& human) {
 			}
 			if (pointer)
 			{
-				std::cout << "Niepoprawna data smierci!!\n\n";
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
+				std::cout << "ERROR! Wrong date of death!\n\n";
 			}
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 			cout << "\n\n\n\n Use the arrows to navigate the menu ";
