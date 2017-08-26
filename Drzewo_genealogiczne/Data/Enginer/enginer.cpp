@@ -106,13 +106,13 @@ void C_enginer::m_printer(int i) {
 	case 1:
 	{
 		//system("cls");
-		std::cout << "Wczytywanie danych...\n";
+		std::cout << "Loading data...\n";
 		break; 
 	}
 	case 2:
 	{
 	//	system("cls");
-		std::cout << "Zapisywanie danych..\n";
+		std::cout << "Saving data..\n";
 		break;
 	}
 	default:

@@ -437,6 +437,7 @@ int C_aplication_txt::m_edit_tree()
 		}
 	}
 }
+
 int C_aplication_txt::m_search_tree()
 {
 	N_striing MenuSub1[3] = { "1. Search by personal data", "2. Search by date" , "3. Exit" };
@@ -522,6 +523,7 @@ int C_aplication_txt::m_search_tree()
 		Sleep(150);     // szybkosc poruszania sie po menu
 	}
 }
+
 int C_aplication_txt::m_display_tree()
 {
 	N_striing MenuSub1[3] = { "1. Display from the oldest", "2. Search" , "3. Exit" };
@@ -608,6 +610,8 @@ int C_aplication_txt::m_display_tree()
 		Sleep(150);     // szybkosc poruszania sie po menu
 	}
 }
+
+
 int C_aplication_txt::m_sub_menu_2()
 {
 	//moim zadniem lista z wczytanymi drzewami do wyboru:P
@@ -966,7 +970,7 @@ int C_aplication_txt::m_menu_add_human(int where) { // dodawanie nowej osoby
 			N_striing MenuSub_add_person[6] = { "1. Add a first name", "2. Add a surname", "3. Add a gender", "4. Add a date","5. Save Person" ,"6. Return" };
 			N_striing SubSub_add_person[6] = { "[You can add a first name to your person]", "[You can add a surname to your person]","[You can choose your gender]", "[You can add a date of birth]",
 				"[Save your person]", "[Return From Add Person]" };
-			Sleep(100);    // sleepy musza byc, by uniknac "podwojnego" ENTERA!!!
+			Sleep(150);    // sleepy musza byc, by uniknac "podwojnego" ENTERA!!!
 							// tutaj powinna byc metoda dolaczenia nowej osoby
 			while (true)
 			{
@@ -1026,7 +1030,7 @@ int C_aplication_txt::m_menu_add_human(int where) { // dodawanie nowej osoby
 					{
 						//	Sleep(150);
 						ptr += 1;
-						if (ptr == 5)       // gdy wykracza poza menu, znow wraca na poczatek
+						if (ptr == 6)       // gdy wykracza poza menu, znow wraca na poczatek
 						{
 							ptr = 0;
 						}
@@ -1248,7 +1252,7 @@ int C_aplication_txt::m_menu_add_first_name(int where,C_human& human) {
 	char C;
 	//WH_KEYBOARD_LL;//hak do klawiatury
 	//bool b_what;
-	Sleep(1500);    // sleepy musza byc, by uniknac "podwojnego" ENTERA!!!
+	Sleep(100);    // sleepy musza byc, by uniknac "podwojnego" ENTERA!!!
 					// tutaj powinna byc metoda dolaczenia nowej osoby
 	while (true)
 	{
@@ -1355,7 +1359,7 @@ int C_aplication_txt::m_menu_add_last_name(int where, C_human &human) {
 	char C;
 	//WH_KEYBOARD_LL;//hak do klawiatury
 	bool b_what;
-	Sleep(1500);    // sleepy musza byc, by uniknac "podwojnego" ENTERA!!!
+	Sleep(100);    // sleepy musza byc, by uniknac "podwojnego" ENTERA!!!
 					//	tutaj powinna byc metoda dolaczenia nowej osoby
 	while (true)
 	{
@@ -1459,7 +1463,7 @@ int C_aplication_txt::m_menu_add_gender(int where, C_human& human) {
 	char C;
 	N_striing data;
 	//C_human human;
-	Sleep(1500);    // sleepy musza byc, by uniknac "podwojnego" ENTERA!!!
+	Sleep(100);    // sleepy musza byc, by uniknac "podwojnego" ENTERA!!!
 					// tutaj powinna byc metoda dolaczenia nowej osoby
 	while (true)
 	{
@@ -1557,7 +1561,7 @@ int C_aplication_txt::m_menu_add_date(int where, C_human& human) {
 	//C_human human;
 	N_striing dd, mm, yy, save, typ;
 	bool b_what = false;
-	Sleep(1500);    // sleepy musza byc, by uniknac "podwojnego" ENTERA!!!
+	Sleep(100);    // sleepy musza byc, by uniknac "podwojnego" ENTERA!!!
 					// tutaj powinna byc metoda dolaczenia nowej osoby
 	while (true)
 	{
@@ -2114,7 +2118,7 @@ int C_aplication_txt::m_lista(int what_this) { //do naprawy bedzie switch!!! <- 
 				}
 				while (true)
 				{
-					Sleep(150);
+					Sleep(50);
 					if (GetAsyncKeyState(VK_SPACE) != 0) return M_import_tree;
 					if (GetAsyncKeyState(VK_UP) != 0)   // strzalka do gory przesuwa wyzej po menu
 					{
@@ -2242,8 +2246,11 @@ int C_aplication_txt::m_lista(int what_this) { //do naprawy bedzie switch!!! <- 
 				}
 				while (true)
 				{
-					Sleep(150);
-					if (GetAsyncKeyState(VK_SPACE) != 0) return M_import_tree;
+					//Sleep(150);
+					if (GetAsyncKeyState(VK_SPACE) != 0)
+					{
+						Sleep(150); return M_import_tree;
+					}
 					if (GetAsyncKeyState(VK_UP) != 0)   // strzalka do gory przesuwa wyzej po menu
 					{
 						ptr -= 1;
@@ -2357,8 +2364,8 @@ int C_aplication_txt::m_lista(int what_this) { //do naprawy bedzie switch!!! <- 
 					std::cout << "ENTER.";
 					while (true)
 					{
-						Sleep(150);
-						if (GetAsyncKeyState(VK_SPACE) != 0) return M_import_tree;
+						//Sleep(150);
+						if (GetAsyncKeyState(VK_SPACE) != 0) return M_menu_glowne;
 						if (GetAsyncKeyState(VK_UP) != 0)   // strzalka do gory przesuwa wyzej po menu
 						{
 							ptr -= 1;
@@ -3055,7 +3062,7 @@ C_element C_aplication_txt::m_menu_add_relations(int data, C_element Element) {
 				date += mm;
 				date += "-";
 				date += yy;
-				N_striing Menu2[1] = { "Data zawarta slubu: " };
+				N_striing Menu2[1] = { "Date of wedding: " };
 				N_striing SubMenu2[1] = { date };
 				cls();
 				m_create_logo();
@@ -3196,7 +3203,7 @@ C_element C_aplication_txt::m_menu_wybor_humana_wskaznikowego() { //do doglebneg
 		C_element element;
 		return element;
 	}
-	int i, j, w, q;
+	int i, j, w, q;			// zmienne w petlach for
 	N_striing goverment_data;
 #pragma region Analiza sprzezenia zwrotnego
 	for (j = 0; j < V_ID.m_size(); j++) {
@@ -3424,10 +3431,12 @@ int C_aplication_txt::m_menu_edit_human(N_striing Data, int X, C_human &human)  
 			N_striing SubMenu2[6] = { first_name, sure_name, gender, data,"[Save Human]", "[Back To Previous Menu]" };
 			cls();
 			//m_create_logo();
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 			std::cout << "\tYou can change your personal data. Don't forget to save your changes!\n\n";
 			if (pointer)
 			{
-				std::cout << "Wprowadzona data smierci jest nieprawidlowa!\n";
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
+				std::cout << "ERROR! Wrong date of death!\n";
 			}
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 			for (int i = 0; i < 6; ++i)
@@ -3689,6 +3698,7 @@ int C_aplication_txt::m_menu_edit_human(N_striing Data, int X, C_human &human)  
 						N_striing SubMenu2[6] = { first_name, sure_name, gender, data,"[Save Human]", "[Back To Previous Menu]" };
 						cls();
 						//m_create_logo();
+						SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 						std::cout << "\tYou can change your personal data. Don't forget to save your changes!\n\n";
 						SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 						for (int i = 0; i < 6; ++i)
@@ -3938,6 +3948,7 @@ int C_aplication_txt::m_menu_edit_human(N_striing Data, int X, C_human &human)  
 						N_striing SubMenu2[6] = { first_name, sure_name, gender, data,"[Save Human]", "[Back To Previous Menu]" };
 						cls();
 						//m_create_logo();
+						SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 						std::cout << "\tYou can change your personal data. Don't forget to save your changes!\n\n";
 						SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 
