@@ -152,6 +152,25 @@ N_vektor& m_pop_front() {
 		m_erase(0);
 		return *this;
 	}
+
+N_vektor& m_erase(N_vektor<int>& myNumbers_in, int number_in)
+{
+	std::N_vektor<int>::iterator iter = myNumbers_in.begin();
+	while (iter != myNumbers_in.end())
+	{
+		if (*iter == number_in)
+		{
+			iter = myNumbers_in.erase(iter);
+		}
+		else
+		{
+			++iter;
+		}
+	}
+
+}
+
+
 N_vektor& m_insert(int value, T inside) {
 		if (value >= 0 && value < Size)
 		{

@@ -3,6 +3,7 @@
 #include <cstdlib>
 //#include <fstream>
 #include <Windows.h>
+#include <vector>
 
 C_aplication_txt::C_aplication_txt() {
 	system("del operation.ope&&cls");	// na poczatku usuwa plik operation.ope + czysci ekran
@@ -4276,8 +4277,8 @@ int C_aplication_txt::m_menu_delete_human(int where)
 	while (true)
 	{
 			int r;
-			m_load_lista(); //bagi z nadpisywaniem sie listy - chyba naprawione
-			if (Lista.m_size() == 0)
+			m_load_lista();			// lista ludzi
+			if (Lista.m_size() == 0)		// nie ma ludzi - wypisuje komunikat
 			{
 				cls();
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
@@ -4288,40 +4289,33 @@ int C_aplication_txt::m_menu_delete_human(int where)
 			cls();
 			if (Lista.m_size() < 5)
 			{
-				cykl = Lista.m_size(); //- cykl;
+				cykl = Lista.m_size();		// rozmiar listy ludzi
 			}
 			else
 			{
 				cykl = 5;
 			}
+
 			while (true)
 			{
 				cls();
 				m_create_logo();
 
-				/*SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-				std::cout << "\n\n\n Use the arrows to navigate the list ";
-				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
-				std::cout << char(24) << " " << char(25);        // kody ASCII strzalek
-				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-				std::cout << ". For more options click ";
-				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
-				std::cout << "ENTER.";
-				*/
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 				std::cout << "\t\t   Click Spacebar to back to the previous menu\n";
 				std::cout << "\t\t\t    Delete a person with ENTER\n\n";
+
 				if (ptr > 2) {
 					if (cykl + 1 <= Lista.m_size())
 						cykl += 1;
 					else
 					{
-						cykl = Lista.m_size(); //- cykl;
+						cykl = Lista.m_size();     // rozmiar listy ludzi
 					}
 				}
 				for (i = pentla; i < cykl; ++i)
 				{
-					if (i == ptr)       // podswietla dana opcje na niebiesko, dopisuje strzalke
+					if (i == ptr)       // podswietla dana osobe na niebiesko
 					{
 						SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 						cout << "\t\t\t\t" << i + 1 << "\t" << Lista[i] << endl;
@@ -4383,10 +4377,38 @@ int C_aplication_txt::m_menu_delete_human(int where)
 					{
 						//C_id id(ptr);
 						C_human human;
-						Sleep(1000);
-						int result;
-						result = m_menu_edit_human(V_goverment_personaly[ptr].m_set_contens(), ptr, human);
-						if (result == M_edit_tree)
+						//N_vektor <C_human> human;
+						//std::vector <C_human> human;
+						//Sleep(1000);
+						//	human.m_delete_last_name(ptr);     to nic nie robi
+						//  human.m_delete_date(ptr);         to tez nie
+						//Lista.m_erase(ptr);			// dziala ale sie wykrzacza!!
+						//Lista.m_pop_front();		// usuwa z przodu
+						Lista.m_erase(ptr);			// znowu sie wykrzacza!!
+
+						Sleep(500);
+						SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 12);
+						std::cout << "\t\tPerson deleted successfully!\n";
+						m_save_files(true);
+						//return M_edit_tree;
+						//human.m_pop_back();
+						//human.erase(human.begin() - 1);
+
+						/*if (result == M_edit_tree)
+						{
+							//m_update_human(human);
+							m_save_files(true);
+							return M_edit_tree;
+						}
+						else if (result == M_menu_glowne)
+						{
+							return M_menu_glowne;
+						}
+						*/
+
+						//int result;
+						//result = m_menu_edit_human(V_goverment_personaly[ptr].m_set_contens(), ptr, human);
+						/*if (result == M_edit_tree)
 						{
 							m_update_human(human);
 							m_save_files(true);
@@ -4396,6 +4418,7 @@ int C_aplication_txt::m_menu_delete_human(int where)
 						{
 							return M_menu_glowne;
 						}
+						*/
 					}
 				}
 				//	break;
