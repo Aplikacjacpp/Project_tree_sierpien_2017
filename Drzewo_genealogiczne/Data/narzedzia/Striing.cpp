@@ -46,7 +46,7 @@ N_striing& N_striing::operator=(const N_striing &C)
 		int i;
 		this->~N_striing();
 		size = C.size;
-		this->Table = new char[1+size];
+		this->Table = new char[1 + size];
 		for (i = 0; i < size; i++)
 		{
 			this->Table[i] = C.Table[i];

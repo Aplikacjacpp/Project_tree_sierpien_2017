@@ -152,6 +152,10 @@ N_vektor& m_pop_front() {
 		m_erase(0);
 		return *this;
 	}
+N_vektor& m_pop(int i) {
+	m_erase(i);
+	return *this;
+}
 
 N_vektor& m_erase(N_vektor<int>& myNumbers_in, int number_in)
 {

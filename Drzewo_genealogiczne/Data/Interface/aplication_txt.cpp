@@ -1,4 +1,4 @@
-﻿#include "aplication_txt.h"
+#include "aplication_txt.h"
 // #include "Data\Enginer\enginer.h"     nie widzi tego!
 #include <cstdlib>
 //#include <fstream>
@@ -1938,6 +1938,7 @@ int C_aplication_txt::m_lista(int what_this) { //do naprawy bedzie switch!!! <- 
 	{
 		switch (what_this)
 		{
+			Sleep(100);
 		case L_tree:
 		{
 			Sleep(200);
@@ -2247,7 +2248,7 @@ int C_aplication_txt::m_lista(int what_this) { //do naprawy bedzie switch!!! <- 
 				}
 				while (true)
 				{
-					//Sleep(150);
+					Sleep(150);
 					if (GetAsyncKeyState(VK_SPACE) != 0)
 					{
 						Sleep(150); return M_import_tree;
@@ -4377,18 +4378,20 @@ int C_aplication_txt::m_menu_delete_human(int where)
 					{
 						//C_id id(ptr);
 						C_human human;
+						//ptr = i;
 						//N_vektor <C_human> human;
 						//std::vector <C_human> human;
 						//Sleep(1000);
 						//	human.m_delete_last_name(ptr);     to nic nie robi
 						//  human.m_delete_date(ptr);         to tez nie
 						//Lista.m_erase(ptr);			// dziala ale sie wykrzacza!!
-						//Lista.m_pop_front();		// usuwa z przodu
-						Lista.m_erase(ptr);			// znowu sie wykrzacza!!
-
-						Sleep(500);
+						Lista.m_pop_front();		// usuwa z przodu
+						//Lista.m_erase(ptr);			// znowu sie wykrzacza!!
+						//Lista.m_pop(ptr);
+						//Sleep(500);
 						SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 12);
 						std::cout << "\t\tPerson deleted successfully!\n";
+						//m_update_human(human);
 						m_save_files(true);
 						//return M_edit_tree;
 						//human.m_pop_back();
