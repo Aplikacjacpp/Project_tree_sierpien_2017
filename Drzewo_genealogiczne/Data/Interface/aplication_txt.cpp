@@ -922,11 +922,17 @@ bool C_aplication_txt::m_what_return() {		// metoda ktora pyta co zrobic, wyjsc 
 				switch (ptr)
 				{
 				case 1:
+					Sleep(50);
 					return true;
+					break;
 				case 2:
+					Sleep(50);
 					return false;
+					break;
 				case 3:
+					Sleep(50);
 					return false;
+					break;
 				}
 				return true;
 			}
@@ -2298,7 +2304,8 @@ int C_aplication_txt::m_lista(int what_this) { //do naprawy bedzie switch!!! <- 
 					}
 					else if (GetAsyncKeyState(VK_RETURN) != 0)
 					{
-						return   m_look_at(ptr); //skok222
+						//return M_edit_human;
+						//return   m_look_at(ptr); //skok222
 					}
 				}
 		//		break;
@@ -3429,7 +3436,7 @@ int C_aplication_txt::m_menu_edit_human(N_striing Data, int X, C_human &human)  
 			data += mm;
 			data += " - ";
 			data += yy;
-			N_striing Menu2[6] = { "1. Name", "2. Surname", "3. Gender", "4. Date of death ","5. Save", "6. Return" };
+			N_striing Menu2[6] = { "1. Name", "2. Surname", "3. Gender", "4. Date of birth ","5. Save", "6. Return" };
 			N_striing SubMenu2[6] = { first_name, sure_name, gender, data,"[Save Human]", "[Back To Previous Menu]" };
 			cls();
 			//m_create_logo();
@@ -3696,7 +3703,7 @@ int C_aplication_txt::m_menu_edit_human(N_striing Data, int X, C_human &human)  
 						data += mm;
 						data += " - ";
 						data += yy;
-						N_striing Menu2[6] = { "1. Name", "2. Surname", "3. Gender", "4. Date of death ","5. Save", "6. Return" };
+						N_striing Menu2[6] = { "1. Name", "2. Surname", "3. Gender", "4. Date of birth ","5. Save", "6. Return" };
 						N_striing SubMenu2[6] = { first_name, sure_name, gender, data,"[Save Human]", "[Back To Previous Menu]" };
 						cls();
 						//m_create_logo();
@@ -4303,7 +4310,7 @@ int C_aplication_txt::m_menu_delete_human(int where)
 				m_create_logo();
 
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-				std::cout << "\t\t   Click Spacebar to back to the previous menu\n";
+				std::cout << "\t\t   Click Spacebar to back to the previous menu and save\n";
 				std::cout << "\t\t\t    Delete a person with ENTER\n\n";
 
 				if (ptr > 2) {
@@ -4330,7 +4337,11 @@ int C_aplication_txt::m_menu_delete_human(int where)
 				while (true)
 				{
 					Sleep(150);
-					if (GetAsyncKeyState(VK_SPACE) != 0) return M_import_tree;
+					if (GetAsyncKeyState(VK_SPACE) != 0)
+					{
+						m_save_files(true);
+						return M_import_tree;
+					}
 					if (GetAsyncKeyState(VK_UP) != 0)   // strzalka do gory przesuwa wyzej po menu
 					{
 						ptr -= 1;
@@ -4392,7 +4403,11 @@ int C_aplication_txt::m_menu_delete_human(int where)
 						SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 12);
 						std::cout << "\t\tPerson deleted successfully!\n";
 						//m_update_human(human);
-						m_save_files(true);
+						//human.m_delete_first_name();
+						//human.m_delete_last_name(ptr);
+						//human.m_delete_last_name(ptr);
+						//human.m_delete_date(ptr);
+						m_save_files(true);			// nie zapisuje nowej zawartosci!!!
 						//return M_edit_tree;
 						//human.m_pop_back();
 						//human.erase(human.begin() - 1);
