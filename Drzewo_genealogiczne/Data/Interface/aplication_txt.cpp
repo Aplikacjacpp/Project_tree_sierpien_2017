@@ -3,7 +3,7 @@
 #include <cstdlib>
 //#include <fstream>
 #include <Windows.h>
-#include <vector>
+//#include <vector>
 
 C_aplication_txt::C_aplication_txt() {
 	system("del operation.ope&&cls");	// na poczatku usuwa plik operation.ope + czysci ekran
@@ -147,7 +147,7 @@ int C_aplication_txt::m_main_menu() // menu glowne aplikacji
 	N_striing Menu[3] = { "1. New Tree", "2. Load Tree", "3. Exit" };
 	N_striing SubMenu[3] = { "[Create New Tree]", "[Import Your Created Trees]", "[Exit From Program]" };
 	int ptr = 0, p = 0;
-
+	setlocale(LC_ALL, ""); //czy to rozwiaze problem??
 	while (true)		// dopoki nie podejmie jakiejs akcji ciagle true, ekran z menu nie zniknie
 	{
 		Lista.m_close();
@@ -1170,6 +1170,7 @@ int C_aplication_txt::m_menu_add_human(int where) { // dodawanie nowej osoby
 				cout << "SPACEBAR";
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 				cout << " if you want back to main menu.";
+				Human = human;
 				while (true)
 				{
 					//Sleep(150);
@@ -1248,14 +1249,14 @@ int C_aplication_txt::m_menu_add_human(int where) { // dodawanie nowej osoby
 				}
 				break;
 			}
-		}
+		}//koniec else
 	}
 }
 int C_aplication_txt::m_menu_add_first_name(int where,C_human& human) {
 	int ptr = 0;
 	int i;
 	//C_human human;
-	N_striing data;
+	N_striing data="";
 	char C;
 	//WH_KEYBOARD_LL;//hak do klawiatury
 	//bool b_what;
@@ -1343,6 +1344,8 @@ int C_aplication_txt::m_menu_add_first_name(int where,C_human& human) {
 				C = m_get_key(true);
 				if (C != '\0') {
 					data.m_push_back(C);
+				//	std::cout << C<<"\n";
+				//	Sleep(1000);
 				}
 				break;
 			}
@@ -2305,7 +2308,7 @@ int C_aplication_txt::m_lista(int what_this) { //do naprawy bedzie switch!!! <- 
 					else if (GetAsyncKeyState(VK_RETURN) != 0)
 					{
 						//return M_edit_human;
-						//return   m_look_at(ptr); //skok222
+						return   m_look_at(ptr); //skok22 PO CO TO KOMENTOWALES??
 					}
 				}
 		//		break;
@@ -4397,6 +4400,7 @@ int C_aplication_txt::m_menu_delete_human(int where)
 						//  human.m_delete_date(ptr);         to tez nie
 						//Lista.m_erase(ptr);			// dziala ale sie wykrzacza!!
 						Lista.m_pop_front();		// usuwa z przodu
+						//dlaczego usuwasz pierwzego humana?? nie lepiej jest usunac wybranego przez uzytkownika??
 						//Lista.m_erase(ptr);			// znowu sie wykrzacza!!
 						//Lista.m_pop(ptr);
 						//Sleep(500);
@@ -4452,6 +4456,7 @@ C_element C_aplication_txt::m_menu_edit_relations() {
 }
 int C_aplication_txt::m_look_at(C_id id) {
 	int i;
+	cls();
 	//std::cout << id.m_set_contens() << "\n";
 	m_create_tree(id);
 	//std::cin >> i;
@@ -4460,30 +4465,24 @@ int C_aplication_txt::m_look_at(C_id id) {
 	N_vektor<int> Vektor_i;
 	N_vektor<C_id> Vektor_id;
 	//ladowanie wektorow do stworzenia interfejsu drzewa
-	if (Tree.m_set_v_grandparents().m_size() > 0)
-	{
 		Vektor_i.m_push_back(Tree.m_set_v_grandparents().m_size());
 		for (i = 0; i > Tree.m_set_v_grandparents().m_size(); i++)
 		{
+			std::cout << Tree.m_set_v_grandparents()[i].m_get_content() << "\n";
 			Vektor.m_push_back(Tree.m_set_v_grandparents()[i].m_get_content());
 			Vektor_id.m_push_back(Tree.m_set_v_grandparents()[i].m_set_id());
 		}
-	}
-	if (Tree.m_set_v_parent().m_size() > 0)
-	{
+
 		Vektor_i.m_push_back(Tree.m_set_v_parent().m_size());
 		for (i = 0; i > Tree.m_set_v_parent().m_size(); i++)
 		{
 			Vektor.m_push_back(Tree.m_set_v_parent()[i].m_get_content());
 			Vektor_id.m_push_back(Tree.m_set_v_parent()[i].m_set_id());
 		}
-	}
 	Vektor_i.m_push_back(1);
 		Vektor.m_push_back(Tree.m_set_Human().m_short_interface_personaly()); //nie wiem czy dobrze
 		Vektor_id.m_push_back(Tree.m_set_Human().m_set_id());
 	//std::cout<<Tree.m_set_Human(); //wyswietlenie humana wskaznikowego
-	if (Tree.m_set_v_partner().m_size() > 0)
-	{
 		Vektor_i.m_push_back(Tree.m_set_v_partner().m_size());
 		for (i = 0; i > Tree.m_set_v_partner().m_size(); i++)
 		{
@@ -4491,34 +4490,24 @@ int C_aplication_txt::m_look_at(C_id id) {
 			Vektor.m_push_back(Tree.m_set_v_partner()[i].m_get_content());
 			Vektor_id.m_push_back(Tree.m_set_v_partner()[i].m_set_id());
 		}
-	}
-	if (Tree.m_set_v_sibling().m_size() > 0)
-	{
 		Vektor_i.m_push_back(Tree.m_set_v_sibling().m_size());
 		for (i = 0; i > Tree.m_set_v_sibling().m_size(); i++)
 		{
 			Vektor.m_push_back(Tree.m_set_v_sibling()[i].m_get_content());
 			Vektor_id.m_push_back(Tree.m_set_v_sibling()[i].m_set_id());
 		}
-	}
-	if (Tree.m_set_v_children().m_size() > 0)
-	{
 		Vektor_i.m_push_back(Tree.m_set_v_children().m_size());
 		for (i = 0; i > Tree.m_set_v_children().m_size(); i++)
 		{
 			Vektor.m_push_back(Tree.m_set_v_children()[i].m_get_content());
 			Vektor_id.m_push_back(Tree.m_set_v_children()[i].m_set_id());
 		}
-	}
-	if (Tree.m_set_v_grandchildren().m_size() > 0)
-	{
 		Vektor_i.m_push_back(Tree.m_set_v_grandchildren().m_size());
 		for (i = 0; i > Tree.m_set_v_grandchildren().m_size(); i++)
 		{
 			Vektor.m_push_back(Tree.m_set_v_grandchildren()[i].m_get_content());
 			Vektor_id.m_push_back(Tree.m_set_v_grandchildren()[i].m_set_id());
 		}
-	}
 	//koniec ladowania
 	//interfejs drzewa:
 
@@ -4532,7 +4521,6 @@ int C_aplication_txt::m_look_at(C_id id) {
 	//ladowanie elementow
 	while (true)
 	{
-		cls();
 		//m_create_logo();
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 		for (int i = 0; i < Vektor.m_size(); ++i)
