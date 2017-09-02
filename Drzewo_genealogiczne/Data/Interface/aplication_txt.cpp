@@ -233,8 +233,8 @@ int C_aplication_txt::m_main_menu() // menu glowne aplikacji
 
 int C_aplication_txt::m_sub_1()
 {
-	N_striing MenuSub1[2] = { "1. Create New Tree", "2. Exit" };
-	N_striing SubSub1[2] = { "[Create Your New Tree]", "[Exit From Program]" };
+	N_striing MenuSub1[4] = { "1. Create New Tree", "2. Rename a Tree", "3. Delete a Tree", "4. Exit" };
+	N_striing SubSub1[4] = { "[Create Your New Tree]" , "[Rename Your Tree]" , "[Delete Your Tree]", "[Exit From Program]" };
 	int ptr = 0, p = 0;
 	char c;
 	N_striing data;
@@ -244,7 +244,7 @@ int C_aplication_txt::m_sub_1()
 		m_create_logo();
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 
-		for (int i = 0; i < 2; ++i)
+		for (int i = 0; i < 4; ++i)
 		{
 			if (i == ptr)       // podswietla dana opcje na niebiesko, dopisuje strzalke
 			{
@@ -279,14 +279,14 @@ int C_aplication_txt::m_sub_1()
 				ptr -= 1;
 				if (ptr <= -1)      // gdy wykracza wraca na koniec
 				{
-					ptr = 1;
+					ptr = 3;
 				}
 				break;
 			}
 			else if (GetAsyncKeyState(VK_DOWN) != 0)    // strzalka na dol przesuwa nizej po menu
 			{
 				ptr += 1;
-				if (ptr >= 2)       // gdy wykracza poza menu, znow wraca na poczatek
+				if (ptr >= 4)       // gdy wykracza poza menu, znow wraca na poczatek
 				{
 					ptr = 0;
 				}
@@ -302,7 +302,20 @@ int C_aplication_txt::m_sub_1()
 						//						m_menu_name_tree();
 						return M_creating_new_tree;
 					}
+
 					case 1:
+					{
+						Sleep(300);
+						// do rozbudowy
+					}
+
+					case 2:
+					{
+						Sleep(300);
+						// do rozbudowy
+					}
+
+					case 3:
 					{
 						Sleep(300);
 						std::cout << '\n';
@@ -2223,7 +2236,7 @@ int C_aplication_txt::m_lista(int what_this) { //do naprawy bedzie switch!!! <- 
 				m_create_logo();
 
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-				std::cout << "\t\t\tClick Spacebar to return to the previous menu.";
+				std::cout << "\t\t\tClick Escape to return to the previous menu.";
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 				std::cout << "\n\t Use the arrows to navigate the list ";
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
@@ -2258,7 +2271,7 @@ int C_aplication_txt::m_lista(int what_this) { //do naprawy bedzie switch!!! <- 
 				while (true)
 				{
 					Sleep(150);
-					if (GetAsyncKeyState(VK_SPACE) != 0)
+					if (GetAsyncKeyState(VK_ESCAPE) != 0)
 					{
 						Sleep(150); return M_import_tree;
 					}
@@ -3112,7 +3125,7 @@ void C_aplication_txt::m_menu_add_relations(int data, C_element& Element, bool& 
 				std::cout << "\t\t\t\t" << Menu2[0] << " \n\t\t\t " << SubMenu2[0] << std::endl;
 				if (pointer)
 				{
-					std::cout << "Zamlodzi na wziecie slubu!n";
+					std::cout << "Wrong date of wedding!n";
 				}
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 				cout << "\n\n\n\n Use the arrows to navigate the menu ";
