@@ -2741,6 +2741,7 @@ int C_aplication_txt::m_menu_tree() {// menu drzewa
 int C_aplication_txt::m_menu_relation(int where)
 {
 	m_load_lista(); //bagi z nadpisywaniem sie listy
+	bool b_pointer, active = false;
 	if (Lista.m_size() < 2)		// gdy nie ma choc 2 osob nie zbuduje relacji
 	{
 		cls();
@@ -2751,9 +2752,9 @@ int C_aplication_txt::m_menu_relation(int where)
 		//Sleep(2000);
 		//return;
 	}
-	C_element Element(m_menu_wybor_humana_wskaznikowego());
-	C_element element;
-	if (Element == element)
+	C_element Element, element;
+	m_menu_wybor_humana_wskaznikowego(Element, active);
+	if (active)
 		return where;
 	N_striing MenuSub1[10] = { "Add Relationship - MENU","1. Add Grandparent","2. Add Parent","3. Add Sibling","4. Add Partner",
 		"5. Add Children", "6. Add Grandchildren", "7. Add Order", "8. Save relations","9. Back" };
@@ -2764,7 +2765,6 @@ int C_aplication_txt::m_menu_relation(int where)
 	N_vektor<C_element> V_element;
 	int t;
 	C_id ID;
-	bool b_pointer;
 	//petla po wszystkich relacjach tworzaca elementy i ladujaca je w wektor elementow
 	for (p = 0; p < V_goverment_relation.m_size(); p++)
 	{
@@ -2833,7 +2833,9 @@ int C_aplication_txt::m_menu_relation(int where)
 				case 1: //Add grandparent
 				{
 					b_pointer = true;
-					Element = m_menu_add_relations(t_grandparent, Element);
+					m_menu_add_relations(t_grandparent, Element,active);
+					if (active)
+						return where;
 					ID = Element.m_set_v_grandparents()[Element.m_set_v_grandparents().m_size() - 1].m_set_id();
 					for (t = 0; t < V_element.m_size(); t++)
 					{
@@ -2859,7 +2861,9 @@ int C_aplication_txt::m_menu_relation(int where)
 				case 2: //add parent
 				{
 					b_pointer = true;
-					Element = m_menu_add_relations(t_parent, Element);
+					m_menu_add_relations(t_parent, Element,active);
+					if (active)
+						return where;
 					ID = Element.m_set_v_parent()[Element.m_set_v_parent().m_size() - 1].m_set_id();
 					for (t = 0; t < V_element.m_size(); t++)
 					{
@@ -2886,7 +2890,9 @@ int C_aplication_txt::m_menu_relation(int where)
 				case 3: //add sibling
 				{
 					b_pointer = true;
-					Element = m_menu_add_relations(t_sibling, Element);
+					m_menu_add_relations(t_sibling, Element,active);
+					if (active)
+						return where;
 					ID = Element.m_set_v_sibling()[Element.m_set_v_sibling().m_size() - 1].m_set_id();
 					for (t = 0; t < V_element.m_size(); t++)
 					{
@@ -2913,7 +2919,9 @@ int C_aplication_txt::m_menu_relation(int where)
 				case 4: // partner skok4
 				{
 					b_pointer = true;
-					Element = m_menu_add_relations(t_partner, Element);
+					m_menu_add_relations(t_partner, Element,active);
+					if (active)
+						return where;
 					ID = Element.m_set_v_partner()[Element.m_set_v_partner().m_size() - 1].m_set_id();
 					for (t = 0; t < V_element.m_size(); t++)
 					{
@@ -2939,7 +2947,9 @@ int C_aplication_txt::m_menu_relation(int where)
 				case 5: //children
 				{
 					b_pointer = true;
-					Element = m_menu_add_relations(t_children, Element);
+					m_menu_add_relations(t_children, Element,active);
+					if (active)
+						return where;
 					ID = Element.m_set_v_children()[Element.m_set_v_children().m_size() - 1].m_set_id();
 					for (t = 0; t < V_element.m_size(); t++)
 					{
@@ -2966,7 +2976,9 @@ int C_aplication_txt::m_menu_relation(int where)
 				case 6: //add grandchildren
 				{
 					b_pointer = true;
-					Element = m_menu_add_relations(t_grandchildren, Element);
+					m_menu_add_relations(t_grandchildren, Element, active);
+					if (active)
+						return where;
 					ID = Element.m_set_v_grandchildren()[Element.m_set_v_grandchildren().m_size() - 1].m_set_id();
 					for (t = 0; t < V_element.m_size(); t++)
 					{
@@ -2993,7 +3005,9 @@ int C_aplication_txt::m_menu_relation(int where)
 				case 7: //save 
 				{
 					b_pointer = true;
-					Element = m_menu_add_relations(t_order, Element);
+					m_menu_add_relations(t_order, Element, active);
+					if (active)
+						return where;
 					ID = Element.m_set_v_order()[Element.m_set_v_order().m_size() - 1].m_set_id();
 					for (t = 0; t < V_element.m_size(); t++)
 					{
@@ -3027,6 +3041,7 @@ int C_aplication_txt::m_menu_relation(int where)
 					return M_edit_tree;
 				}
 				}
+				break; //tego brakowalo!!
 			}
 
 			Sleep(150);
@@ -3036,36 +3051,49 @@ int C_aplication_txt::m_menu_relation(int where)
 	}
 
 }
-C_element C_aplication_txt::m_menu_add_relations(int data, C_element Element) {
+void C_aplication_txt::m_menu_add_relations(int data, C_element& Element, bool& active) {
 
 	switch (data)
 	{
 		case t_grandparent:
 		{
 			C_grandparents Grandparent(Element.m_set_Human().m_set_id());
-			Grandparent.m_get_id(m_menu_wybor_humana_wskaznikowego().m_set_Human().m_set_id());
+			m_menu_wybor_humana_wskaznikowego(Element,active);
+			if (active)
+				return;
+			Grandparent.m_get_id(Element.m_set_Human().m_set_id());
 			Element.m_get_grandparents(Grandparent);
-			break;
+			return;
 		}
 		case t_parent:
 		{
 			C_parent Parent(Element.m_set_Human().m_set_id());
-			Parent.m_get_id(m_menu_wybor_humana_wskaznikowego().m_set_Human().m_set_id());
+			m_menu_wybor_humana_wskaznikowego(Element, active);
+			if (active)
+				return;
+			Parent.m_get_id(Element.m_set_Human().m_set_id());
 			Element.m_get_parent(Parent);
-			break;
+			return;
 		}
 		case t_sibling:
 		{
 			C_sibling Sibling(Element.m_set_Human().m_set_id());
-			Sibling.m_get_id(m_menu_wybor_humana_wskaznikowego().m_set_Human().m_set_id());
+			m_menu_wybor_humana_wskaznikowego(Element, active);
+			if (active)
+				return;
+			Sibling.m_get_id(Element.m_set_Human().m_set_id());
 			Element.m_get_sibling(Sibling);
-			break;
+			return;
 		}
 		case t_partner:
 		{
 			C_partner Partner(Element.m_set_Human().m_set_id());
-			Partner.m_get_id(m_menu_wybor_humana_wskaznikowego().m_set_Human().m_set_id());
+			m_menu_wybor_humana_wskaznikowego(Element, active);
+			if (active)
+				return;
+			Partner.m_get_id(Element.m_set_Human().m_set_id());
 			N_striing date, yy, dd, mm;
+			bool pointer = false;
 			char C;
 			while (true)
 			{
@@ -3082,6 +3110,10 @@ C_element C_aplication_txt::m_menu_add_relations(int data, C_element Element) {
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 				std::cout << "\t\t\t\t" << Menu2[0] << " \n\t\t\t " << SubMenu2[0] << std::endl;
+				if (pointer)
+				{
+					std::cout << "Zamlodzi na wziecie slubu!n";
+				}
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 				cout << "\n\n\n\n Use the arrows to navigate the menu ";
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
@@ -3167,9 +3199,12 @@ C_element C_aplication_txt::m_menu_add_relations(int data, C_element Element) {
 										human.m_update_date(2, Date);
 										Element.m_update_human(human);
 										Element.m_get_partner(Partner); //skok5
-										return Element;
+										return;
 									}
-
+									pointer = true; //to mnusi byc!!! nie usuwaj tego!
+									dd.m_clear();
+									yy.m_clear();
+									mm.m_clear();
 								}
 								break;
 							}
@@ -3183,28 +3218,36 @@ C_element C_aplication_txt::m_menu_add_relations(int data, C_element Element) {
 		case t_children:
 		{
 			C_children Children(Element.m_set_Human().m_set_id());
-			Children.m_get_id(m_menu_wybor_humana_wskaznikowego().m_set_Human().m_set_id());
+			m_menu_wybor_humana_wskaznikowego(Element, active);
+			if (active)
+				return;
+			Children.m_get_id(Element.m_set_Human().m_set_id());
 			Element.m_get_children(Children);
-			break;
+			return;
 		}
 		case t_grandchildren:
 		{
 			C_grandchildren Grandchildren(Element.m_set_Human().m_set_id());
-			Grandchildren.m_get_id(m_menu_wybor_humana_wskaznikowego().m_set_Human().m_set_id());
+			m_menu_wybor_humana_wskaznikowego(Element, active);
+			if (active)
+				return;
+			Grandchildren.m_get_id(Element.m_set_Human().m_set_id());
 			Element.m_get_grandchildren(Grandchildren);
-			break;
+			return;
 		}
 		case t_order:
 		{
 			C_order Order(Element.m_set_Human().m_set_id());
-			Order.m_get_id(m_menu_wybor_humana_wskaznikowego().m_set_Human().m_set_id());
+			m_menu_wybor_humana_wskaznikowego(Element, active);
+			if (active)
+				return;
+			Order.m_get_id(Element.m_set_Human().m_set_id());
 			Element.m_get_order(Order);
-			break;
+			return;
 		}
 	}
-	return Element;
 }
-C_element C_aplication_txt::m_menu_wybor_humana_wskaznikowego() { //do doglebnego zprecyzowania
+void C_aplication_txt::m_menu_wybor_humana_wskaznikowego(C_element& Element, bool& active) { //do doglebnego zprecyzowania
 																  //bool b_where = false;
 	if (Lista.m_size() < 1)
 	{
@@ -3212,8 +3255,9 @@ C_element C_aplication_txt::m_menu_wybor_humana_wskaznikowego() { //do doglebneg
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 		std::cout << "\t\t\t\t" << "No people to create relations!" << "\n";
 		Sleep(1500);
-		C_element element;
-		return element;
+		active = true;
+		//C_element element;
+		return;
 	}
 	int i, j, w, q;			// zmienne w petlach for
 	N_striing goverment_data;
@@ -3250,7 +3294,7 @@ C_element C_aplication_txt::m_menu_wybor_humana_wskaznikowego() { //do doglebneg
 						{
 							if (V_ID[w].m_set_contens() == value)
 							{
-								Lista.m_erase(w);
+								//Lista.m_erase(w);
 								V_ID.m_erase(w);
 								break;
 							}
@@ -3282,6 +3326,7 @@ C_element C_aplication_txt::m_menu_wybor_humana_wskaznikowego() { //do doglebneg
 	{
 		cls();
 		m_create_logo();
+		//fajnie by bylo jak by np za pomoca escape mozna bylo sie cofnac z tego wyboru!!
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 		if (ptr > 2) {
 			if (cykl + 1 <= Lista.m_size())
@@ -3355,10 +3400,18 @@ C_element C_aplication_txt::m_menu_wybor_humana_wskaznikowego() { //do doglebneg
 			else if (GetAsyncKeyState(VK_RETURN) != 0)
 			{
 				Sleep(150);
-				C_element Element(m_create_human(V_ID[ptr]));
+				C_element element(m_create_human(V_ID[ptr]));
+				Element = element;
 				Lista.m_erase(ptr);
 				V_ID.m_erase(ptr);
-				return Element;
+				active = false;
+				return;
+			}
+			else if (GetAsyncKeyState(VK_ESCAPE) != 0)
+			{
+				Sleep(150);
+				active = true;
+				return;
 			}
 		}
 		Sleep(150);     // szybkosc poruszania sie po menu
