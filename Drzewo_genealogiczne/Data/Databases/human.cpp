@@ -581,12 +581,12 @@ std::ostream& operator<<(std::ostream &is,const C_human &h) {
 		}
 		case 1:
 		{
-			is << "Date of death: " << date[i]; //polskie litery
+			is << "Date of death: " << date[i]; 
 			break;
 		}
 		case 2:
 		{
-			is << "Date of wedding: " << date[i]; //polskie litery
+			is << "Date of wedding: " << date[i];
 			break;
 		}
 		default:

@@ -74,7 +74,7 @@ bool operator==(const N_vektor &V) {
 			int i;
 			for (i = 0; i < Size; i++)
 			{
-				if (Tab[i] != V.Tab[i]) return false; 
+				if (Tab[i] != V.Tab[i]) return false;
 			}
 			return true;
 		}
@@ -86,7 +86,7 @@ bool operator!=(const N_vektor &V) { //poprawione mam nadzieje ze na lepsze
 		int i;
 		for (i = 0; i < Size; i++)
 		{
-			if (Tab[i] != V.Tab[i]) return true; 
+			if (Tab[i] != V.Tab[i]) return true;
 		}
 		return false;
 	}
@@ -155,23 +155,6 @@ N_vektor& m_pop_front() {
 N_vektor& m_pop(int i) {
 	m_erase(i);
 	return *this;
-}
-
-N_vektor& m_erase(N_vektor<int>& myNumbers_in, int number_in)
-{
-	std::N_vektor<int>::iterator iter = myNumbers_in.begin();
-	while (iter != myNumbers_in.end())
-	{
-		if (*iter == number_in)
-		{
-			iter = myNumbers_in.erase(iter);
-		}
-		else
-		{
-			++iter;
-		}
-	}
-
 }
 
 
